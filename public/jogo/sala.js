@@ -1,4 +1,5 @@
-// Uma sala por servidor: lobby → oficina (loja) → contagem → jogando → fim → loja → ...
+// Uma sala por partida, rodando no navegador da tela (anfitrião): lobby → oficina (loja) → contagem → jogando → fim → loja → ...
+// Não depende do transporte: cada cliente é uma função enviar(texto) (canal local ou WebRTC).
 // Cada jogador é um time (1 personagem). Sozinho, o jogador leva 2 personagens: mínimo de 2 times, máximo de 4.
 import { Jogo, COR_DO_PERSONAGEM } from './sim.js';
 import { FASES } from './fases.js';
@@ -28,22 +29,32 @@ export class Sala {
     this.contagemFim = 0;
     this.tick = 0;
     this.proxId = 1;
-    setInterval(() => this.passo(), TICK * 1000);
+    // passo fixo de 1/60 s, compensando atrasos do setInterval (navegadores não são pontuais)
+    let antes = performance.now(), sobra = 0;
+    setInterval(() => {
+      const agora = performance.now();
+      sobra = Math.min(sobra + (agora - antes) / 1000, TICK * 6);
+      antes = agora;
+      while (sobra >= TICK) { this.passo(); sobra -= TICK; }
+    }, 1000 / 120);
   }
 
-  conectar(ws) {
-    const cli = { ws, jogador: null };
+  // Liga um cliente. Devolve { receber(texto), fechar() } para o transporte chamar.
+  conectar(enviar) {
+    const cli = { enviar, jogador: null };
     this.clientes.add(cli);
-    ws.on('message', raw => {
-      let m; try { m = JSON.parse(raw); } catch { return; }
-      this.mensagem(cli, m);
-    });
-    ws.on('close', () => {
-      this.clientes.delete(cli);
-      if (cli.jogador) this.sair(cli.jogador);
-    });
     this.enviar(cli, { t: 'oi', ...this.resumo() });
     if (this.jogo) this.enviar(cli, { t: 'fase', fase: this.jogo.fase });
+    return {
+      receber: raw => {
+        let m; try { m = JSON.parse(raw); } catch { return; }
+        this.mensagem(cli, m);
+      },
+      fechar: () => {
+        if (!this.clientes.delete(cli)) return;
+        if (cli.jogador) this.sair(cli.jogador);
+      },
+    };
   }
 
   mensagem(cli, m) {
@@ -223,6 +234,6 @@ export class Sala {
 
   anunciar() { this.difundir({ t: 'sala', ...this.resumo() }); }
   evento(e) { this.difundir({ t: 'ev', ...e }); }
-  enviar(cli, m) { if (cli.ws.readyState === 1) cli.ws.send(JSON.stringify(m)); }
-  difundir(m) { const s = JSON.stringify(m); for (const c of this.clientes) if (c.ws.readyState === 1) c.ws.send(s); }
+  enviar(cli, m) { cli.enviar(JSON.stringify(m)); }
+  difundir(m) { const s = JSON.stringify(m); for (const c of this.clientes) c.enviar(s); }
 }

@@ -1,7 +1,7 @@
 // Tela do jogo (PC): mostra a partida e, se a pessoa entrar, joga pelo teclado.
 import { Cena } from './cena.js';
 import { PERSONAGENS, CORES, PERS_COR, COR_PERS, NOME_TIME, MUNDOS, ICONE, ITENS } from './comum.js';
-import { conectar, Interpolador } from './rede.js';
+import { hospedar, entrarNaSala, codigoDaUrl, Interpolador } from './rede.js';
 import { liberarAudio, tocar, alternarMudo } from './som.js';
 
 const $ = id => document.getElementById(id);
@@ -20,7 +20,13 @@ let ultimoEstado = null;
 let mortos = [];
 
 $('somIcone').src = ICONE.somLigado;
-const rede = conectar(receber, ok => $('aviso').classList.toggle('oculto', ok));
+// Sem ?sala= esta tela é a anfitriã (roda a partida). Com ?sala=ABCD, é outro PC entrando numa sala existente.
+const codigoVisitante = codigoDaUrl();
+const rede = codigoVisitante
+  ? entrarNaSala(codigoVisitante, receber, ok => avisar(ok ? '' : 'Procurando a sala ' + codigoVisitante + '…'))
+  : hospedar(receber, ok => avisar(ok ? '' : 'Sem internet: só este PC consegue jogar agora.'));
+function avisar(texto) { $('aviso').textContent = texto; $('aviso').classList.toggle('oculto', !texto); }
+
 
 function receber(m) {
   switch (m.t) {
@@ -64,7 +70,7 @@ function montarCards() {
     div.className = 'card';
     div.dataset.pers = p;
     div.innerHTML = `<div class="faixa" style="background:${CORES[cor]}">${NOME_TIME[cor].toUpperCase()}</div>
-      <div class="arte"><img src="/assets/personagens/${p}/arte.png" alt="${NOME_TIME[cor]}"></div><div class="dono"></div>`;
+      <div class="arte"><img src="assets/personagens/${p}/arte.png" alt="${NOME_TIME[cor]}"></div><div class="dono"></div>`;
     div.onclick = () => {
       liberarAudio();
       if (!meuId) entrar();
@@ -76,7 +82,20 @@ function montarCards() {
 }
 montarCards();
 
-fetch('/info.json').then(r => r.json()).then(i => { $('qr').src = i.qr; $('url').textContent = i.urlControle.replace('http://', ''); });
+// QR code do controle: mesmo endereço desta página, trocando para controle.html?sala=CÓDIGO
+function mostrarCodigo(codigo) {
+  const link = new URL('controle.html', location.href);
+  link.search = '?sala=' + codigo;
+  const qr = qrcode(0, 'M');
+  qr.addData(link.href);
+  qr.make();
+  $('qr').src = qr.createDataURL(8, 2);
+  $('url').textContent = link.href.replace(/^https?:\/\//, '');
+  $('codigo').textContent = codigo;
+}
+if (codigoVisitante) mostrarCodigo(codigoVisitante);
+else rede.aoCodigo = mostrarCodigo;
+
 
 function atualizarLobby() {
   for (const div of $('cards').children) {
@@ -94,7 +113,7 @@ function atualizarLobby() {
       <b>${f.id}</b>${f.nome}<div class="cors">${coracoes(f.coracoes, f.coracoes)}</div></div>`;
   }).join('');
   $('fases').innerHTML = `<div class="cab"><img src="${mundo.selo}">Mundo 1 · ${mundo.nome}
-      <span style="margin-left:auto" class="pilula"><img src="/assets/ui/ic_bloco.png" style="height:2.6vh">${sala.carteira}</span></div>
+      <span style="margin-left:auto" class="pilula"><img src="assets/ui/ic_bloco.png" style="height:2.6vh">${sala.carteira}</span></div>
     <div class="lista">${lista}</div>`;
   for (const chip of $('fases').querySelectorAll('.fase-chip:not(.trancada)')) chip.onclick = () => { tocar('clique'); rede.enviar({ t: 'escolherFase', idx: +chip.dataset.i }); };
 
@@ -119,10 +138,10 @@ function atualizarLoja() {
       const cheio = qt >= def.max;
       const pode = !cheio && sala.carteira >= def.preco;
       return `<button class="comprar ${cheio ? 'cheio' : ''}" style="border-color:${CORES[cor]}" data-item="${item}" data-cor="${cor}" ${pode ? '' : 'disabled'}
-        title="Montar para o ${NOME_TIME[cor]}"><img src="/assets/personagens/${COR_PERS[cor]}/retrato.png">${qt ? `<span class="qt">${def.max > 1 ? qt : '✓'}</span>` : ''}</button>`;
+        title="Montar para o ${NOME_TIME[cor]}"><img src="assets/personagens/${COR_PERS[cor]}/retrato.png">${qt ? `<span class="qt">${def.max > 1 ? qt : '✓'}</span>` : ''}</button>`;
     }).join('');
     return `<div class="item cartao"><img class="ic" src="${ITENS[item].icone}"><h3>${def.nome}</h3><div class="desc">${ITENS[item].desc}</div>
-      <div class="preco"><img src="/assets/ui/ic_bloco.png">${def.preco} peças</div><div class="compradores">${botoes}</div></div>`;
+      <div class="preco"><img src="assets/ui/ic_bloco.png">${def.preco} peças</div><div class="compradores">${botoes}</div></div>`;
   }).join('');
   for (const b of $('itens').querySelectorAll('.comprar')) b.onclick = () => rede.enviar({ t: 'comprar', item: b.dataset.item, cor: b.dataset.cor });
 }
@@ -140,12 +159,12 @@ function atualizarHud(s) {
     const bandeiras = fase.gemas.map((g, k) => [g, s.gemas[k]]).filter(([g]) => g.cor === cor);
     const pegas = bandeiras.filter(([, ok]) => ok).length;
     const extras = [
-      bandeiras.length ? `<img src="/assets/ui/bandeira_${cor}.png">${pegas}/${bandeiras.length}` : '',
+      bandeiras.length ? `<img src="assets/ui/bandeira_${cor}.png">${pegas}/${bandeiras.length}` : '',
       fx & 8 ? `<img src="${ITENS.mola.icone}">` : '',
       fx & 16 ? `<img src="${ITENS.planador.icone}">` : '',
     ].join(' ');
     return `<div class="time ${n === 0 ? 'morto' : ''}" style="border-left-color:${CORES[cor]}">
-      <img class="ret ${dono?.ativo === p.id ? '' : 'inativo'}" style="border-color:${CORES[cor]}" src="/assets/personagens/${p.id}/retrato.png">
+      <img class="ret ${dono?.ativo === p.id ? '' : 'inativo'}" style="border-color:${CORES[cor]}" src="assets/personagens/${p.id}/retrato.png">
       <div class="nome" style="color:${CORES[cor]}">${NOME_TIME[cor]} <small>· ${dono ? dono.nome : '—'}</small></div>
       <div class="cors">${coracoes(n, max)}</div><div class="extras">${extras}</div></div>`;
   }).join('');
@@ -171,7 +190,7 @@ function balao(x, y, texto, cor) {
   const div = document.createElement('div');
   div.className = 'balao';
   Object.assign(div.style, { left: pos.x + 'px', top: pos.y + 'px', borderColor: CORES[cor] });
-  div.innerHTML = `<img src="/assets/personagens/${COR_PERS[cor]}/retrato.png">${texto}`;
+  div.innerHTML = `<img src="assets/personagens/${COR_PERS[cor]}/retrato.png">${texto}`;
   $('baloes').append(div);
   setTimeout(() => div.remove(), 1700);
 }
@@ -199,18 +218,18 @@ function mostrarFim() {
   const venceu = sala.resultado === 'vitoria';
   const ultima = sala.faseIdx === sala.fases.length - 1;
   const bandeiras = p ? Object.entries(p.gemas).filter(([cor]) => cor !== 'peca').map(([cor, g]) =>
-    `<span><img src="/assets/ui/bandeira_${cor}.png">${g.pegas}/${g.total}</span>`).join('') : '';
+    `<span><img src="assets/ui/bandeira_${cor}.png">${g.pegas}/${g.total}</span>`).join('') : '';
   const placar = `<div class="placar"><span>⏱ ${fmtTempo(p?.tempo || 0)}</span>${bandeiras}
-    <span><img src="/assets/ui/ic_bloco.png">+${sala.ultimoGanho} peças</span></div>`;
+    <span><img src="assets/ui/ic_bloco.png">+${sala.ultimoGanho} peças</span></div>`;
   const botoes = `<div class="acoes">
       <button class="btn grande ${venceu ? '' : 'rosa'}" data-acao="continuar">${venceu ? (ultima ? 'Concluir mundo' : 'Próxima fase') : 'Tentar de novo'}</button>
       <button class="btn claro" data-acao="lobby">Menu</button></div>
     <div class="dica">ENTER continua · ESC volta ao menu · a equipe tem ${sala.carteira} peças para a oficina</div>`;
   const semCoracao = fase?.personagens.filter((q, i) => ultimoEstado?.cor?.[i]?.[0] === 0).map(q => q.id) || [];
   $('painelFim').innerHTML = venceu
-    ? `<img class="selo" src="/assets/ui/ic_trofeu.png"><h2>Missão cumprida!</h2><div class="sub">Trabalho em equipe!</div>${placar}${botoes}`
+    ? `<img class="selo" src="assets/ui/ic_trofeu.png"><h2>Missão cumprida!</h2><div class="sub">Trabalho em equipe!</div>${placar}${botoes}`
     : `<h2>Tente de novo!</h2>
-       <div class="derrotados">${(semCoracao.length ? semCoracao : mortos.slice(-1)).map(id => `<img src="/assets/personagens/${id}/derrota.png">`).join('')}</div>
+       <div class="derrotados">${(semCoracao.length ? semCoracao : mortos.slice(-1)).map(id => `<img src="assets/personagens/${id}/derrota.png">`).join('')}</div>
        <div class="sub">${semCoracao.map(id => NOME_TIME[corDe(id)]).join(' e ')} ficou sem corações. Na oficina dá para montar corações extras!</div>
        ${placar}${botoes}`;
   for (const b of $('painelFim').querySelectorAll('[data-acao]')) b.onclick = () => { tocar('clique'); rede.enviar({ t: b.dataset.acao }); };
@@ -220,7 +239,7 @@ function mundoCompleto() {
   const div = document.createElement('div');
   div.className = 'balao';
   Object.assign(div.style, { left: '50%', top: '30%', fontSize: '4vh', padding: '2vh 3vw', borderColor: CORES.amarelo });
-  div.innerHTML = '<img src="/assets/ui/ic_medalha.png" style="height:8vh;border-radius:0">Mundo 1 completo! Parabéns, equipe!';
+  div.innerHTML = '<img src="assets/ui/ic_medalha.png" style="height:8vh;border-radius:0">Mundo 1 completo! Parabéns, equipe!';
   document.body.append(div);
   setTimeout(() => div.remove(), 4000);
 }

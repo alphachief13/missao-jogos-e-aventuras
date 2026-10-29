@@ -1,6 +1,6 @@
 #cena { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
 .camada { position: fixed; inset: 0; }
-.tela-clara { background: url("/assets/fundos/lobby/longe.png") center / cover; display: flex; flex-direction: column;
+.tela-clara { background: url("../assets/fundos/lobby/longe.png") center / cover; display: flex; flex-direction: column;
               align-items: center; justify-content: center; gap: 2.2vh; padding: 2vh 4vw; }
 kbd { font: 700 .9em Fredoka, sans-serif; background: var(--marinho); color: #fff; border-radius: .5vh; padding: 0 .6vh; }
 
@@ -37,6 +37,7 @@ kbd { font: 700 .9em Fredoka, sans-serif; background: var(--marinho); color: #ff
 #lobby .entrar img.qr { height: 14vh; border-radius: 1vh; }
 #lobby .entrar .passos { font-size: 1.9vh; line-height: 1.55; max-width: 34vh; }
 #lobby .entrar b { font-weight: 900; }
+#lobby .codigo { font: 700 2.4vh Fredoka, sans-serif; letter-spacing: .2em; color: var(--rosa); }
 #lobby .url { font: 700 2.1vh Fredoka, sans-serif; color: var(--azul); }
 #lobby .status { font-size: 1.9vh; font-weight: 700; text-align: center; min-height: 2.4vh; }
 

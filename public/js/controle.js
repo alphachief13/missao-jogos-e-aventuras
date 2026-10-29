@@ -1,5 +1,5 @@
 // Controle virtual no celular: escolhe o time, monta itens na oficina e vira gamepad durante a partida.
-import { conectar } from './rede.js';
+import { entrarNaSala, codigoDaUrl } from './rede.js';
 import { PERSONAGENS, CORES, PERS_COR, COR_PERS, NOME_TIME, ICONE, ITENS } from './comum.js';
 
 const $ = id => document.getElementById(id);
@@ -10,7 +10,7 @@ let entrei = false;
 let fase = null;
 let coracoes = null; // [[n, max], ...] na ordem de fase.personagens
 
-const rede = conectar(m => {
+function receber(m) {
   if (m.t === 'oi' || m.t === 'sala') { sala = m; atualizar(); }
   else if (m.t === 'voce') { meuId = m.id; try { localStorage.setItem('mja_nome', $('nome').value); } catch {} atualizar(); }
   else if (m.t === 'fase') fase = m.fase;
@@ -20,15 +20,31 @@ const rede = conectar(m => {
   else if (m.t === 'cheio') $('msgNome').textContent = 'A sala já está cheia (4 jogadores).';
   else if (m.t === 'ev' && m.e === 'morte' && eu()?.pers.includes(m.id)) navigator.vibrate?.([80, 60, 160]);
   else if (m.t === 'ev' && (m.e === 'bandeira' || m.e === 'peca')) navigator.vibrate?.(25);
-}, ok => {
-  // Ao reconectar, o servidor esqueceu este celular: entra de novo com o mesmo nome.
-  if (ok && entrei) { meuId = null; rede.enviar({ t: 'entrar', tipo: 'celular', nome: $('nome').value }); }
-});
+}
+
+// Liga na tela anfitriã pelo código (vem no QR code; sem ele, a pessoa digita).
+let rede = null;
+function ligar(codigo) {
+  history.replaceState(null, '', '?sala=' + codigo);
+  rede = entrarNaSala(codigo, receber, (ok, motivo) => {
+    $('msgNome').textContent = ok ? '' : motivo === 'sala' ? `Procurando a sala ${codigo}… a tela do jogo está aberta?` : 'Conectando…';
+    // Ao reconectar, a tela esqueceu este celular: entra de novo com o mesmo nome.
+    if (ok && entrei) { meuId = null; rede.enviar({ t: 'entrar', tipo: 'celular', nome: $('nome').value }); }
+  });
+}
+if (codigoDaUrl()) ligar(codigoDaUrl());
+else $('codigo').classList.remove('oculto');
 
 const eu = () => sala.jogadores.find(j => j.id === meuId);
 
 try { $('nome').value = localStorage.getItem('mja_nome') || ''; } catch {}
 $('btnEntrar').onclick = () => {
+  if (!rede) {
+    const codigo = $('codigo').value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (codigo.length !== 4) { $('msgNome').textContent = 'Digite o código de 4 letras que aparece na tela do jogo.'; return; }
+    $('codigo').classList.add('oculto');
+    ligar(codigo);
+  }
   entrei = true;
   rede.enviar({ t: 'entrar', tipo: 'celular', nome: $('nome').value });
   telaCheia();
@@ -57,7 +73,7 @@ function atualizar() {
       const dono = sala.jogadores.find(x => x.pers.includes(p));
       return `<div data-p="${p}" class="${dono ? '' : 'livre'} ${dono?.id === meuId ? 'meu' : ''}">
         <div class="faixa" style="background:${CORES[cor]}">${NOME_TIME[cor].toUpperCase()}</div>
-        <div class="arte"><img src="/assets/personagens/${p}/arte.png"></div><small>${dono ? dono.nome : 'Livre'}</small></div>`;
+        <div class="arte"><img src="assets/personagens/${p}/arte.png"></div><small>${dono ? dono.nome : 'Livre'}</small></div>`;
     }).join('');
     for (const d of $('cards').children) d.onclick = () => rede.enviar({ t: 'escolher', pers: d.dataset.p });
     const f = sala.fases[sala.faseIdx];
@@ -69,13 +85,13 @@ function atualizar() {
     $('msgLoja').textContent = `Próxima: ${f.id} · ${f.nome} (${f.coracoes} corações por time)`;
     const meus = j.pers.map(p => PERS_COR[p]);
     $('itens').innerHTML = Object.entries(sala.loja).map(([item, def]) => `<div class="item cartao"><img class="ic" src="${ITENS[item].icone}">
-      ${def.nome}<div class="preco"><img src="/assets/ui/ic_bloco.png">${def.preco}</div>
+      ${def.nome}<div class="preco"><img src="assets/ui/ic_bloco.png">${def.preco}</div>
       ${meus.map(cor => {
         const qt = sala.compras[cor]?.[item] || 0;
         const cheio = qt >= def.max;
         const pode = !cheio && sala.carteira >= def.preco;
         return `<button class="${cheio ? 'cheio' : ''}" style="background:${CORES[cor]}" data-item="${item}" data-cor="${cor}" ${pode ? '' : 'disabled'}>
-          <img src="/assets/personagens/${COR_PERS[cor]}/retrato.png">${qt ? (def.max > 1 ? qt + '×' : '✓') : 'Montar'}</button>`;
+          <img src="assets/personagens/${COR_PERS[cor]}/retrato.png">${qt ? (def.max > 1 ? qt + '×' : '✓') : 'Montar'}</button>`;
       }).join('')}</div>`).join('');
     for (const b of $('itens').querySelectorAll('button')) b.onclick = () => rede.enviar({ t: 'comprar', item: b.dataset.item, cor: b.dataset.cor });
   } else if (sala.estado === 'fim') {
@@ -101,7 +117,7 @@ function desenharTopo() {
   const i = fase?.personagens.findIndex(p => p.id === j.ativo) ?? -1;
   const [n, max] = (i >= 0 && coracoes?.[i]) || [0, 0];
   $('topo').style.background = CORES[cor];
-  $('topo').innerHTML = `${j.pers.map(p => `<img class="r ${p === j.ativo ? '' : 'inativo'}" src="/assets/personagens/${p}/retrato.png">`).join('')}
+  $('topo').innerHTML = `${j.pers.map(p => `<img class="r ${p === j.ativo ? '' : 'inativo'}" src="assets/personagens/${p}/retrato.png">`).join('')}
     <span>${NOME_TIME[cor]} · ${j.nome}</span>
     ${max ? `<span class="cor">${Array.from({ length: max }, (_, k) => `<img src="${k < n ? ICONE.coracao : ICONE.coracaoVazio}">`).join('')}</span>` : ''}`;
 }

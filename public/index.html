@@ -4,11 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Missão, Jogos e Aventuras · RoboEduc</title>
-  <link rel="icon" href="/assets/ui/ic_bussola.png">
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/tela.css">
+  <link rel="icon" href="assets/ui/ic_bussola.png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/tela.css">
+  <script src="vendor/peerjs/peerjs.min.js"></script>
+  <script src="vendor/qrcode/qrcode.js"></script>
   <script type="importmap">
-    { "imports": { "three": "/vendor/three/build/three.module.js", "three/addons/": "/vendor/three/examples/jsm/" } }
+    { "imports": { "three": "./vendor/three/build/three.module.js", "three/addons/": "./vendor/three/examples/jsm/" } }
   </script>
 </head>
 <body>
@@ -19,7 +21,7 @@
     <div class="barra">
       <div class="caixa" id="hudFase"></div>
       <div class="caixa" id="hudTempo">0:00</div>
-      <div class="caixa"><img src="/assets/ui/ic_bloco.png"><span id="hudPecas">0</span></div>
+      <div class="caixa"><img src="assets/ui/ic_bloco.png"><span id="hudPecas">0</span></div>
     </div>
     <div id="rotulos"></div>
     <div id="baloes"></div>
@@ -32,7 +34,7 @@
 
   <!-- Lobby: logo, times, fases e como entrar -->
   <div id="lobby" class="camada tela-clara">
-    <img class="logo" src="/assets/kit/logo.png" alt="Missão, Jogos e Aventuras">
+    <img class="logo" src="assets/kit/logo.png" alt="Missão, Jogos e Aventuras">
     <p class="slogan">Brinque, explore, crie e viva novas aventuras!</p>
     <div class="cards" id="cards"></div>
     <div class="linha-baixo">
@@ -41,6 +43,7 @@
         <img class="qr" id="qr" alt="QR code do controle">
         <div class="passos">
           <div><b>No celular:</b> aponte a câmera e vire o celular de lado.</div>
+          <div>Código da sala: <b class="codigo" id="codigo">…</b></div>
           <div class="url" id="url"></div>
           <div><b>Neste PC:</b> aperte <kbd>ENTER</kbd> e escolha um time.</div>
         </div>
@@ -53,9 +56,9 @@
   <!-- Oficina: as peças da equipe viram itens para a próxima fase -->
   <div id="loja" class="camada tela-clara">
     <div class="cab-loja">
-      <img src="/assets/ui/ic_engrenagem.png" alt="">
+      <img src="assets/ui/ic_engrenagem.png" alt="">
       <h2>Oficina da equipe</h2>
-      <div class="pilula carteira"><img src="/assets/ui/ic_bloco.png"><span id="carteira">0</span> peças</div>
+      <div class="pilula carteira"><img src="assets/ui/ic_bloco.png"><span id="carteira">0</span> peças</div>
     </div>
     <div class="info-fase" id="lojaFase"></div>
     <div class="itens" id="itens"></div>
@@ -70,10 +73,10 @@
     <div class="painel cartao" id="painelFim"></div>
   </div>
 
-  <div class="roboeduc" id="roboeduc"><img src="/assets/kit/logo_roboeduc.png" alt="RoboEduc"></div>
+  <div class="roboeduc" id="roboeduc"><img src="assets/kit/logo_roboeduc.png" alt="RoboEduc"></div>
   <button id="som" title="Som"><img id="somIcone" alt="Som"></button>
-  <div id="aviso" class="oculto">Reconectando ao servidor…</div>
+  <div id="aviso" class="oculto"></div>
 
-  <script type="module" src="/js/tela.js"></script>
+  <script type="module" src="js/tela.js"></script>
 </body>
 </html>

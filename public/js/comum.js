@@ -5,7 +5,7 @@ export const CORES = { azul: '#3E93D0', rosa: '#E3205D', amarelo: '#F6BB33', ver
 export const PERS_COR = { ruivo: 'azul', loira: 'rosa', cacheado: 'amarelo', sapo: 'verde' };
 export const COR_PERS = Object.fromEntries(Object.entries(PERS_COR).map(([p, c]) => [c, p]));
 export const NOME_TIME = { azul: 'Time Azul', rosa: 'Time Rosa', amarelo: 'Time Amarelo', verde: 'Time Verde' };
-export const MUNDOS = { exploradores: { nome: 'Exploradores em Ação', selo: '/assets/kit/selo_1.png' } };
+export const MUNDOS = { exploradores: { nome: 'Exploradores em Ação', selo: 'assets/kit/selo_1.png' } };
 
 const svg = corpo => 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">${corpo}</svg>`);
 const M = '#1E2A4A';

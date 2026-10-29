@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { FASES } from '../server/fases.js';
+import { FASES } from '../public/jogo/fases.js';
 
 const A = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../assets');
 const PERS = ['ruivo', 'loira', 'cacheado', 'sapo'];

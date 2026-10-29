@@ -1,7 +1,7 @@
 // Robô que joga cada fase do início ao fim, com 4 times e com duplas, para garantir que todas têm solução.
 // Uso: node tools/testar_fases.mjs [id-da-fase]
-import { Jogo, COR_DO_PERSONAGEM } from '../server/sim.js';
-import { FASES } from '../server/fases.js';
+import { Jogo, COR_DO_PERSONAGEM } from '../public/jogo/sim.js';
+import { FASES } from '../public/jogo/fases.js';
 
 const COMBOS = [
   ['ruivo', 'loira', 'cacheado', 'sapo'],

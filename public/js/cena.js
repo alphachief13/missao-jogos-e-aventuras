@@ -30,7 +30,7 @@ function tex(url) {
   }
   return cacheTex.get(url);
 }
-const retrato = cor => tex(`/assets/personagens/${COR_PERS[cor]}/retrato.png`);
+const retrato = cor => tex(`assets/personagens/${COR_PERS[cor]}/retrato.png`);
 
 // Blocos da fase: plástico fosco, menos brilho que os objetos de time.
 function fosco(cor, extra = {}) {
@@ -108,8 +108,8 @@ export class Cena {
       return m;
     };
     this.fundos = [
-      { mesh: plano(`/assets/fundos/${mundo}/longe.png`, false, NEVOA.longe), z: -26, parallax: 0.25 },
-      { mesh: plano(`/assets/fundos/${mundo}/meio.png`, true, NEVOA.meio), z: -9, parallax: 0.6 },
+      { mesh: plano(`assets/fundos/${mundo}/longe.png`, false, NEVOA.longe), z: -26, parallax: 0.25 },
+      { mesh: plano(`assets/fundos/${mundo}/meio.png`, true, NEVOA.meio), z: -9, parallax: 0.6 },
     ];
   }
 
@@ -308,7 +308,7 @@ export class Cena {
       const cor = CORES[PERS_COR[p.id]];
       const sheets = {};
       for (const [anim, n] of Object.entries(ANIMS)) {
-        const t = carregador.load(`/assets/personagens/${p.id}/${anim}.png`);
+        const t = carregador.load(`assets/personagens/${p.id}/${anim}.png`);
         t.colorSpace = THREE.SRGBColorSpace;
         t.repeat.set(1 / n, 1);
         sheets[anim] = t;
@@ -492,7 +492,7 @@ export class Cena {
 
   explosao(x, y, nomes, n, forca, tamanho = 0.32) {
     for (let i = 0; i < n; i++) {
-      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex(`/assets/particulas/${nomes[i % nomes.length]}.png`), transparent: true, depthWrite: false, toneMapped: false }));
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex(`assets/particulas/${nomes[i % nomes.length]}.png`), transparent: true, depthWrite: false, toneMapped: false }));
       const tam = tamanho * (0.6 + Math.random() * 0.8);
       s.scale.set(tam, tam, 1);
       s.position.set(x, -y, 0.6);

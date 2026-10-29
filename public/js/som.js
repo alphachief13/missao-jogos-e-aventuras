@@ -13,7 +13,7 @@ let mudo = false;
 async function carregar(nome) {
   for (const arq of [nome, ANTIGO[nome]].filter(Boolean)) {
     try {
-      const r = await fetch(`/assets/sons/${arq}.wav`);
+      const r = await fetch(`assets/sons/${arq}.wav`);
       if (!r.ok) continue;
       buffers[nome] = await ctx.decodeAudioData(await r.arrayBuffer());
       return;
