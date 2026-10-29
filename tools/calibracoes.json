@@ -1,0 +1,26 @@
+{
+  "ruivo": {
+    "idle": 380,
+    "corrida": 293,
+    "ar": 383,
+    "extras": 315
+  },
+  "loira": {
+    "idle": 410,
+    "corrida": 267,
+    "ar": 360,
+    "extras": 290
+  },
+  "cacheado": {
+    "idle": 410,
+    "corrida": 297,
+    "ar": 397,
+    "extras": 310
+  },
+  "sapo": {
+    "idle": 390,
+    "corrida": 286,
+    "ar": 365,
+    "extras": 275
+  }
+}

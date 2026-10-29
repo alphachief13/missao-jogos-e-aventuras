@@ -1,0 +1,311 @@
+{
+  "ruivo_idle": {
+    "key": "ruivo_idle",
+    "out": "assets/_bruto/ruivo_idle.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/01_heroi-explorador.png"
+    ],
+    "prompt_file": "tools/prompts/ruivo_idle.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 2 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 standing relaxed and smiling with eyes open; 2 same standing position with chest subtly raised for breathing, eyes CLOSED in a blink. Both in right-facing 3/4 view. Character: Red-haired boy with orange spiky hair, large brown eyes, white lab coat, blue T-shirt, beige cargo shorts, binoculars hanging from neck, olive green backpack, blue and white sneakers. No headset, controller or handheld map. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "ruivo_corrida": {
+    "key": "ruivo_corrida",
+    "out": "assets/_bruto/ruivo_corrida.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/01_heroi-explorador.png"
+    ],
+    "prompt_file": "tools/prompts/ruivo_corrida.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 4 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 running contact RIGHT leg extended forward and left behind; 2 passing position right foot underneath hips and left knee lifting; 3 contact LEFT leg extended forward and right behind; 4 passing left foot underneath hips and right knee lifting. Arms counter-swing. All in TRUE SIDE PROFILE facing and moving SCREEN RIGHT; only one eye visible, nose, chest and feet point right. Camera strictly sees the side, much more sideways than idle. Character: Red-haired boy with orange spiky hair, large brown eyes, white lab coat, blue T-shirt, beige cargo shorts, binoculars hanging from neck, olive green backpack, blue and white sneakers. No headset, controller or handheld map. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "ruivo_ar": {
+    "key": "ruivo_ar",
+    "out": "assets/_bruto/ruivo_ar.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/01_heroi-explorador.png"
+    ],
+    "prompt_file": "tools/prompts/ruivo_ar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 2 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 upward jump, arms lifted and knees bent; 2 falling, arms spread, surprised expression. Both in clear TRUE SIDE PROFILE facing SCREEN RIGHT, only one eye visible, nose and feet point right, camera strictly sees the side. Character: Red-haired boy with orange spiky hair, large brown eyes, white lab coat, blue T-shirt, beige cargo shorts, binoculars hanging from neck, olive green backpack, blue and white sneakers. No headset, controller or handheld map. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "ruivo_extras": {
+    "key": "ruivo_extras",
+    "out": "assets/_bruto/ruivo_extras.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/01_heroi-explorador.png"
+    ],
+    "prompt_file": "tools/prompts/ruivo_extras.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 4 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 pushing an INVISIBLE object to SCREEN RIGHT with both empty palms extended, leaning right, TRUE SIDE PROFILE, only one eye visible; 2 comic defeat, dizzy spiral eyes, crouched but upright, no injury; 3 celebrating with one fist raised; 4 waving hello towards camera in front/3/4 view. No physical objects. Keep standing-equivalent scale and head size identical even for bent poses. Character: Red-haired boy with orange spiky hair, large brown eyes, white lab coat, blue T-shirt, beige cargo shorts, binoculars hanging from neck, olive green backpack, blue and white sneakers. No headset, controller or handheld map. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "loira_idle": {
+    "key": "loira_idle",
+    "out": "assets/_bruto/loira_idle.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/03_fase2-construtora-loira.png"
+    ],
+    "prompt_file": "tools/prompts/loira_idle.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 2 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 standing relaxed and smiling with eyes open; 2 same standing position with chest subtly raised for breathing, eyes CLOSED in a blink. Both in right-facing 3/4 view. Character: Blonde girl with wavy hair, yellow construction helmet with goggles on brim and pink bow, white lab coat, pink blouse, tool belt, denim skirt, pink sneakers. No handheld block tower. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "loira_corrida": {
+    "key": "loira_corrida",
+    "out": "assets/_bruto/loira_corrida.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/03_fase2-construtora-loira.png"
+    ],
+    "prompt_file": "tools/prompts/loira_corrida.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 4 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 running contact RIGHT leg extended forward and left behind; 2 passing position right foot underneath hips and left knee lifting; 3 contact LEFT leg extended forward and right behind; 4 passing left foot underneath hips and right knee lifting. Arms counter-swing. All in TRUE SIDE PROFILE facing and moving SCREEN RIGHT; only one eye visible, nose, chest and feet point right. Camera strictly sees the side, much more sideways than idle. Character: Blonde girl with wavy hair, yellow construction helmet with goggles on brim and pink bow, white lab coat, pink blouse, tool belt, denim skirt, pink sneakers. No handheld block tower. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "loira_ar": {
+    "key": "loira_ar",
+    "out": "assets/_bruto/loira_ar.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/03_fase2-construtora-loira.png"
+    ],
+    "prompt_file": "tools/prompts/loira_ar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 2 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 upward jump, arms lifted and knees bent; 2 falling, arms spread, surprised expression. Both in clear TRUE SIDE PROFILE facing SCREEN RIGHT, only one eye visible, nose and feet point right, camera strictly sees the side. Character: Blonde girl with wavy hair, yellow construction helmet with goggles on brim and pink bow, white lab coat, pink blouse, tool belt, denim skirt, pink sneakers. No handheld block tower. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "loira_extras": {
+    "key": "loira_extras",
+    "out": "assets/_bruto/loira_extras.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/03_fase2-construtora-loira.png"
+    ],
+    "prompt_file": "tools/prompts/loira_extras.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 4 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 pushing an INVISIBLE object to SCREEN RIGHT with both empty palms extended, leaning right, TRUE SIDE PROFILE, only one eye visible; 2 comic defeat, dizzy spiral eyes, crouched but upright, no injury; 3 celebrating with one fist raised; 4 waving hello towards camera in front/3/4 view. No physical objects. Keep standing-equivalent scale and head size identical even for bent poses. Character: Blonde girl with wavy hair, yellow construction helmet with goggles on brim and pink bow, white lab coat, pink blouse, tool belt, denim skirt, pink sneakers. No handheld block tower. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "cacheado_idle": {
+    "key": "cacheado_idle",
+    "out": "assets/_bruto/cacheado_idle.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+    ],
+    "prompt_file": "tools/prompts/cacheado_idle.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 2 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 standing relaxed and smiling with eyes open; 2 same standing position with chest subtly raised for breathing, eyes CLOSED in a blink. Both in right-facing 3/4 view. Character: Black boy with curly hair, beige safari hat, explorer vest with pockets, white T-shirt, beige shorts, brown backpack, blue sneakers. Magnifying glass and compass attached to BELT. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "cacheado_corrida": {
+    "key": "cacheado_corrida",
+    "out": "assets/_bruto/cacheado_corrida.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+    ],
+    "prompt_file": "tools/prompts/cacheado_corrida.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 4 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 running contact RIGHT leg extended forward and left behind; 2 passing position right foot underneath hips and left knee lifting; 3 contact LEFT leg extended forward and right behind; 4 passing left foot underneath hips and right knee lifting. Arms counter-swing. All in TRUE SIDE PROFILE facing and moving SCREEN RIGHT; only one eye visible, nose, chest and feet point right. Camera strictly sees the side, much more sideways than idle. Character: Black boy with curly hair, beige safari hat, explorer vest with pockets, white T-shirt, beige shorts, brown backpack, blue sneakers. Magnifying glass and compass attached to BELT. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "cacheado_ar": {
+    "key": "cacheado_ar",
+    "out": "assets/_bruto/cacheado_ar.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+    ],
+    "prompt_file": "tools/prompts/cacheado_ar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 2 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 upward jump, arms lifted and knees bent; 2 falling, arms spread, surprised expression. Both in clear TRUE SIDE PROFILE facing SCREEN RIGHT, only one eye visible, nose and feet point right, camera strictly sees the side. Character: Black boy with curly hair, beige safari hat, explorer vest with pockets, white T-shirt, beige shorts, brown backpack, blue sneakers. Magnifying glass and compass attached to BELT. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "cacheado_extras": {
+    "key": "cacheado_extras",
+    "out": "assets/_bruto/cacheado_extras.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+    ],
+    "prompt_file": "tools/prompts/cacheado_extras.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 4 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 pushing an INVISIBLE object to SCREEN RIGHT with both empty palms extended, leaning right, TRUE SIDE PROFILE, only one eye visible; 2 comic defeat, dizzy spiral eyes, crouched but upright, no injury; 3 celebrating with one fist raised; 4 waving hello towards camera in front/3/4 view. No physical objects. Keep standing-equivalent scale and head size identical even for bent poses. Character: Black boy with curly hair, beige safari hat, explorer vest with pockets, white T-shirt, beige shorts, brown backpack, blue sneakers. Magnifying glass and compass attached to BELT. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "sapo_idle": {
+    "key": "sapo_idle",
+    "out": "assets/_bruto/sapo_idle.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+    ],
+    "prompt_file": "tools/prompts/sapo_idle.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 2 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 standing relaxed and smiling with eyes open; 2 same standing position with chest subtly raised for breathing, eyes CLOSED in a blink. Both in right-facing 3/4 view. Character: ONLY green #A0C630 and white robot FROG on RIGHT, black visor with smiling blue LED eyes, green and white headband, whistle hanging from neck. No ball, no lion. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "sapo_corrida": {
+    "key": "sapo_corrida",
+    "out": "assets/_bruto/sapo_corrida.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+    ],
+    "prompt_file": "tools/prompts/sapo_corrida.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 4 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 running contact RIGHT leg extended forward and left behind; 2 passing position right foot underneath hips and left knee lifting; 3 contact LEFT leg extended forward and right behind; 4 passing left foot underneath hips and right knee lifting. Arms counter-swing. All in TRUE SIDE PROFILE facing and moving SCREEN RIGHT; only one eye visible, nose, chest and feet point right. Camera strictly sees the side, much more sideways than idle. Character: ONLY green #A0C630 and white robot FROG on RIGHT, black visor with smiling blue LED eyes, green and white headband, whistle hanging from neck. No ball, no lion. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "sapo_ar": {
+    "key": "sapo_ar",
+    "out": "assets/_bruto/sapo_ar.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+    ],
+    "prompt_file": "tools/prompts/sapo_ar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 2 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 upward jump, arms lifted and knees bent; 2 falling, arms spread, surprised expression. Both in clear TRUE SIDE PROFILE facing SCREEN RIGHT, only one eye visible, nose and feet point right, camera strictly sees the side. Character: ONLY green #A0C630 and white robot FROG on RIGHT, black visor with smiling blue LED eyes, green and white headband, whistle hanging from neck. No ball, no lion. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "sapo_extras": {
+    "key": "sapo_extras",
+    "out": "assets/_bruto/sapo_extras.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+    ],
+    "prompt_file": "tools/prompts/sapo_extras.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nExactly 4 full-body poses of the SAME character in ONE horizontal row, evenly spaced, generous transparent gaps and margins. Identical head size, body scale and invisible baseline. Left to right: 1 pushing an INVISIBLE object to SCREEN RIGHT with both empty palms extended, leaning right, TRUE SIDE PROFILE, only one eye visible; 2 comic defeat, dizzy spiral eyes, crouched but upright, no injury; 3 celebrating with one fist raised; 4 waving hello towards camera in front/3/4 view. No physical objects. Keep standing-equivalent scale and head size identical even for bent poses. Character: ONLY green #A0C630 and white robot FROG on RIGHT, black visor with smiling blue LED eyes, green and white headband, whistle hanging from neck. No ball, no lion. Match reference face, hair silhouette, huge child head and compact body, proportions, materials and outfit exactly. All hands EMPTY; equipment attached to body. No extra props, no characters from other references. Keep entire body and hair inside each pose with margin. No invented text; leave chest badge blank; do not apply a logo to sprites. No rim glow. Use case: stylized-concept. Asset: platform game animation strip.",
+    "transparent": true
+  },
+  "exploradores_longe": {
+    "key": "exploradores_longe",
+    "out": "assets/_bruto/exploradores_longe.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/06_fundos/fundo_aventura_9x16.png",
+      "referencias/kit/04_fases/fase_1_exploradores-em-acao.png",
+      "referencias/kit/02_key-visual/keyvisual_principal_9x16.png"
+    ],
+    "prompt_file": "tools/prompts/exploradores_longe.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nWide horizontal 20:9 backdrop, composed to fit 2400x1080. Sunny trail between green hills, river and waterfall, wooden signs and unlettered maps, discreet giant compass. No characters except the distant blurred friendly brick robot for conquistas only. No playable platforms or foreground floor. Calm spacious slightly defocused center; details at edges. No lettering, badge outlines, borders or logos. Use references for visual style and objects only, not poster composition.",
+    "transparent": false
+  },
+  "exploradores_meio": {
+    "key": "exploradores_meio",
+    "out": "assets/_bruto/exploradores_meio.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/06_fundos/fundo_aventura_9x16.png",
+      "referencias/kit/04_fases/fase_1_exploradores-em-acao.png",
+      "referencias/kit/02_key-visual/keyvisual_principal_9x16.png"
+    ],
+    "prompt_file": "tools/prompts/exploradores_meio.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nWide horizontal 20:9 TRANSPARENT parallax middle layer. Theme: Sunny trail between green hills, river and waterfall, wooden signs and unlettered maps, discreet giant compass. Sparse silhouettes ONLY in bottom third and far left/right edges. Entire top and central two thirds fully transparent. No sky, floor, characters, robots, text or maps with symbols. No ground shadow. Clean simple shapes, no halo.",
+    "transparent": true
+  },
+  "construtores_longe": {
+    "key": "construtores_longe",
+    "out": "assets/_bruto/construtores_longe.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+      "referencias/kit/06_fundos/fundo_aventura_9x16.png"
+    ],
+    "prompt_file": "tools/prompts/construtores_longe.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nWide horizontal 20:9 backdrop, composed to fit 2400x1080. Distant colorful building brick city, toy brick crane, bunting. No characters except the distant blurred friendly brick robot for conquistas only. No playable platforms or foreground floor. Calm spacious slightly defocused center; details at edges. No lettering, badge outlines, borders or logos. Use references for visual style and objects only, not poster composition.",
+    "transparent": false
+  },
+  "construtores_meio": {
+    "key": "construtores_meio",
+    "out": "assets/_bruto/construtores_meio.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+      "referencias/kit/06_fundos/fundo_aventura_9x16.png"
+    ],
+    "prompt_file": "tools/prompts/construtores_meio.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nWide horizontal 20:9 TRANSPARENT parallax middle layer. Theme: Distant colorful building brick city, toy brick crane, bunting. Sparse silhouettes ONLY in bottom third and far left/right edges. Entire top and central two thirds fully transparent. No sky, floor, characters, robots, text or maps with symbols. No ground shadow. Clean simple shapes, no halo.",
+    "transparent": true
+  },
+  "robotica_longe": {
+    "key": "robotica_longe",
+    "out": "assets/_bruto/robotica_longe.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_3_mestres-da-robotica.png",
+      "referencias/kit/05_elementos/icones/icone_05_engrenagem.png"
+    ],
+    "prompt_file": "tools/prompts/robotica_longe.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nWide horizontal 20:9 backdrop, composed to fit 2400x1080. Bright airy robotics workshop, gears, small educational robots on shelves, no screens. No characters except the distant blurred friendly brick robot for conquistas only. No playable platforms or foreground floor. Calm spacious slightly defocused center; details at edges. No lettering, badge outlines, borders or logos. Use references for visual style and objects only, not poster composition.",
+    "transparent": false
+  },
+  "robotica_meio": {
+    "key": "robotica_meio",
+    "out": "assets/_bruto/robotica_meio.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_3_mestres-da-robotica.png",
+      "referencias/kit/05_elementos/icones/icone_05_engrenagem.png"
+    ],
+    "prompt_file": "tools/prompts/robotica_meio.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nWide horizontal 20:9 TRANSPARENT parallax middle layer. Theme: Bright airy robotics workshop, gears, small educational robots on shelves, no screens. Sparse silhouettes ONLY in bottom third and far left/right edges. Entire top and central two thirds fully transparent. No sky, floor, characters, robots, text or maps with symbols. No ground shadow. Clean simple shapes, no halo.",
+    "transparent": true
+  },
+  "gincana_longe": {
+    "key": "gincana_longe",
+    "out": "assets/_bruto/gincana_longe.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_4_gincana-das-aventuras.png",
+      "referencias/kit/05_elementos/icones/icone_08_cone-gincana.png"
+    ],
+    "prompt_file": "tools/prompts/gincana_longe.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nWide horizontal 20:9 backdrop, composed to fit 2400x1080. Sunny grassy outdoor games field, cones, hoops, bunting and balls. No characters except the distant blurred friendly brick robot for conquistas only. No playable platforms or foreground floor. Calm spacious slightly defocused center; details at edges. No lettering, badge outlines, borders or logos. Use references for visual style and objects only, not poster composition.",
+    "transparent": false
+  },
+  "gincana_meio": {
+    "key": "gincana_meio",
+    "out": "assets/_bruto/gincana_meio.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_4_gincana-das-aventuras.png",
+      "referencias/kit/05_elementos/icones/icone_08_cone-gincana.png"
+    ],
+    "prompt_file": "tools/prompts/gincana_meio.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nWide horizontal 20:9 TRANSPARENT parallax middle layer. Theme: Sunny grassy outdoor games field, cones, hoops, bunting and balls. Sparse silhouettes ONLY in bottom third and far left/right edges. Entire top and central two thirds fully transparent. No sky, floor, characters, robots, text or maps with symbols. No ground shadow. Clean simple shapes, no halo.",
+    "transparent": true
+  },
+  "conquistas_longe": {
+    "key": "conquistas_longe",
+    "out": "assets/_bruto/conquistas_longe.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_5_grandes-conquistas.png",
+      "referencias/kit/05_elementos/icones/icone_10_trofeu.png"
+    ],
+    "prompt_file": "tools/prompts/conquistas_longe.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nWide horizontal 20:9 backdrop, composed to fit 2400x1080. Outdoor celebration stage, sparse confetti, trophies, medals, friendly giant brick robot strongly blurred in far background. No characters except the distant blurred friendly brick robot for conquistas only. No playable platforms or foreground floor. Calm spacious slightly defocused center; details at edges. No lettering, badge outlines, borders or logos. Use references for visual style and objects only, not poster composition.",
+    "transparent": false
+  },
+  "conquistas_meio": {
+    "key": "conquistas_meio",
+    "out": "assets/_bruto/conquistas_meio.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_5_grandes-conquistas.png",
+      "referencias/kit/05_elementos/icones/icone_10_trofeu.png"
+    ],
+    "prompt_file": "tools/prompts/conquistas_meio.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nIsolated on genuine transparent background, no floor or cast shadow.\nWide horizontal 20:9 TRANSPARENT parallax middle layer. Theme: Outdoor celebration stage, sparse confetti, trophies, medals, friendly giant brick robot strongly blurred in far background. Sparse silhouettes ONLY in bottom third and far left/right edges. Entire top and central two thirds fully transparent. No sky, floor, characters, robots, text or maps with symbols. No ground shadow. Clean simple shapes, no halo.",
+    "transparent": true
+  },
+  "lobby_longe": {
+    "key": "lobby_longe",
+    "out": "assets/_bruto/lobby_longe.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/06_fundos/fundo_claro_4x5.png"
+    ],
+    "prompt_file": "tools/prompts/lobby_longe.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nWide horizontal 20:9 backdrop, composed to fit 2400x1080. Cream clean map background with dotted trail, blocks and leaves only in corners. No characters except the distant blurred friendly brick robot for conquistas only. No playable platforms or foreground floor. Calm spacious slightly defocused center; details at edges. No lettering, badge outlines, borders or logos. Use references for visual style and objects only, not poster composition.",
+    "transparent": false
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+.venv/
+__pycache__/
+:memory:*
+# brutos de geração, logs e prévias (regeráveis, pesados)
+assets/_bruto/
+assets/_log/
+assets/preview/
+referencias/_arquivo/

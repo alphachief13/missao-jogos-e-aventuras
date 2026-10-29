@@ -1,0 +1,15 @@
+{
+  "name": "missao-jogos-e-aventuras",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MISSÃO, JOGOS E AVENTURAS · jogo cooperativo 2.5D em rede local (RoboEduc)",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "three": "^0.180.0",
+    "ws": "^8.18.3"
+  }
+}

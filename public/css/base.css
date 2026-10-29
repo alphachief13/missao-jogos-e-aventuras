@@ -1,0 +1,26 @@
+@font-face { font-family: Fredoka; src: url("/assets/fonts/Fredoka%5Bwdth,wght%5D.ttf"); font-weight: 300 700; }
+@font-face { font-family: Nunito; src: url("/assets/fonts/Nunito%5Bwght%5D.ttf"); font-weight: 200 1000; }
+
+:root {
+  --rosa: #E3205D; --azul: #3E93D0; --amarelo: #F6BB33; --verde: #A0C630; --marinho: #1E2A4A;
+  --creme: #FFFBF3; --linha: #1E2A4A1F; --sombra: 0 10px 30px #1E2A4A1F;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--creme); color: var(--marinho);
+             font-family: Nunito, sans-serif; -webkit-tap-highlight-color: transparent; user-select: none; }
+h1, h2, h3, .titulo { font-family: Fredoka, sans-serif; font-weight: 700; margin: 0; }
+.oculto { display: none !important; }
+
+/* Botões: pílula lisa, cor da marca, contorno marinho fino e sombra curta */
+.btn { font: 700 2.6vh Fredoka, sans-serif; color: #fff; background: var(--verde); border: 3px solid var(--marinho);
+       border-radius: 999px; padding: 1.1vh 3.2vh; box-shadow: 0 .5vh 0 var(--marinho); cursor: pointer;
+       transition: transform .1s, box-shadow .1s; letter-spacing: .02em; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(.4vh); box-shadow: 0 .1vh 0 var(--marinho); }
+.btn.azul { background: var(--azul); } .btn.rosa { background: var(--rosa); } .btn.claro { background: #fff; color: var(--marinho); }
+.btn.grande { font-size: 3.2vh; padding: 1.4vh 5vh; }
+.cartao { background: #fff; border: 2px solid var(--linha); border-radius: 2.4vh; box-shadow: var(--sombra); }
+.pilula { display: inline-flex; align-items: center; gap: .4em; background: #fff; border: 2px solid var(--linha);
+          border-radius: 999px; padding: .2em .8em; font-family: Fredoka, sans-serif; font-weight: 600; }
+.roboeduc { position: fixed; left: 2vw; bottom: 2vh; background: #fff; border-radius: 999px; padding: 1vh 1.8vh; box-shadow: var(--sombra); }
+.roboeduc img { height: 2.6vh; display: block; }

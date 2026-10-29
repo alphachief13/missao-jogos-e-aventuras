@@ -1,0 +1,2952 @@
+{
+  "versao": 2,
+  "nome": "MISSÃO, JOGOS E AVENTURAS · Colônia de Férias RoboEduc",
+  "fundos_adiados": [
+    "construtores",
+    "robotica",
+    "gincana",
+    "conquistas",
+    "lobby"
+  ],
+  "assets": [
+    {
+      "caminho": "fonts/Fredoka[wdth,wght].ttf",
+      "tipo": "fonte",
+      "largura": null,
+      "altura": null,
+      "origem": "kit",
+      "refs": [
+        "referencias/kit/07_fontes/Fredoka[wdth,wght].ttf"
+      ],
+      "sha256": "2ba02e68b152868aef9ba28e24b3648c7d457fe6f25c761f2c2c53fb61a73fc8"
+    },
+    {
+      "caminho": "fonts/Nunito-Italic[wght].ttf",
+      "tipo": "fonte",
+      "largura": null,
+      "altura": null,
+      "origem": "kit",
+      "refs": [
+        "referencias/kit/07_fontes/Nunito-Italic[wght].ttf"
+      ],
+      "sha256": "b520cc871868b0acfca1beda875df7f4a44ebce914f8a89f83977fc9c09529c8"
+    },
+    {
+      "caminho": "fonts/Nunito[wght].ttf",
+      "tipo": "fonte",
+      "largura": null,
+      "altura": null,
+      "origem": "kit",
+      "refs": [
+        "referencias/kit/07_fontes/Nunito[wght].ttf"
+      ],
+      "sha256": "bb55a5ca5c2042335b3991af27c4d0705d0ef41cac6164ac737fd8f2a1e85207"
+    },
+    {
+      "caminho": "fonts/OFL-Fredoka.txt",
+      "tipo": "licenca",
+      "largura": null,
+      "altura": null,
+      "origem": "kit",
+      "refs": [
+        "referencias/kit/07_fontes/OFL-Fredoka.txt"
+      ],
+      "sha256": "5c9e7eee5c6b25f4b05b8d53b2e470ea4962f9ced742d044a98f7d95d1375bab"
+    },
+    {
+      "caminho": "fonts/OFL-Nunito.txt",
+      "tipo": "licenca",
+      "largura": null,
+      "altura": null,
+      "origem": "kit",
+      "refs": [
+        "referencias/kit/07_fontes/OFL-Nunito.txt"
+      ],
+      "sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65"
+    },
+    {
+      "caminho": "fundos/exploradores/longe.png",
+      "tipo": "imagem",
+      "largura": 2400,
+      "altura": 1080,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/06_fundos/fundo_aventura_9x16.png",
+        "referencias/kit/04_fases/fase_1_exploradores-em-acao.png",
+        "referencias/kit/02_key-visual/keyvisual_principal_9x16.png"
+      ],
+      "sha256": "9c950df422be369ee4653337526799ce4ba267a99cfe371187fe6b1bec7a0d3b"
+    },
+    {
+      "caminho": "fundos/exploradores/meio.png",
+      "tipo": "imagem",
+      "largura": 2400,
+      "altura": 1080,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/06_fundos/fundo_aventura_9x16.png",
+        "referencias/kit/04_fases/fase_1_exploradores-em-acao.png",
+        "referencias/kit/02_key-visual/keyvisual_principal_9x16.png"
+      ],
+      "sha256": "d7e5be000ffdc3f7a900bbe793eb8e8184eaaa8f6049191f26bc693bd3f4c09b"
+    },
+    {
+      "caminho": "fundos/lobby/longe.png",
+      "tipo": "imagem",
+      "largura": 2400,
+      "altura": 1080,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/06_fundos/fundo_claro_4x5.png"
+      ],
+      "sha256": "a4130bcb768d36ca4424efa2d878e37eb14a0a2dabfbc76eae33d920eccb7ddb"
+    },
+    {
+      "caminho": "kit/logo.png",
+      "sha256": "3791b67faec13d9952777b38b31aa50423f63c1645b06ab0e988724c20a21c89",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 800,
+      "altura": 789,
+      "origem": "kit"
+    },
+    {
+      "caminho": "kit/logo_roboeduc.png",
+      "tipo": "imagem",
+      "largura": 1215,
+      "altura": 194,
+      "origem": "kit",
+      "refs": [
+        "referencias/kit/01_logo/logo_roboeduc_transparente.png"
+      ],
+      "sha256": "8cd547d67ec2869533cb4dbf12614081ec8cb2802e2c242adb4b417cde863053"
+    },
+    {
+      "caminho": "kit/selo_1.png",
+      "sha256": "6c40e7d517c94f96e45782d0be068facf47799239908e4098a01402a12f99d8f",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 193,
+      "altura": 240,
+      "origem": "kit"
+    },
+    {
+      "caminho": "kit/selo_2.png",
+      "sha256": "0765d98e3924c08557597b1e4d4c641cb72b709539c9abf0061c74ef4db8061d",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 178,
+      "altura": 240,
+      "origem": "kit"
+    },
+    {
+      "caminho": "kit/selo_3.png",
+      "sha256": "7baa4bfb58746919a8da3765939755a6fa306f8214352fb31b76224ca382f0d2",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 181,
+      "altura": 240,
+      "origem": "kit"
+    },
+    {
+      "caminho": "kit/selo_4.png",
+      "sha256": "fb6d78760bc2146fb01303dd61a5ba2c2369b9a4dd8163b4494feda24602260c",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 195,
+      "altura": 240,
+      "origem": "kit"
+    },
+    {
+      "caminho": "kit/selo_5.png",
+      "sha256": "753b3461f1b9ac3926abb99e944e413b78d8febb4d342b69e3bf43b59bc553c1",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 189,
+      "altura": 240,
+      "origem": "kit"
+    },
+    {
+      "caminho": "particulas/bloquinho_amarelo.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "423ee081ca2d4c329a35e57eb034658fa2f801b68880a48a24f941834e23aba4"
+    },
+    {
+      "caminho": "particulas/bloquinho_azul.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "87eb4dda88d4aa2b1d2cdb5e86b950ed598379a40412c56302db4426e496f1ac"
+    },
+    {
+      "caminho": "particulas/bloquinho_rosa.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "523f9cd9cc9e529d253b1e12b8d91cd3d4b384a0b43416a7dd0679538c990cdc"
+    },
+    {
+      "caminho": "particulas/bloquinho_verde.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "db4b2c7d379fdf9df028a47c605342559329bf065d2e71b4d77c5c0a1fd18519"
+    },
+    {
+      "caminho": "particulas/brilho_amarelo.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "809fbc935635c7438eeebc7a5dafa6a257ca9b93883c3d61af82295f1ba2dea7"
+    },
+    {
+      "caminho": "particulas/brilho_azul.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "96ae75fbdde64d23a7164ea9c9ebe5490f7149d74026a4d59a3a2c64583f698e"
+    },
+    {
+      "caminho": "particulas/brilho_branco.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "f9d0f7823d39164be1cc3768e4dbd4022822795908d1c2be1918d7cb9e1a7a1d"
+    },
+    {
+      "caminho": "particulas/brilho_rosa.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "6a1009f88add42be97f7bee069500e6ccdc8b4d0dcd3780dc2908637a7f5c833"
+    },
+    {
+      "caminho": "particulas/brilho_verde.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "95bf66ea13ac2a60dec64fac436d9e04e4b43ffb4746ea7882a5d2ef52abb92f"
+    },
+    {
+      "caminho": "particulas/estrelinha.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "33e3224df1ec28957759cd216fa109ac652cd6303427467f495bf8c048595e17"
+    },
+    {
+      "caminho": "particulas/faisca.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "53e2b9b7a747a5a6104f73b589cbc58e5353c6d165d8ca4b3a82c14bbb1538f6"
+    },
+    {
+      "caminho": "particulas/gota_amarelo.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "35c8a6e95316bb86d3cafead507a5c96f29eee01f87605b1d3b1615f00c60d50"
+    },
+    {
+      "caminho": "particulas/gota_azul.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "6963575df83555bf5249726ef5c1344f634538874e19c8b776c74c1d8edabd2d"
+    },
+    {
+      "caminho": "particulas/gota_rosa.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "bc4af41411af692b27d0ae174a9eded720c295276f41c3179d1fbdaf0079a5d9"
+    },
+    {
+      "caminho": "particulas/gota_verde.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "6e94290b415e991f7a74c2eb1e0eda41480df8d3f38f8afc5eda8cbc938abdb3"
+    },
+    {
+      "caminho": "particulas/poeira.png",
+      "tipo": "imagem",
+      "largura": 64,
+      "altura": 64,
+      "origem": "script",
+      "refs": [],
+      "sha256": "fc9200b9b45b3773a4578af268ba0e3d1194b34ba8f046e4e9411bbf5940d6cf"
+    },
+    {
+      "caminho": "personagens/cacheado/aceno.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "32bb132002b6ef73e743625108694908a4526f7ff45f6f7182899f27a83df458"
+    },
+    {
+      "caminho": "personagens/cacheado/arte.png",
+      "sha256": "79b20fe48f5d23bcc7896ac01a67f5c2b88e68e20f9a1a1296b01dfe21c71acf",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 512,
+      "altura": 520,
+      "origem": "kit"
+    },
+    {
+      "caminho": "personagens/cacheado/corrida.png",
+      "tipo": "imagem",
+      "largura": 1536,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 10,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "6f57c00d4b7e8e7021377061612134e07322744a2198e2fd735b3e1041199a33"
+    },
+    {
+      "caminho": "personagens/cacheado/derrota.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "770321328c4b73d14655c9bb82e248e74109c1af0e76324fa497c6893bbb1d76"
+    },
+    {
+      "caminho": "personagens/cacheado/empurrar.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "989c2fd16f39d4e523bcd31caa939577b672b49d51e6d06bbf2e50aab3a102ea"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/aceno.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "32bb132002b6ef73e743625108694908a4526f7ff45f6f7182899f27a83df458"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/corrida_0.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "38da2a90db7985e92014418abfe3367fad9bda36273ba505e323d142a8920985"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/corrida_1.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "db10b74d99f1b13e6a0ee21bd033181f2b041c409e0edd36ced866b3643be2f3"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/corrida_2.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "e80f7da2586dd09f05353defe9d45a65d985663a7640198ba8dc16f8d1f265bb"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/corrida_3.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "539b95a2869715234313c3bf3b547154a0c8ad66c7b8cbb4c1e96964f6367171"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/derrota.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "770321328c4b73d14655c9bb82e248e74109c1af0e76324fa497c6893bbb1d76"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/empurrar.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "989c2fd16f39d4e523bcd31caa939577b672b49d51e6d06bbf2e50aab3a102ea"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/idle_0.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "97a5d2a4f1e574806199bed0e19e4b218ff1ed90c0e8ebd0a67add23778eff05"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/idle_1.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "136d0ee617bbf1f9b637dceb37796f819dd51223e53c80954668d754c458d383"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/pulo.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "2b6584778dde0c29686c04df161ffbf362088c0169f43c185e2d32f7b91df984"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/queda.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "42f10ff11af90391c966112f6f249553143477fa169023bd23dbb2d9ce6b28ea"
+    },
+    {
+      "caminho": "personagens/cacheado/frames/vitoria.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "f058cff5740fb06dd9fa0057a1eef7163edc4cbe4b7f567224bc4bbe123c61cb"
+    },
+    {
+      "caminho": "personagens/cacheado/idle.png",
+      "tipo": "imagem",
+      "largura": 768,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 3,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "e810f96a17d3ff4c631e6b9b91541e00642ce59ab0617e8aa95778e4efee91f2"
+    },
+    {
+      "caminho": "personagens/cacheado/pulo.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "2b6584778dde0c29686c04df161ffbf362088c0169f43c185e2d32f7b91df984"
+    },
+    {
+      "caminho": "personagens/cacheado/queda.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "42f10ff11af90391c966112f6f249553143477fa169023bd23dbb2d9ce6b28ea"
+    },
+    {
+      "caminho": "personagens/cacheado/retrato.png",
+      "tipo": "imagem",
+      "largura": 256,
+      "altura": 256,
+      "origem": "script",
+      "refs": [
+        "personagens/cacheado/aceno.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "sha256": "6cbdc344693c62b7e58c80ea87422c8738cf7b109caf7eb52220b214f6b018da"
+    },
+    {
+      "caminho": "personagens/cacheado/vitoria.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png"
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "f058cff5740fb06dd9fa0057a1eef7163edc4cbe4b7f567224bc4bbe123c61cb"
+    },
+    {
+      "caminho": "personagens/loira/aceno.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "de8473a750ae9c9967cdceb9dfd4472c64c9a067e130aecfbc43a7fdbd24a023"
+    },
+    {
+      "caminho": "personagens/loira/arte.png",
+      "sha256": "7bed148bbc6819ef564387747127401e93e3276c5c70dcd8d6ceb79187f51560",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 520,
+      "altura": 518,
+      "origem": "kit"
+    },
+    {
+      "caminho": "personagens/loira/corrida.png",
+      "tipo": "imagem",
+      "largura": 1536,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 10,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "6a3c1c7e040dd3a2bc571280695eb2b06ab483433a26f335e096d0aee24734d8"
+    },
+    {
+      "caminho": "personagens/loira/derrota.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "c969df74060769856d638eb87a1713b8a55500f5a98712f8e24a7cddae8ecb3e"
+    },
+    {
+      "caminho": "personagens/loira/empurrar.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "abc20c372795d1849350fdbbdfb80116a5ab8c602db7e6b7f3365203b14d1396"
+    },
+    {
+      "caminho": "personagens/loira/frames/aceno.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "de8473a750ae9c9967cdceb9dfd4472c64c9a067e130aecfbc43a7fdbd24a023"
+    },
+    {
+      "caminho": "personagens/loira/frames/corrida_0.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "4627e18d2396aae349a1659079f48fd79d7149bd7fdab2b9adb4b31e58c7a5ee"
+    },
+    {
+      "caminho": "personagens/loira/frames/corrida_1.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "9760f0a1ac197660260e95a4d3e27a18885d7bb5589ae7eaab04239d17051adb"
+    },
+    {
+      "caminho": "personagens/loira/frames/corrida_2.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "31bf68f3f1a43f07ddb995a589fc92184f771b92cd361aa51d6b32c9f82f2b50"
+    },
+    {
+      "caminho": "personagens/loira/frames/corrida_3.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "e3baf2521f57e08008f7d6206be9638e88da4cf0acd18c98a5d1fbe86a370734"
+    },
+    {
+      "caminho": "personagens/loira/frames/derrota.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "c969df74060769856d638eb87a1713b8a55500f5a98712f8e24a7cddae8ecb3e"
+    },
+    {
+      "caminho": "personagens/loira/frames/empurrar.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "abc20c372795d1849350fdbbdfb80116a5ab8c602db7e6b7f3365203b14d1396"
+    },
+    {
+      "caminho": "personagens/loira/frames/idle_0.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "160580f286df68b1b9732afb68d16808abb2fbc55d3c8ac025386d3bd3f36218"
+    },
+    {
+      "caminho": "personagens/loira/frames/idle_1.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "417ae4e83d940bf3fb4abab22a6366b802f027f36b2704ded3d73570930608d0"
+    },
+    {
+      "caminho": "personagens/loira/frames/pulo.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "a97b5c6d0510f19bab62a63c5a84aed7ab7952ddc17ece3c4b75b9b41eea25f0"
+    },
+    {
+      "caminho": "personagens/loira/frames/queda.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "705176c36300d1789294817caaf5ff114f1ff7f3080e111eee83b359f32d1473"
+    },
+    {
+      "caminho": "personagens/loira/frames/vitoria.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "be550efc367235ac36d0376f6453bada916122f34c7e7059ab3f335bcd478420"
+    },
+    {
+      "caminho": "personagens/loira/idle.png",
+      "tipo": "imagem",
+      "largura": 768,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 3,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "02d274aa3a904d0d8bdb83fe50a1340dd97ff53147bc9ad46af016b016ed3105"
+    },
+    {
+      "caminho": "personagens/loira/pulo.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "a97b5c6d0510f19bab62a63c5a84aed7ab7952ddc17ece3c4b75b9b41eea25f0"
+    },
+    {
+      "caminho": "personagens/loira/queda.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "705176c36300d1789294817caaf5ff114f1ff7f3080e111eee83b359f32d1473"
+    },
+    {
+      "caminho": "personagens/loira/retrato.png",
+      "tipo": "imagem",
+      "largura": 256,
+      "altura": 256,
+      "origem": "script",
+      "refs": [
+        "personagens/loira/aceno.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "sha256": "03260fe6abc97175cae639bd385408e4b964dd27163d230f2087e7af773fd66c"
+    },
+    {
+      "caminho": "personagens/loira/vitoria.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/03_fase2-construtora-loira.png"
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "be550efc367235ac36d0376f6453bada916122f34c7e7059ab3f335bcd478420"
+    },
+    {
+      "caminho": "personagens/ruivo/aceno.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "8cd596e80b7b0fddf6fe83218e48a121b17167964ccfbed2ab4d449ef0050358"
+    },
+    {
+      "caminho": "personagens/ruivo/arte.png",
+      "sha256": "4dc0cd4e40219ff3a4d72dc5809242f10654becd2b84a3042a99c6bf15231e4d",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 512,
+      "altura": 520,
+      "origem": "kit"
+    },
+    {
+      "caminho": "personagens/ruivo/corrida.png",
+      "tipo": "imagem",
+      "largura": 1536,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 10,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "bdaab05e3e45432ec6fa01c6e8a03116ee246d5abe9702f65dca239e99c06c99"
+    },
+    {
+      "caminho": "personagens/ruivo/derrota.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "dae0b26fdf028d297f411d6f712d43fb391317855dab4e817c4d4a4e78eb8e29"
+    },
+    {
+      "caminho": "personagens/ruivo/empurrar.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "88eeece2b20080f9d7f2e41a83b551050f890bb2e810025a642bc565e6df470b"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/aceno.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "8cd596e80b7b0fddf6fe83218e48a121b17167964ccfbed2ab4d449ef0050358"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/corrida_0.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "9851bf6715d51bd9fbb7f702d206050de2ebbf9267cda0d5050d233f0af8fc6b"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/corrida_1.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "c87fdfd57fbac0a54ff12af3ead49fa0b1c3b8e73d5354876e23a370d5b2600a"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/corrida_2.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "0c6600adcb0fadf30fca4beeb3e489297819839ca2fb2d2916d4c208891af135"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/corrida_3.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "0e70021a3db1726d645b6bad0be234be5445bd944dc2bf149ef336754955c3e2"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/derrota.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "dae0b26fdf028d297f411d6f712d43fb391317855dab4e817c4d4a4e78eb8e29"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/empurrar.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "88eeece2b20080f9d7f2e41a83b551050f890bb2e810025a642bc565e6df470b"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/idle_0.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "7967a00c17d049cfcf0727904a916c3825b65fb665ce496763f7b76736d1348e"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/idle_1.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "58566467116ab77b604434817a25806351a5082eb68ad51d85b976a0e2f87130"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/pulo.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "134c7e33b800b6b46177427b944ef8f69ea400abeb315f5727e9e9e9eec48bff"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/queda.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "eea3f0bdea45ee7effe9c8765c71454fd591e05c04fdc8766e78e8b43d537f4d"
+    },
+    {
+      "caminho": "personagens/ruivo/frames/vitoria.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "3431f323eb581726a99b9c9a03c0a3831c899cd141eadd74ac58f2a4fe13c189"
+    },
+    {
+      "caminho": "personagens/ruivo/idle.png",
+      "tipo": "imagem",
+      "largura": 768,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 3,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "c56634edf48bb895b98ccb56c6d0a3a87772de3d83fd3ff7a10b8193deb294d2"
+    },
+    {
+      "caminho": "personagens/ruivo/pulo.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "134c7e33b800b6b46177427b944ef8f69ea400abeb315f5727e9e9e9eec48bff"
+    },
+    {
+      "caminho": "personagens/ruivo/queda.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "eea3f0bdea45ee7effe9c8765c71454fd591e05c04fdc8766e78e8b43d537f4d"
+    },
+    {
+      "caminho": "personagens/ruivo/retrato.png",
+      "tipo": "imagem",
+      "largura": 256,
+      "altura": 256,
+      "origem": "script",
+      "refs": [
+        "personagens/ruivo/aceno.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "sha256": "45ac8d85df4f56fff743af42afbfaf90f28a07cd61418e015862a2d6ab41179c"
+    },
+    {
+      "caminho": "personagens/ruivo/vitoria.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "3431f323eb581726a99b9c9a03c0a3831c899cd141eadd74ac58f2a4fe13c189"
+    },
+    {
+      "caminho": "personagens/sapo/aceno.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "3b17f783836037f3b462399c6fcb9974e33409cc44a22cdf247b43ef77c35eab"
+    },
+    {
+      "caminho": "personagens/sapo/arte.png",
+      "sha256": "8b39744f73553207cafa1187dbe425be6d98b489e623c388eea7c039624ef4e4",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 325,
+      "altura": 520,
+      "origem": "kit"
+    },
+    {
+      "caminho": "personagens/sapo/corrida.png",
+      "tipo": "imagem",
+      "largura": 1536,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 10,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "8055e8d312027eb3805194d9685601d89b25ed2ec6b16eb7b8e299e7f84b4573"
+    },
+    {
+      "caminho": "personagens/sapo/derrota.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "edc99a7eccda05ff4ca6940ad1bca2e464c6a75905e5d4b83d3ab57a719258d7"
+    },
+    {
+      "caminho": "personagens/sapo/empurrar.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "c2451d59b3f1ff879fd976dba2147b4509204a97a01f670d861d5e2999793dc8"
+    },
+    {
+      "caminho": "personagens/sapo/frames/aceno.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "3b17f783836037f3b462399c6fcb9974e33409cc44a22cdf247b43ef77c35eab"
+    },
+    {
+      "caminho": "personagens/sapo/frames/corrida_0.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "ce2c6873aa58b44f8c70a8db1da0e8b48ba0381163502ac42cc9f294126e6907"
+    },
+    {
+      "caminho": "personagens/sapo/frames/corrida_1.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "3e69ad9ecbd4b3c7de188248d1b45254b42e86ea7901df6f3adcabe5f17df5d3"
+    },
+    {
+      "caminho": "personagens/sapo/frames/corrida_2.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "5462ca8a4ea45b00012d584896fa3c551f75d829b4c1389544cc6368b2feb18b"
+    },
+    {
+      "caminho": "personagens/sapo/frames/corrida_3.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "f2708eb88644f53cd90380162ba9e9cd4213de24b8a47b3857074381207c4a21"
+    },
+    {
+      "caminho": "personagens/sapo/frames/derrota.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "edc99a7eccda05ff4ca6940ad1bca2e464c6a75905e5d4b83d3ab57a719258d7"
+    },
+    {
+      "caminho": "personagens/sapo/frames/empurrar.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "c2451d59b3f1ff879fd976dba2147b4509204a97a01f670d861d5e2999793dc8"
+    },
+    {
+      "caminho": "personagens/sapo/frames/idle_0.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "2fc0069ed3f5b88927592409091cdf27d4643720e756b48cc9657c9fb55550cd"
+    },
+    {
+      "caminho": "personagens/sapo/frames/idle_1.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "5e90eb9bad815749f7340bbd861c9bf43adfd7a2039b90676ddddc19cbf472c4"
+    },
+    {
+      "caminho": "personagens/sapo/frames/pulo.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "015d0f56ae50e2b70345265abd479da2d0ab0892a983e4c66236649ff9f629c6"
+    },
+    {
+      "caminho": "personagens/sapo/frames/queda.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "e28758c0238c8350b845a3927950d0ad0a65f0622575cf296aeef200f6239c4e"
+    },
+    {
+      "caminho": "personagens/sapo/frames/vitoria.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "d64f510613e623d150f76c799101432632a878780e5d88dc50c0c80218aae456"
+    },
+    {
+      "caminho": "personagens/sapo/idle.png",
+      "tipo": "imagem",
+      "largura": 768,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 3,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "5d45ced448a308822cb9a92b336645bffed184b5e209b581581c1b3f0247c2aa"
+    },
+    {
+      "caminho": "personagens/sapo/pulo.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "015d0f56ae50e2b70345265abd479da2d0ab0892a983e4c66236649ff9f629c6"
+    },
+    {
+      "caminho": "personagens/sapo/queda.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "e28758c0238c8350b845a3927950d0ad0a65f0622575cf296aeef200f6239c4e"
+    },
+    {
+      "caminho": "personagens/sapo/retrato.png",
+      "tipo": "imagem",
+      "largura": 256,
+      "altura": 256,
+      "origem": "script",
+      "refs": [
+        "personagens/sapo/aceno.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "sha256": "210c4c0473cd7f3606d0f887e8724524df54590148be37ae8eb5389700312a80"
+    },
+    {
+      "caminho": "personagens/sapo/vitoria.png",
+      "tipo": "imagem",
+      "largura": 384,
+      "altura": 384,
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png"
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 0,
+      "ancora": [
+        192,
+        376
+      ],
+      "hitbox": {
+        "x": 132,
+        "y": 60,
+        "w": 120,
+        "h": 316
+      },
+      "sha256": "d64f510613e623d150f76c799101432632a878780e5d88dc50c0c80218aae456"
+    },
+    {
+      "caminho": "sons/alavanca.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.18,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "503bc02ee578c29139ee99d51ec102bbfc2e162a5de0e42c4209948aa98b321d"
+    },
+    {
+      "caminho": "sons/bandeira.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.48,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "d53a82a54227d62dba011dec478da3a3f750ca2e070332ab8e9789a5d05df85d"
+    },
+    {
+      "caminho": "sons/botao.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.19,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "29ca2c2cb65c9c0f74f226cbb2318d1702d5b164734d9b48ecd74b72ff7394ed"
+    },
+    {
+      "caminho": "sons/chegada.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.48,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "cfaa99a0bc7937c10cd4d5e3a42ab9fae23a739c8d2a539f4fb7f72cc23b7a15"
+    },
+    {
+      "caminho": "sons/clique.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.06498866213151927,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "3371af180af0391faa179067c7ec6fccfd289223f588328966f192aad61c98fa"
+    },
+    {
+      "caminho": "sons/compra.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.32,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "989b1982d17308e6223df51f2f07edf0d71755cd303f26614b188f27f489d0c0"
+    },
+    {
+      "caminho": "sons/contagem.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 3.0,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "3a44937921f728589970e42eea5392523bc5799c2e0be9c01fa259314f3cdd2d"
+    },
+    {
+      "caminho": "sons/derrota.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.56,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "8aa3a878ede433f0c4acc4fd789cbb45ff2559f7ea7e8271bed41d53a0b40c3f"
+    },
+    {
+      "caminho": "sons/entrou.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.36,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "7ac13d8a6a88ecfeb0f8d393b864bf604ad7437aa810c78fdbe70ba72fde3f64"
+    },
+    {
+      "caminho": "sons/peca.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.22,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "56d9b8da2a7560b012a4a87c1f48438cdd21a870a326c66aec7c2cba3cab31cd"
+    },
+    {
+      "caminho": "sons/perdeu_coracao.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.42,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "73d7ad5cc42e837f83c1d124d35aa41ff6af1eb6395ceaddd532a02bc61c5196"
+    },
+    {
+      "caminho": "sons/pouso.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.16,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "c59ca018fef510701a7dc8772b76474a3189ed1aaa7ef63b1f58ca41fa1a76e1"
+    },
+    {
+      "caminho": "sons/pulo.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.28,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "4a023ede86b228c5340d54d0c273afa8d6ab73a9a50f7d2bb131aec9b2f0fa04"
+    },
+    {
+      "caminho": "sons/trocar.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.25,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "8c6dec6b40301f9a60603b493cdacf876f41eda6ee521c7418fd9359f4816df4"
+    },
+    {
+      "caminho": "sons/vitoria.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 2.25,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "sha256": "2ce93e168af403c05de2c35bbf3d9db62670f38debe9157e8faa4d7e57ab730d"
+    },
+    {
+      "caminho": "ui/bandeira_amarelo.png",
+      "sha256": "1c8163536aa89d39f662b6554488b5b1f717ae142e5db5208ca225fa308c8828",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 96,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/bandeira_azul.png",
+      "sha256": "c4d97a39dddea682fb6d9900888af13c0c2328cba1a561c6571285a1181ce5e0",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 96,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/bandeira_rosa.png",
+      "sha256": "b3672b6651372f8b828ea70dc61f33b8ad7f37ed0c6440dcf9e89f7668cb5218",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 96,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/bandeira_verde.png",
+      "sha256": "9384502cb7cf86ace2b196e188c8e776e7b74e10789efcf250d6e6008751a3a6",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 96,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_bandeirinha.png",
+      "sha256": "fbfca3abb9c799529c00edb5392f0f1e8ac2dfba21f9f17836e3c60ed1fdb643",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 96,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_bloco.png",
+      "sha256": "7c95f273f2b56b26ae048d499534377887f1c7379faf7ce902d90f726896427f",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 125,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_bussola.png",
+      "sha256": "3c7dcf96d8c561c69dd69a1eb5e92b19cd37d1fac07cc20c57dfc9dc6d793305",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 100,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_cone.png",
+      "sha256": "7e8bbb9fecc54f80bf968d43fe84ed962b667ae8fa6fa5762aa8b5183e69d583",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 117,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_engrenagem.png",
+      "sha256": "b6f8bb0570efd327fa7178769fc418148cc284d6b19e5027ee5d12d2b721f0c1",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 128,
+      "altura": 127,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_lampada.png",
+      "sha256": "2d1a3d398849a10fd74831e0f3d64f955f1ce3748fceb2d7c13bcbd394b9c1bb",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 104,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_lupa.png",
+      "sha256": "d820c0a58b6f73ac44245d42da03e5ec5c45f05d2750949b09159be9734641de",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 109,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_mapa.png",
+      "sha256": "d4531c9923c29f8dfda419e0bb78ee7fd642e1d5afdb1ab3ea78320af9e65a47",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 112,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_medalha.png",
+      "sha256": "88cf807928614f117bb09e9ef749c16dca6b0978c4e1a27e9d610070326678ba",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 86,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_passaporte.png",
+      "sha256": "46db2031497501cc5c2e7c11c68bbf4f66193c4158e0bbcfdb5194dcb412a4db",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 128,
+      "altura": 120,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_robozinho.png",
+      "sha256": "6b1565028de1821574ac32c58c2dd3d521acefbac027a93c2d1bf8a1ce2b26c7",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 109,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/ic_trofeu.png",
+      "sha256": "8ca7b4912a5e2307bdfacd501f48f18021623683c3d04d27b1bf71d3d20a2e1e",
+      "refs": [],
+      "tipo": "imagem",
+      "largura": 118,
+      "altura": 128,
+      "origem": "kit"
+    },
+    {
+      "caminho": "ui/painel_9slice/0_0.png",
+      "tipo": "imagem",
+      "largura": 80,
+      "altura": 80,
+      "origem": "kit",
+      "refs": [],
+      "sha256": "46ee5dc7c5116f25eb186deaf51a430023176aa5e6b83a1d3d08c879f3b63278"
+    },
+    {
+      "caminho": "ui/painel_9slice/0_1.png",
+      "tipo": "imagem",
+      "largura": 640,
+      "altura": 80,
+      "origem": "kit",
+      "refs": [],
+      "sha256": "6a182386cf58d0d8693dbda8b8f94c1ab2d843edddca7c745369fca4ac724e9d"
+    },
+    {
+      "caminho": "ui/painel_9slice/0_2.png",
+      "tipo": "imagem",
+      "largura": 80,
+      "altura": 80,
+      "origem": "kit",
+      "refs": [],
+      "sha256": "3329bd9fd3ba7075a59c75e11089aed456d6938c02c091cc613cde614f126ade"
+    },
+    {
+      "caminho": "ui/painel_9slice/1_0.png",
+      "tipo": "imagem",
+      "largura": 80,
+      "altura": 440,
+      "origem": "kit",
+      "refs": [],
+      "sha256": "f69b909b8d4e1cb3e5ed09e275abb40dd6a9c355e00f3572a8d91390324d6019"
+    },
+    {
+      "caminho": "ui/painel_9slice/1_1.png",
+      "tipo": "imagem",
+      "largura": 640,
+      "altura": 440,
+      "origem": "kit",
+      "refs": [],
+      "sha256": "7a0dbabe7ca968089a634123b099112ed627c3db0b29a5179cdcfe3abebec78c"
+    },
+    {
+      "caminho": "ui/painel_9slice/1_2.png",
+      "tipo": "imagem",
+      "largura": 80,
+      "altura": 440,
+      "origem": "kit",
+      "refs": [],
+      "sha256": "185e632b62ac13e508639a32506d0239dc661612622115c7802e5c4629de5181"
+    },
+    {
+      "caminho": "ui/painel_9slice/2_0.png",
+      "tipo": "imagem",
+      "largura": 80,
+      "altura": 80,
+      "origem": "kit",
+      "refs": [],
+      "sha256": "58817f299950d83531bc993ba2332a568b32390b1c5ff6099be048ed7f7e963a"
+    },
+    {
+      "caminho": "ui/painel_9slice/2_1.png",
+      "tipo": "imagem",
+      "largura": 640,
+      "altura": 80,
+      "origem": "kit",
+      "refs": [],
+      "sha256": "7411a9e46c2bc043916f727c8b1d0c0f31869a6ead4ce6f97abe29e1682de8db"
+    },
+    {
+      "caminho": "ui/painel_9slice/2_2.png",
+      "tipo": "imagem",
+      "largura": 80,
+      "altura": 80,
+      "origem": "kit",
+      "refs": [],
+      "sha256": "5db9e42a8772dd74de93ce00f0d2b774179c5af0a66f075c6b132401f41874d7"
+    }
+  ]
+}
