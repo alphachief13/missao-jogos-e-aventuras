@@ -167,6 +167,205 @@
       "origem": "kit"
     },
     {
+      "caminho": "mundo2/enfeites/arbusto.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        192.0,
+        256
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_pequenos.png",
+      "sha256": "6851b7fa6a508ae1d0bc520dedc08e781b8f524c17109346b4f0a70663325af2",
+      "largura": 384,
+      "altura": 256
+    },
+    {
+      "caminho": "mundo2/enfeites/arvore_1.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        256.0,
+        768
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_arvores.png",
+      "sha256": "7606a348f63591193807efa578cf107d90b11ca0ef052311082c4e9f77435659",
+      "largura": 512,
+      "altura": 768
+    },
+    {
+      "caminho": "mundo2/enfeites/arvore_2.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        256.0,
+        768
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_arvores.png",
+      "sha256": "8ab85e0ae4edbc082ac9eeee47d1b865ebfecb17d3a3966b151a0f716a340f28",
+      "largura": 512,
+      "altura": 768
+    },
+    {
+      "caminho": "mundo2/enfeites/carrinho.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        192.0,
+        320
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_pequenos.png",
+      "sha256": "f474db4804b9188d82167f7aa0ba773bb4a641cf6961886e4e8072c6f452c622",
+      "largura": 384,
+      "altura": 320
+    },
+    {
+      "caminho": "mundo2/enfeites/cerca.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        256.0,
+        256
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_pequenos.png",
+      "sha256": "a329a1cb5baf610d7a33cfcf49418adec708fb7c158eca28ed282ae70ea7d6b2",
+      "largura": 512,
+      "altura": 256
+    },
+    {
+      "caminho": "mundo2/enfeites/cone.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        96.0,
+        256
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_pequenos.png",
+      "sha256": "b4a67f2b462d1826f75902200b276d1b40aca1bbd0446e14b69e245e783d53db",
+      "largura": 192,
+      "altura": 256
+    },
+    {
+      "caminho": "mundo2/enfeites/flores.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        128.0,
+        192
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_pequenos.png",
+      "sha256": "1287cedeb7148001f1c883f3f1a5a70cf0ef8f7a53158027993c8c7d1bc82b31",
+      "largura": 256,
+      "altura": 192
+    },
+    {
+      "caminho": "mundo2/enfeites/guindaste.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        384.0,
+        1024
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_guindaste.png",
+      "ajuste_cor": "saturação 48% para tons calmos",
+      "sha256": "50d55565da9ea426ea755237a9c4dc016e269fffe9d1f557dc359140cb72e967",
+      "largura": 768,
+      "altura": 1024
+    },
+    {
+      "caminho": "mundo2/enfeites/pedra.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        128.0,
+        192
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_pequenos.png",
+      "sha256": "6a7ab926e84622e5981822391b83cab489f0f2e7b9b4844515a355c4dc25cd76",
+      "largura": 256,
+      "altura": 192
+    },
+    {
+      "caminho": "mundo2/enfeites/pilha_blocos.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        192.0,
+        384
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_pequenos.png",
+      "sha256": "6fafa505407631c3e839536ace60d5062d9532c5dbdcbd3931f9f163bb6a2105",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "mundo2/enfeites/placa.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+        "assets/personagens/ruivo/iso/frente_idle.png"
+      ],
+      "ancora": [
+        128.0,
+        320
+      ],
+      "camera_elevacao_graus": 35,
+      "fonte_nativa": "assets/_bruto/native/m2_enfeites_pequenos.png",
+      "sha256": "aee8a57c37caa1648cd9b5b22066214d9e4f3090b21094efd38cffb1240b8d8c",
+      "largura": 256,
+      "altura": 320
+    },
+    {
       "caminho": "particulas/bloquinho_amarelo.png",
       "tipo": "imagem",
       "largura": 64,
@@ -779,6 +978,370 @@
       "sha256": "e810f96a17d3ff4c631e6b9b91541e00642ce59ab0617e8aa95778e4efee91f2"
     },
     {
+      "caminho": "personagens/cacheado/iso/ajudar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_acoes.png",
+      "sha256": "f5eee56268b553bcbd8a6f5688b6619ce026394bc9b9733fb01173ef0ae8c5a2",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/caido.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_acoes.png",
+      "sha256": "85a69ecb3bff6895cde27b737989bd46732aac0e2ac8a74af35c9741423fbb25",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/costas_carregar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_carregar.png",
+      "sha256": "8bf66079c62b2d996e731302c8bc2f895f99b37bb91e69c2d7f0adb31db4bdcf",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/costas_corrida.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_movimento.png",
+      "sha256": "881b288c670d30cb78bfb5743c9dace159dafa1be5ef99f870e996a58a345fe9",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/costas_empurrar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_acoes.png",
+      "sha256": "132eb006a4b2afa3b73d9231bc03eab4872c0a1d17e0b930a882979f448ae507",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/costas_idle.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_movimento.png",
+      "sha256": "2ffbbebf854eeac27a6b6f531facc491c7c6840b103f9f1085ca19d6a1d450c4",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/costas_pulo.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_ar.png",
+      "sha256": "4eb1a3dc01c5782e9f677a95fcb2a830b23881e2a10dd066663247c281806e64",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/costas_queda.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_ar.png",
+      "sha256": "8dec8f3fa185ad553fc774fe90f4afe24f2507e150c827412c323c959235086d",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/frente_carregar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_carregar.png",
+      "sha256": "3c99fec56d7aa0cdf291243a68c0c0796dedec247952b6fc634ea75a661907a2",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/frente_corrida.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_movimento.png",
+      "sha256": "cfe2672fcbd7798a15cb82ab24b2efcf9c3a8f580493bf946ffacb250a545653",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/frente_empurrar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_acoes.png",
+      "sha256": "c25f7e0019fbceb749e704f4cb9e545fa311f130bae14fde1ce0f06d5ef68e88",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/frente_idle.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_movimento.png",
+      "sha256": "d0b2e2fd06f0ffaaa97020562f3d54a7efe26a51e6d7037a85e3843434a9d789",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/frente_pulo.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_ar.png",
+      "sha256": "3d848234dc9f264d12cc7a2898cbee1d00e1a0925a9823a8dffe8f91e91a44a5",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/cacheado/iso/frente_queda.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/cacheado/idle.png",
+        "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "amarelo",
+      "cor_hex": "#F6BB33",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_cacheado_ar.png",
+      "sha256": "040c878899945257e15147afec2ef8e60063e5a030bff7e5e5c5d0fbc2566056",
+      "largura": 384,
+      "altura": 384
+    },
+    {
       "caminho": "personagens/cacheado/pulo.png",
       "tipo": "imagem",
       "largura": 384,
@@ -1339,6 +1902,370 @@
         "h": 316
       },
       "sha256": "02d274aa3a904d0d8bdb83fe50a1340dd97ff53147bc9ad46af016b016ed3105"
+    },
+    {
+      "caminho": "personagens/loira/iso/ajudar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_acoes.png",
+      "sha256": "333a781c125e837bb2ce7c68c2996bba91a0ef0d1509976e5cd667432cb0897e",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/caido.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_acoes.png",
+      "sha256": "04ac8a43f5d16648ab4465a52cd079fddd01cd611784e2cd47578b042e8ab5e8",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/costas_carregar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_carregar.png",
+      "sha256": "ca6035dfd6190e7bfbaa8e644eb37a3b36f33615f2c4a9732ba8b393c5e07484",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/costas_corrida.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_movimento.png",
+      "sha256": "def6c64e97d3dc8ee9e06e834623450d706f72d69daf20fc32aee698674769a7",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/costas_empurrar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_acoes.png",
+      "sha256": "78c9bc5155c42fb003f1f24e27ecb9665e66f68e5d327aab708954b4be95ebb4",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/costas_idle.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_movimento.png",
+      "sha256": "8f0a917970f75d8f95acec85536e2001a3681e5074de99324e05560d9c68f104",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/costas_pulo.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_ar.png",
+      "sha256": "c2e07c45aee2e28b214ad6e5c0aa50b5e5078956937b5b8e02a4c1b4f8b39b94",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/costas_queda.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_ar.png",
+      "sha256": "62cc354f69dfc8d2e78bfd70b5f8bc2f60fa09597687edd3a1fbbe0de046c76b",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/frente_carregar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_carregar.png",
+      "sha256": "af6ac9975e1acbe86f3127fd82abfb982645bec4b0f03b9da19cb8602a95db19",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/frente_corrida.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_movimento.png",
+      "sha256": "c6bde08a7df4006b5a9eb43f329f42b4396d5d7eadf8cf19b6efc02e70d89271",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/frente_empurrar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_acoes.png",
+      "sha256": "b4f8017eedd13af75e5c6aacf5b49eeeaac9be724513b6a8f046d79519f3965b",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/frente_idle.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_movimento.png",
+      "sha256": "b905cb259a4387a9f1ab187891eccba66ca2edf61e5afe624d36b8e385dcb0bc",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/frente_pulo.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_ar.png",
+      "sha256": "d292dff0f71f8831f436df8d2df062e892eaedb6e2b075a5fcfb6c1cd772d254",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/loira/iso/frente_queda.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/loira/idle.png",
+        "referencias/kit/personagens/03_fase2-construtora-loira.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "rosa",
+      "cor_hex": "#E3205D",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_loira_ar.png",
+      "sha256": "455ff2dacf2c6968aa3f0be9a8eac40b2a9279b9b3529d22075ca9707aad9c1c",
+      "largura": 384,
+      "altura": 384
     },
     {
       "caminho": "personagens/loira/pulo.png",
@@ -1903,38 +2830,287 @@
       "sha256": "c56634edf48bb895b98ccb56c6d0a3a87772de3d83fd3ff7a10b8193deb294d2"
     },
     {
-      "caminho": "personagens/ruivo/iso/costas_corrida.png",
+      "caminho": "personagens/ruivo/iso/ajudar.png",
       "tipo": "imagem",
       "origem": "ia",
       "refs": [
-        "referencias/kit/personagens/01_heroi-explorador.png"
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
       ],
-      "quadros": 4,
+      "quadros": 2,
       "largura_quadro": 384,
       "altura_quadro": 384,
-      "fps": 10,
       "ancora": [
         192,
         376
       ],
       "time": "azul",
       "cor_hex": "#3E93D0",
-      "vista": "costas",
       "camera_elevacao_graus": 35,
-      "calibracao": {
-        "target_hair_width": 156.0,
-        "native_hair_width": 265.5,
-        "scale": 0.5875706214689266,
-        "heights": [
-          353,
-          341,
-          359,
-          356
-        ],
-        "method": "one uniform factor for entire strip; head width matched to current platform sprite; projected body height changes with elevated camera"
-      },
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_acoes.png",
+      "sha256": "368c0ddfeb8530ef525a5a095c3f1eed5fca762ab5f4a95276380c608256e405",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/caido.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_acoes.png",
+      "sha256": "2be8af3fee85fe3d815e91a2da20b306f7fda42c4d9ae4bcaaee927a53d010be",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/costas_carregar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_carregar.png",
+      "sha256": "0aea4a92e2699877db56d2d2c55462e2f8045581e841ca244ca254e4c90e8a9d",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/costas_corrida.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/iso_ruivo_costas_corrida.png",
       "sha256": "fac614b19a230abdf4fd739c83dafd4466ec752f1e59ede89c9a0a2a37fe57d2",
       "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/costas_empurrar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_acoes.png",
+      "sha256": "0ad35935f8e64f848aa44aad56902f3f4b512015bd64f2b7c785dd7fa9582fe4",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/costas_idle.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_movimento.png",
+      "sha256": "4975b10cdf59073674534a5060933b1d242c40a9f5f135cb8dbc32c4039dcb58",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/costas_pulo.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_ar.png",
+      "sha256": "b6844bbb31aa67273c0ed0dc6d5cd92da66713813a8eded169cdae1cc5cb5c75",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/costas_queda.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_ar.png",
+      "sha256": "2ea1bcf5725b5d343c6ae0fff6ec3c8d20f170f7f2683b02c018fc30c8efa02b",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/frente_carregar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_carregar.png",
+      "sha256": "850226b04707a938f0265615ed5ec452c940f84776c590ddb2e2a87a435b0fc8",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/frente_corrida.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_movimento.png",
+      "sha256": "fb6b23f68eb2e5c2a1d60de809ae6638f5c31134667f917eab5028de89515b30",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/frente_empurrar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_acoes.png",
+      "sha256": "b0fef49b7a77285f5fe6b3c6dd416e478169217cd142ee8bdbeed572aaaa147d",
+      "largura": 768,
       "altura": 384
     },
     {
@@ -1942,32 +3118,75 @@
       "tipo": "imagem",
       "origem": "ia",
       "refs": [
+        "assets/personagens/ruivo/idle.png",
         "referencias/kit/personagens/01_heroi-explorador.png"
       ],
       "quadros": 2,
       "largura_quadro": 384,
       "altura_quadro": 384,
-      "fps": 3,
       "ancora": [
         192,
         376
       ],
       "time": "azul",
       "cor_hex": "#3E93D0",
-      "vista": "frente",
       "camera_elevacao_graus": 35,
-      "calibracao": {
-        "target_hair_width": 156.0,
-        "native_hair_width": 391.0,
-        "scale": 0.3989769820971867,
-        "heights": [
-          327,
-          330
-        ],
-        "method": "one uniform factor for entire strip; head width matched to current platform sprite; projected body height changes with elevated camera"
-      },
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/iso_ruivo_frente_idle.png",
       "sha256": "fd6f23ad3c139db1d679376cb35edee89f94da31c5618268baa8dfed3af425d0",
       "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/frente_pulo.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_ar.png",
+      "sha256": "bb0197ef1eca261db7d232d6fe8e87f2e8d02ce094f2b9cefc85567d625f6ed7",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/frente_queda.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/ruivo/idle.png",
+        "referencias/kit/personagens/01_heroi-explorador.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_ruivo_ar.png",
+      "sha256": "99999d3283e498e28cf73cb64ff40e7a3becf53de20c2ddef3f8f4140c83c903",
+      "largura": 384,
       "altura": 384
     },
     {
@@ -2533,6 +3752,370 @@
       "sha256": "5d45ced448a308822cb9a92b336645bffed184b5e209b581581c1b3f0247c2aa"
     },
     {
+      "caminho": "personagens/sapo/iso/ajudar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_acoes.png",
+      "sha256": "2d73c8168d930d753d120c41c9ad6b6ad45e44b80cd25aac117ddcdaabd15d1f",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/caido.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_acoes.png",
+      "sha256": "1788e2e05d80779ee14d054f5001634c459eae7b030301213f5b5e3ad3b98c52",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/costas_carregar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_carregar.png",
+      "sha256": "2d1d0ac555dcb1bdb944dc88be744f37e26c197eaa99c7fc5e618014caa36cf1",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/costas_corrida.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_movimento.png",
+      "sha256": "b70dfcb39a009a40ca3311554137085a489315e22936fccd63eeed5d42ad394f",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/costas_empurrar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_acoes.png",
+      "sha256": "de03843b577d608dcae375f5c532f1c5d67dcd288c287c461c1937775bb2403a",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/costas_idle.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_movimento.png",
+      "sha256": "f62d2f8c3741efda7a6182f6dfd8caed4ac9e66aaee6f79ad391f54a6de373d2",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/costas_pulo.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_ar.png",
+      "sha256": "12e5ef70f7b24a4578b9ab9d849b07583d633bba585bd4b49da95832ac7d6de2",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/costas_queda.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "costas",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_ar.png",
+      "sha256": "a5792820eb22d1edba1e2f8294f8d64745bcfa7316cae299c6c31a925ba29664",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/frente_carregar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_carregar.png",
+      "sha256": "61a119a849973accfd3d9f52fbc92167340bc48aacf48c5f6174661e0b127eb5",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/frente_corrida.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_movimento.png",
+      "sha256": "a868dfcaca23f4854e497cb6dd6342d62425690e07af8aa74326198a880312c8",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/frente_empurrar.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_acoes.png",
+      "sha256": "5d593af5d6f0b5b5ca77093df5f1f7ddd30ed3d32fe4a901b59cfd371c572176",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/frente_idle.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_movimento.png",
+      "sha256": "d88d1d67d7c67978c5105e23e3f8e6eee386ff6207f8ad8c5e8981d315470f57",
+      "largura": 768,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/frente_pulo.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_ar.png",
+      "sha256": "d0065fd6d98c4a9830bbe1fcc9cf6611ea664e896a6a55f796698c2a5d9945bd",
+      "largura": 384,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/sapo/iso/frente_queda.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "assets/personagens/sapo/idle.png",
+        "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+        "assets/personagens/ruivo/iso/frente_idle.png",
+        "assets/personagens/ruivo/iso/costas_corrida.png"
+      ],
+      "quadros": 1,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "verde",
+      "cor_hex": "#A0C630",
+      "camera_elevacao_graus": 35,
+      "vista": "frente",
+      "fonte_nativa": "assets/_bruto/native/m2_sapo_ar.png",
+      "sha256": "adee5b3236c3ba19f342c2b8ca0b521e42d56265b120d8a587445e6615f5cb15",
+      "largura": 384,
+      "altura": 384
+    },
+    {
       "caminho": "personagens/sapo/pulo.png",
       "tipo": "imagem",
       "largura": 384,
@@ -2627,6 +4210,18 @@
       "sha256": "d64f510613e623d150f76c799101432632a878780e5d88dc50c0c80218aae456"
     },
     {
+      "caminho": "sons/ajudar.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.49,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "loop": false,
+      "sha256": "afb82c8bcf6b18483aa301c36d428e972951e99c3ed5671ffd1b13f7ca9d4c85"
+    },
+    {
       "caminho": "sons/alavanca.wav",
       "tipo": "audio",
       "origem": "script",
@@ -2658,6 +4253,18 @@
       "canais": 1,
       "pico_dbfs": -3.0001,
       "sha256": "29ca2c2cb65c9c0f74f226cbb2318d1702d5b164734d9b48ecd74b72ff7394ed"
+    },
+    {
+      "caminho": "sons/caiu.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.36,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "loop": false,
+      "sha256": "7575cccf7c1f2fa5e941c4bf1b373733d013e5cdd01fde54ded2a4fb43594446"
     },
     {
       "caminho": "sons/chegada.wav",
@@ -2693,6 +4300,18 @@
       "sha256": "989b1982d17308e6223df51f2f07edf0d71755cd303f26614b188f27f489d0c0"
     },
     {
+      "caminho": "sons/construir.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.57,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "loop": false,
+      "sha256": "e5090f557b5e70775094b0e0e9c85b34cae4b72e6fd8129b30640fdbb77f09c9"
+    },
+    {
       "caminho": "sons/contagem.wav",
       "tipo": "audio",
       "origem": "script",
@@ -2715,6 +4334,18 @@
       "sha256": "8aa3a878ede433f0c4acc4fd789cbb45ff2559f7ea7e8271bed41d53a0b40c3f"
     },
     {
+      "caminho": "sons/empurrar.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.4,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "loop": true,
+      "sha256": "1017180400e9c8c512c9e1e7e2c7ba1dda9951731dd8fd93201685dd3089455f"
+    },
+    {
       "caminho": "sons/entrou.wav",
       "tipo": "audio",
       "origem": "script",
@@ -2724,6 +4355,18 @@
       "canais": 1,
       "pico_dbfs": -3.0001,
       "sha256": "7ac13d8a6a88ecfeb0f8d393b864bf604ad7437aa810c78fdbe70ba72fde3f64"
+    },
+    {
+      "caminho": "sons/missao.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 1.2,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "loop": false,
+      "sha256": "5dd45820ef5435d3cc9652809a318ad80d37e3edf334c6f5abfcd5c72ef12132"
     },
     {
       "caminho": "sons/peca.wav",
@@ -2737,6 +4380,18 @@
       "sha256": "56d9b8da2a7560b012a4a87c1f48438cdd21a870a326c66aec7c2cba3cab31cd"
     },
     {
+      "caminho": "sons/pegar.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.19,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "loop": false,
+      "sha256": "d44198c9122d65da1356087ce904a21e2e29c3164ce596c690614f13678423a1"
+    },
+    {
       "caminho": "sons/perdeu_coracao.wav",
       "tipo": "audio",
       "origem": "script",
@@ -2746,6 +4401,18 @@
       "canais": 1,
       "pico_dbfs": -3.0001,
       "sha256": "73d7ad5cc42e837f83c1d124d35aa41ff6af1eb6395ceaddd532a02bc61c5196"
+    },
+    {
+      "caminho": "sons/placa.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.18,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "loop": false,
+      "sha256": "0ed8b5cb8575cb9a52d94aaa521b01056b7980e815feccb9bfadfa5d9d4d7b5f"
     },
     {
       "caminho": "sons/pouso.wav",
@@ -2768,6 +4435,18 @@
       "canais": 1,
       "pico_dbfs": -3.0001,
       "sha256": "4a023ede86b228c5340d54d0c273afa8d6ab73a9a50f7d2bb131aec9b2f0fa04"
+    },
+    {
+      "caminho": "sons/soltar.wav",
+      "tipo": "audio",
+      "origem": "script",
+      "refs": [],
+      "duracao": 0.15,
+      "sample_rate": 44100,
+      "canais": 1,
+      "pico_dbfs": -3.0001,
+      "loop": false,
+      "sha256": "a704fbee37668ec7faed7e1e4003574c98f55618b9673d627dc3a9a02871fe32"
     },
     {
       "caminho": "sons/trocar.wav",

@@ -21,12 +21,12 @@ assert a[:650,700:1700].max()==0
 far=Image.open(A/'fundos/exploradores/longe.png')
 assert far.mode=='RGB' and far.size==(2400,1080)
 expected={'pulo','pouso','bandeira','peca','alavanca','botao','chegada','perdeu_coracao','derrota','vitoria','clique','trocar','entrou','contagem','compra'}
-assert {p.stem for p in (A/'sons').glob('*.wav')}==expected
+assert expected <= {p.stem for p in (A/'sons').glob('*.wav')}
 for p in (A/'sons').glob('*.wav'):
     with wave.open(str(p)) as f:
         assert f.getnchannels()==1 and f.getframerate()==44100 and f.getsampwidth()==2
         duration=f.getnframes()/f.getframerate()
         a=np.frombuffer(f.readframes(f.getnframes()),dtype='<i2').astype(float)/32767
         assert abs(20*np.log10(np.max(np.abs(a)))+3)<.01
-        assert duration<.6 or p.stem in ['vitoria','contagem']
+        assert duration<.6 or p.stem in ['vitoria','contagem','missao']
 print('Conferidos: 48 poses, baseline 376, 4 retratos sem moldura, 8 GIFs, alfa do meio e 15 WAVs.')

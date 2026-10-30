@@ -13,7 +13,7 @@ def trim(img):
     return img.crop(box)
 
 
-def split_poses(img, n):
+def split_poses(img, n, *, merge_minor=True):
     """8-connected alpha runs; merge tiny disconnected details with nearest body."""
     img = img.convert('RGBA')
     mask = np.asarray(img.getchannel('A')) >= 16
@@ -56,7 +56,7 @@ def split_poses(img, n):
                          sum(y*(b-a) for a,b,y in rs)/area])
 
     centers = [center(rs) for rs in major]
-    for rs in minor:
+    for rs in minor if merge_minor else []:
         nearest = min(range(n), key=lambda j: np.linalg.norm(center(rs)-centers[j]))
         major[nearest].extend(rs)
     major.sort(key=lambda rs: center(rs)[0])

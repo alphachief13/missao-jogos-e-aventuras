@@ -1,0 +1,11 @@
+Use the attached reference images as the strict visual base: same art style, same character design,
+same colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),
+sunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:
+pink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:
+no video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,
+no letters, no logos, no watermark. Clean edges, fully inside the frame with margin.
+Use case: stylized-concept. Asset: decorative upright map props, ONE atlas, EXACTLY 1 columns by 1 rows, one object per equal cell, row-major. Desired canvas 768x768. Genuine alpha transparency, NO backdrop, NO floor, NO cast shadow, NO ground discs, NO glow. Entire objects fully inside their cells with transparent gaps; do NOT crop tree canopy or crane. No people or animals, no text, no labels or numbers, NO visible grid or cell borders.
+Reference 1 only polished toy construction rendering and rounded building-block geometry; do NOT reproduce its badge, text, blue/pink saturated background or composition. Reference 2 only 3D render quality and elevated camera, do NOT reproduce the boy or his clothes.
+Fixed orthographic camera elevated 35 degrees, three-quarter top view, all props facing viewer. Strong simple child-readable silhouettes, few details. ENVIRONMENT COLOR OVERRIDE: calm desaturated leaf green, sand, wood, cream and earth; strong team colors ONLY on the explicitly requested pile of bricks. The orange-white cone is also allowed. Avoid bright lime #A0C630 on plants. Soft daylight, no rim or colored halo. Base of each object clearly visible for ground anchoring during export.
+
+Cell 1, row 1, column 1: one toy construction CRANE made of rounded studded building blocks, tall sturdy tower, wide horizontal boom, a hanging hook, stable four-foot base. Calm warm beige/cream/pale ochre blocks, natural wood-brown joints, no saturated pink/blue/team green. No lettering, no characters, no cargo or box.

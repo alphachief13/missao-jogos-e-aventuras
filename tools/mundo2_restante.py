@@ -24,6 +24,7 @@ def prepare():
       refs=[f'assets/personagens/{char}/idle.png','referencias/kit/personagens/'+ref,'assets/personagens/ruivo/iso/frente_idle.png','assets/personagens/ruivo/iso/costas_corrida.png']
       for group,(cols,rows,anims) in specs(char).items():
         key=f'm2_{char}_{group}'
+        if key in jobs and (A/'_bruto/native'/f'{key}.png').exists():continue
         instructions=[];cells=[]
         for anim,n in anims:
           for i in range(n):
@@ -52,14 +53,41 @@ def export(char,scales):
     jobs=json.loads((ROOT/'tools/requests_mundo2.json').read_text());allframes={};cal={}
     for group in specs(char):
       key=f'm2_{char}_{group}';j=jobs[key];im=Image.open(A/'_bruto/native'/f'{key}.png').convert('RGBA');cols=j['cols'];rows=j['rows']
+      row_bounds=[0]
+      counts=(np.asarray(im.getchannel('A'))>=64).sum(axis=1)
+      for r in range(1,rows):
+        expected=r*im.height/rows;half=im.height/rows*.24
+        lo=max(row_bounds[-1]+1,round(expected-half));hi=min(im.height-1,round(expected+half))
+        low=counts[lo:hi]<=max(3,counts.max()*.015)
+        edges=np.flatnonzero(np.diff(np.r_[False,low,False]))
+        gaps=list(zip(edges[::2],edges[1::2]))
+        if gaps:
+          left,right=max(gaps,key=lambda z:(z[1]-z[0])-.01*abs(lo+(z[0]+z[1])/2-expected))
+          bound=lo+round((left+right)/2)
+        else:bound=lo+int(np.argmin(counts[lo:hi]))
+        row_bounds.append(bound)
+      row_bounds.append(im.height)
       poses=[]
       for k,(anim,i) in enumerate(j['cells']):
         x=k%cols;y=k//cols
-        box=(round(x*im.width/cols),round(y*im.height/rows),round((x+1)*im.width/cols),round((y+1)*im.height/rows))
-        poses.append(trim(im.crop(box)))
+        box=(round(x*im.width/cols),row_bounds[y],round((x+1)*im.width/cols),row_bounds[y+1])
+        part=im.crop(box)
+        if True:
+          mask=np.asarray(part.getchannel('A'))>=16
+          occupied=mask.any(axis=1)
+          edges=np.flatnonzero(np.diff(np.r_[False,occupied,False]))
+          runs=list(zip(edges[::2],edges[1::2]))
+          if runs:
+            lo,hi=max(runs,key=lambda r: int(mask[r[0]:r[1]].sum()))
+            if anim=='caido':
+              # Keep nearby detached stars, discard distant pieces of an adjacent atlas row.
+              kept=[r for r in runs if r[1]>=lo-45 and r[0]<=hi+45]
+              lo=min(r[0] for r in kept);hi=max(r[1] for r in kept)
+            part=part.crop((0,int(lo),part.width,int(hi)))
+        poses.append(trim(part))
       scale=scales[group]
       frames=fit_cell(poses,scale=scale)
-      cal[group]=dict(scale=scale,source_size=list(im.size),pose_sizes=[list(f.size) for f in poses])
+      cal[group]=dict(scale=scale,source_size=list(im.size),row_bounds=row_bounds,pose_sizes=[list(f.size) for f in poses])
       for (anim,i),f in zip(j['cells'],frames):allframes.setdefault(anim,{})[i]=f
     out=A/f'personagens/{char}/iso';out.mkdir(parents=True,exist_ok=True)
     for anim,frames in allframes.items():

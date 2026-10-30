@@ -22,5 +22,7 @@ for world,(refs,scene) in WORLDS.items():
     job(world+'_longe',refs,f'Wide horizontal 20:9 backdrop, composed to fit 2400x1080. {scene} No characters except the distant blurred friendly brick robot for conquistas only. No playable platforms or foreground floor. Calm spacious slightly defocused center; details at edges. No lettering, badge outlines, borders or logos. Use references for visual style and objects only, not poster composition.')
     if world!='lobby':
         job(world+'_meio',refs,f'Wide horizontal 20:9 TRANSPARENT parallax middle layer. Theme: {scene} Sparse silhouettes ONLY in bottom third and far left/right edges. Entire top and central two thirds fully transparent. No sky, floor, characters, robots, text or maps with symbols. No ground shadow. Clean simple shapes, no halo.',True)
+extras=ROOT/'tools/requests_mundo2.json'
+if extras.exists():requests.update(json.loads(extras.read_text()))
 (ROOT/'tools/requests.json').write_text(json.dumps(requests,ensure_ascii=False,indent=2))
 print(f'{len(requests)} new identity jobs declared.')

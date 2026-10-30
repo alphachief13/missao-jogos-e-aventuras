@@ -1111,5 +1111,64 @@
       ]
     ],
     "char": "sapo"
+  },
+  "m2_enfeites_arvores": {
+    "key": "m2_enfeites_arvores",
+    "out": "assets/_bruto/m2_enfeites_arvores.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+      "assets/personagens/ruivo/iso/frente_idle.png"
+    ],
+    "prompt_file": "tools/prompts/m2_enfeites_arvores.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: stylized-concept. Asset: decorative upright map props, ONE atlas, EXACTLY 2 columns by 1 rows, one object per equal cell, row-major. Desired canvas 1536x768. Genuine alpha transparency, NO backdrop, NO floor, NO cast shadow, NO ground discs, NO glow. Entire objects fully inside their cells with transparent gaps; do NOT crop tree canopy or crane. No people or animals, no text, no labels or numbers, NO visible grid or cell borders.\nReference 1 only polished toy construction rendering and rounded building-block geometry; do NOT reproduce its badge, text, blue/pink saturated background or composition. Reference 2 only 3D render quality and elevated camera, do NOT reproduce the boy or his clothes.\nFixed orthographic camera elevated 35 degrees, three-quarter top view, all props facing viewer. Strong simple child-readable silhouettes, few details. ENVIRONMENT COLOR OVERRIDE: calm desaturated leaf green, sand, wood, cream and earth; strong team colors ONLY on the explicitly requested pile of bricks. The orange-white cone is also allowed. Avoid bright lime #A0C630 on plants. Soft daylight, no rim or colored halo. Base of each object clearly visible for ground anchoring during export.\n\nCell 1, row 1, column 1: one friendly toy tree with a full ROUND canopy of simple rounded leaf clusters, short thick trunk, muted sage/forest leaf green and warm natural wood; only tree, no ground disc or grass.\nCell 2, row 1, column 2: second distinct toy tree, oval full rounded canopy, short gently curved trunk, muted olive/forest foliage and natural wood, no ground disc or grass.",
+    "transparent": true,
+    "cols": 2,
+    "rows": 1,
+    "names": [
+      "arvore_1",
+      "arvore_2"
+    ]
+  },
+  "m2_enfeites_pequenos": {
+    "key": "m2_enfeites_pequenos",
+    "out": "assets/_bruto/m2_enfeites_pequenos.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+      "assets/personagens/ruivo/iso/frente_idle.png"
+    ],
+    "prompt_file": "tools/prompts/m2_enfeites_pequenos.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: stylized-concept. Asset: decorative upright map props, ONE atlas, EXACTLY 4 columns by 2 rows, one object per equal cell, row-major. Desired canvas 3072x1536. Genuine alpha transparency, NO backdrop, NO floor, NO cast shadow, NO ground discs, NO glow. Entire objects fully inside their cells with transparent gaps; do NOT crop tree canopy or crane. No people or animals, no text, no labels or numbers, NO visible grid or cell borders.\nReference 1 only polished toy construction rendering and rounded building-block geometry; do NOT reproduce its badge, text, blue/pink saturated background or composition. Reference 2 only 3D render quality and elevated camera, do NOT reproduce the boy or his clothes.\nFixed orthographic camera elevated 35 degrees, three-quarter top view, all props facing viewer. Strong simple child-readable silhouettes, few details. ENVIRONMENT COLOR OVERRIDE: calm desaturated leaf green, sand, wood, cream and earth; strong team colors ONLY on the explicitly requested pile of bricks. The orange-white cone is also allowed. Avoid bright lime #A0C630 on plants. Soft daylight, no rim or colored halo. Base of each object clearly visible for ground anchoring during export.\n\nCell 1, row 1, column 1: one low rounded bush, calm desaturated sage and forest green leaves, no flowers or base disc.\nCell 2, row 1, column 2: one small tuft of WHITE and PALE CREAM-YELLOW flowers on muted stems; no pink, blue or neon green.\nCell 3, row 1, column 3: one simple smooth rounded SAND-GREY stone with soft bevel, no crystals.\nCell 4, row 1, column 4: one short section of LIGHT NATURAL WOOD fence, two sturdy vertical posts and two horizontal rails, no plants or ground disc.\nCell 5, row 2, column 1: one completely BLANK rectangular LIGHT WOOD board on a single short post. Smooth wood face with absolutely NO markings, no arrows, no numbers, no scratches resembling letters. Board is rectangular, NOT arrow-shaped.\nCell 6, row 2, column 2: one compact pile of four toy building bricks in the campaign pink #E3205D, blue #3E93D0, yellow #F6BB33 and green #A0C630, each color present, simple rounded studs.\nCell 7, row 2, column 3: one construction cone with ORANGE and WHITE stripes, rounded square base, no writing.\nCell 8, row 2, column 4: one small WOODEN wheelbarrow with one wheel and two handles, containing a few subdued cream and pale ochre building bricks; calm wood/earth colors, no team pink/blue/green.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "names": [
+      "arbusto",
+      "flores",
+      "pedra",
+      "cerca",
+      "placa",
+      "pilha_blocos",
+      "cone",
+      "carrinho"
+    ]
+  },
+  "m2_enfeites_guindaste": {
+    "key": "m2_enfeites_guindaste",
+    "out": "assets/_bruto/m2_enfeites_guindaste.png",
+    "size": "1536x1024",
+    "refs": [
+      "referencias/kit/04_fases/fase_2_desafio-dos-construtores.png",
+      "assets/personagens/ruivo/iso/frente_idle.png"
+    ],
+    "prompt_file": "tools/prompts/m2_enfeites_guindaste.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: stylized-concept. Asset: decorative upright map props, ONE atlas, EXACTLY 1 columns by 1 rows, one object per equal cell, row-major. Desired canvas 768x768. Genuine alpha transparency, NO backdrop, NO floor, NO cast shadow, NO ground discs, NO glow. Entire objects fully inside their cells with transparent gaps; do NOT crop tree canopy or crane. No people or animals, no text, no labels or numbers, NO visible grid or cell borders.\nReference 1 only polished toy construction rendering and rounded building-block geometry; do NOT reproduce its badge, text, blue/pink saturated background or composition. Reference 2 only 3D render quality and elevated camera, do NOT reproduce the boy or his clothes.\nFixed orthographic camera elevated 35 degrees, three-quarter top view, all props facing viewer. Strong simple child-readable silhouettes, few details. ENVIRONMENT COLOR OVERRIDE: calm desaturated leaf green, sand, wood, cream and earth; strong team colors ONLY on the explicitly requested pile of bricks. The orange-white cone is also allowed. Avoid bright lime #A0C630 on plants. Soft daylight, no rim or colored halo. Base of each object clearly visible for ground anchoring during export.\n\nCell 1, row 1, column 1: one toy construction CRANE made of rounded studded building blocks, tall sturdy tower, wide horizontal boom, a hanging hook, stable four-foot base. Calm warm beige/cream/pale ochre blocks, natural wood-brown joints, no saturated pink/blue/team green. No lettering, no characters, no cargo or box.",
+    "transparent": true,
+    "cols": 1,
+    "rows": 1,
+    "names": [
+      "guindaste"
+    ]
   }
 }

@@ -27,7 +27,7 @@ for name in ['texturas','npcs']:archive(A/name)
 for p in (A/'personagens').glob('*/card*.png'):archive(p)
 for world in ['menu','block_city','dino_attack','space_mission','mystery_game','final_boss','selecao_fases']:archive(A/'fundos'/world)
 for name in ['gema','estrela_xp','portal_abre','clique_ui','trocar_personagem','jogador_entrou','contagem_regressiva','chefao_soco']:archive(A/'sons'/f'{name}.wav')
-keep={'personagens.png','fundos.png','sprites_sobre_fundos.png','ruivo_comparacao_kit_novo.png',
+keep={'personagens_iso.png','enfeites_mundo2.png','ruivo_iso_comparacao.png',*[f'{p}_iso.png' for p in CHARS],'personagens.png','fundos.png','sprites_sobre_fundos.png','ruivo_comparacao_kit_novo.png',
       *[f'{p}_{kind}.gif' for p in CHARS for kind in ['idle','corrida']],
       *[f'{p}_poses.png' for p in CHARS],*[f'revisao_{k}.png' for k in ACTIVE]}
 for p in (A/'preview').iterdir():

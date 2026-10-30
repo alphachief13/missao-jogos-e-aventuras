@@ -19,7 +19,7 @@ Layout: one horizontal row, full body in every cell, large transparent gaps betw
     poses={
       'frente_idle':(2,'''FRONT three-quarter view from ABOVE. Boy faces diagonally DOWN-RIGHT on the screen: toward viewer and a little to the right. We see face, chest, and the right side of body, PLUS top of hair and shoulders. Not a level camera and not a side profile. Both feet point diagonally down-right. Frame 1 relaxed happy standing, arms relaxed, EMPTY hands. Frame 2 exactly same stance and proportions, subtle breathing and blink. Blue shirt clearly visible, binoculars hanging at neck.'''),
       'costas_corrida':(4,'''REAR three-quarter view from ABOVE. Boy runs diagonally UP-RIGHT on the screen, AWAY from viewer, showing back of head, BACKPACK, coat back and right side of body. The face and chest must NOT turn toward camera. Four successive run phases: right leg forward/left back; passing; left leg forward/right back; opposite passing. Arms swing opposite legs, both hands empty. Show blue-and-white sneaker uppers and blue shirt at side/coat opening so BLUE team remains readable from behind, without adding symbols or changing clothing. Use the same compact child scale as front view. No front-facing or sideways poses.''')}
-    jobs={}
+    jobs=json.loads((ROOT/'tools/requests_mundo2.json').read_text()) if (ROOT/'tools/requests_mundo2.json').exists() else {}
     for name,(n,pose) in poses.items():
         key='iso_ruivo_'+name
         prompt=style+common+f'Exactly {n} separate full-body poses, evenly spaced from left to right.\n'+pose

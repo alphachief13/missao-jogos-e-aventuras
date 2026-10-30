@@ -182,7 +182,7 @@ def manifest():
         if p.suffix.lower() not in ('.png','.wav','.ttf','.txt'):continue
         path=rel.as_posix();meta=dict(catalog.get(path,{}))
         meta.update(caminho=path,sha256=hashlib.sha256(p.read_bytes()).hexdigest())
-        meta['refs']=[r for r in meta.get('refs',[]) if (ROOT/r).exists() and r.startswith('referencias/kit/') or (A/r).exists()]
+        meta['refs']=[r for r in meta.get('refs',[]) if ((ROOT/r).is_file() and r.startswith(('referencias/kit/','assets/'))) or (A/r).is_file()]
         if p.suffix=='.png':
             im=Image.open(p);meta.update(tipo='imagem',largura=im.width,altura=im.height)
             if path.startswith(('kit/','ui/')) or path.endswith('/arte.png'):meta['origem']='kit'
