@@ -156,14 +156,24 @@ $('btnVoltarInicio').onclick = () => irPara('inicio');
 $('btnIrFase').onclick = () => irPara('fase');
 
 // escolha de fase: os 5 mundos (planetinhas) em cima e a trilha com as 11 fases do mundo escolhido
-const planetas = new Planetas($('planetas'), id => {
-  const liberadas = sala.fases.map((f, i) => [f, i]).filter(([f, i]) => f.mundo === id && i < sala.liberadas);
-  if (!liberadas.length || sala.fases[sala.faseIdx]?.mundo === id) return;
-  tocar('clique');
-  rede.enviar({ t: 'escolherFase', idx: liberadas[liberadas.length - 1][1] }); // a mais adiantada daquele mundo
-});
+// Um mundo por vez: as setas (ou ↑ ↓, ou arrastar) passam para o anterior/próximo, dando a volta.
+// Dá para ver um mundo trancado (com cadeado), mas só um mundo liberado vira a fase escolhida na sala.
+let mundoVisto = null, mundoDaSala = null;
+const planetas = new Planetas($('planetas'), trocarMundo);
+function trocarMundo(dir) {
+  const ids = Object.keys(MUNDOS);
+  mundoVisto = ids[(ids.indexOf(mundoVisto) + dir + ids.length) % ids.length];
+  liberarAudio(); tocar('trocar');
+  const lib = sala.fases.map((f, i) => [f, i]).filter(([f, i]) => f.mundo === mundoVisto && i < sala.liberadas);
+  if (lib.length) rede.enviar({ t: 'escolherFase', idx: lib[lib.length - 1][1] }); // a mais adiantada daquele mundo
+  atualizarFase();
+}
+const vendoTrancado = () => sala.estado === 'lobby' && sala.etapa === 'fase' && mundoVisto && mundoVisto !== sala.fases[sala.faseIdx]?.mundo;
 function atualizarFase() {
-  const idMundo = sala.fases[sala.faseIdx]?.mundo || 'exploradores';
+  // a sala mudou de mundo (outro aparelho escolheu, ou venceram): a tela acompanha
+  const daSala = sala.fases[sala.faseIdx]?.mundo || 'exploradores';
+  if (daSala !== mundoDaSala || !mundoVisto) { mundoDaSala = daSala; mundoVisto = daSala; }
+  const idMundo = mundoVisto;
   const mundo = MUNDOS[idMundo] || MUNDOS.exploradores;
   const doMundo = sala.fases.map((f, i) => [f, i]).filter(([f]) => f.mundo === idMundo);
   const info = {};
@@ -173,7 +183,7 @@ function atualizarFase() {
   }
   planetas.atualizar(idMundo, info);
   $('tituloMundo').innerHTML = `<img src="${mundo.selo}" alt="">Mundo ${mundo.n} · ${mundo.nome}`;
-  $('subMundo').innerHTML = `Escolha o mundo e a fase. Cada vitória libera a próxima. ${sala.trapaca ? '<span class="pilula livre">Modo livre</span>' : `<span class="pilula"><img src="assets/ui/ic_bloco.png">${sala.carteira} peças</span>`}`;
+  $('subMundo').innerHTML = `Passe pelos mundos com as setas e escolha a fase. Cada vitória libera a próxima. ${sala.trapaca ? '<span class="pilula livre">Modo livre</span>' : `<span class="pilula"><img src="assets/ui/ic_bloco.png">${sala.carteira} peças</span>`}`;
   const pts = doMundo.map((_, k) => [4 + k * (92 / Math.max(1, doMundo.length - 1)), k % 2 ? 28 : 70]);
   $('trilha').innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="${pts.length > 1 ? curva(pts) : ''}" /></svg>` +
     doMundo.map(([f, i], k) => {
@@ -183,6 +193,13 @@ function atualizarFase() {
     }).join('');
   for (const b of $('trilha').querySelectorAll('.parada:not(.trancada)'))
     b.onclick = () => { tocar('clique'); rede.enviar({ t: 'escolherFase', idx: +b.dataset.i }); };
+  const trancado = vendoTrancado();
+  $('btnLoja').disabled = trancado;
+  if (trancado) {
+    $('detalhe').innerHTML = `<div class="num" style="background:#9aa3b5">🔒</div>
+      <div><h3>${mundo.nome} ainda está trancado</h3><p>Vençam todas as fases do mundo anterior para liberar este mundo.</p></div><div></div>`;
+    return;
+  }
   const f = sala.fases[sala.faseIdx];
   $('detalhe').innerHTML = `<div class="num" style="background:${mundo.cor}">${f.modo === 'iso' ? '3D' : f.id}</div>
     <div><h3>${f.nome}${f.modo === 'iso' ? ' <span class="pilula">mapa 3D</span>' : ''}</h3><p>${f.dica}</p></div>
@@ -505,7 +522,7 @@ addEventListener('keydown', ev => {
     if (sala.estado === 'lobby') {
       if (sala.etapa === 'inicio') irPara('times');
       else if (sala.etapa === 'times') { if (!meuId) entrar(); else irPara('fase'); }
-      else rede.enviar({ t: 'loja' });
+      else if (!vendoTrancado()) rede.enviar({ t: 'loja' });
     }
     else if (sala.estado === 'loja') rede.enviar({ t: 'jogar' });
     else if (sala.estado === 'fim') rede.enviar({ t: 'continuar' });
@@ -516,12 +533,9 @@ addEventListener('keydown', ev => {
     else if (sala.estado === 'lobby' && sala.etapa !== 'inicio') irPara(sala.etapa === 'fase' ? 'times' : 'inicio');
     return;
   }
-  // na escolha de fase, ↑ ↓ trocam de mundo
+  // na escolha de fase, ↑ ↓ passam de mundo
   if (sala.estado === 'lobby' && sala.etapa === 'fase' && (ev.code === 'ArrowUp' || ev.code === 'ArrowDown')) {
-    const ids = Object.keys(MUNDOS), atual = ids.indexOf(sala.fases[sala.faseIdx]?.mundo);
-    const id = ids[atual + (ev.code === 'ArrowDown' ? 1 : -1)];
-    const idx = id ? sala.fases.map((f, i) => [f, i]).filter(([f, i]) => f.mundo === id && i < sala.liberadas).pop()?.[1] : undefined;
-    if (idx !== undefined) { tocar('clique'); rede.enviar({ t: 'escolherFase', idx }); }
+    trocarMundo(ev.code === 'ArrowDown' ? 1 : -1);
     return;
   }
   // na trilha de fases, ← → escolhem a fase

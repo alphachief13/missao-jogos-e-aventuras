@@ -76,18 +76,37 @@ kbd { font: 700 .9em Fredoka, sans-serif; background: var(--marinho); color: #ff
 .url { font: 500 1.4vh Nunito, sans-serif; opacity: .55; word-break: break-all; }
 
 /* passo 2: trilha de fases */
-/* os 5 mundos: canvas 3D com os rótulos por cima */
-.planetas { position: relative; width: min(100%, 150vh); height: 27vh; flex-shrink: 0; margin: -1vh 0 -1vh; }
-.planetas canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.rotulo-mundo { all: unset; position: absolute; bottom: 0; transform: translateX(-50%); display: flex; align-items: center; gap: .8vh;
-                background: #fffe; border: 2px solid var(--linha); border-radius: 999px; padding: .4vh 1.4vh .4vh .4vh; cursor: pointer;
-                box-shadow: 0 .4vh 1.2vh #1E2A4A1A; transition: transform .15s, border-color .15s; white-space: nowrap; }
-.rotulo-mundo img { height: 4.4vh; }
-.rotulo-mundo span { display: flex; flex-direction: column; font: 600 1.5vh Fredoka, sans-serif; line-height: 1.15; }
-.rotulo-mundo span b { font-size: 1.3vh; color: var(--cor); letter-spacing: .04em; text-transform: uppercase; }
-.rotulo-mundo i { font: 600 1.3vh Nunito, sans-serif; font-style: normal; opacity: .6; margin-left: .4vh; }
-.rotulo-mundo.sel { border-color: var(--cor); transform: translateX(-50%) scale(1.08); box-shadow: 0 0 0 .5vh color-mix(in srgb, var(--cor) 25%, transparent); }
-.rotulo-mundo.trancado { opacity: .55; cursor: not-allowed; }
+/* escolha de mundo: um por vez, com setas dos lados, cartão do nome e bolinhas */
+.planetas { position: relative; width: min(100%, 150vh); height: 31vh; flex-shrink: 0; margin: -1.5vh 0 -.5vh; --cor: var(--azul); }
+.planetas canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
+.seta-mundo { all: unset; position: absolute; top: 42%; transform: translateY(-50%); display: flex; align-items: center; gap: 1vh; cursor: pointer;
+              font: 700 1.9vh Fredoka, sans-serif; color: var(--marinho); line-height: 1.1; z-index: 2; }
+.seta-mundo.esq { left: 4%; } .seta-mundo.dir { right: 4%; text-align: right; }
+.seta-mundo svg { width: 9vh; height: 9vh; padding: 1.8vh; border-radius: 50%; background: var(--cor); stroke: #fff; stroke-width: 3.4; fill: none;
+                  stroke-linecap: round; stroke-linejoin: round; border: .45vh solid var(--marinho); box-shadow: 0 .6vh 0 var(--marinho);
+                  transition: background .4s, transform .15s; }
+.seta-mundo.esq svg { animation: chama-esq 1.6s ease-in-out infinite; }
+.seta-mundo.dir svg { animation: chama-dir 1.6s ease-in-out infinite; }
+.seta-mundo:hover svg { transform: scale(1.1); }
+.seta-mundo:active svg { transform: scale(.92); box-shadow: 0 .1vh 0 var(--marinho); }
+@keyframes chama-esq { 0%, 60%, 100% { translate: 0; } 75% { translate: -1.4vh; } 88% { translate: .3vh; } }
+@keyframes chama-dir { 0%, 60%, 100% { translate: 0; } 75% { translate: 1.4vh; } 88% { translate: -.3vh; } }
+.cartao-mundo { position: absolute; left: 50%; bottom: .6vh; translate: -50% 0; display: flex; align-items: center; gap: 1.2vh; z-index: 2;
+                background: #fff; border: .4vh solid var(--cor); border-radius: 999px; padding: .5vh 2.4vh .5vh .6vh; white-space: nowrap;
+                box-shadow: 0 .8vh 2vh #1E2A4A26; }
+.cartao-mundo img { height: 6vh; }
+.cartao-mundo div { display: flex; flex-direction: column; line-height: 1.15; }
+.cartao-mundo b { font: 700 1.4vh Fredoka, sans-serif; color: var(--cor); text-transform: uppercase; letter-spacing: .06em; }
+.cartao-mundo strong { font: 700 2.6vh Fredoka, sans-serif; }
+.cartao-mundo i { font: 600 1.5vh Nunito, sans-serif; font-style: normal; opacity: .65; }
+.cartao-mundo.trancado { border-color: #9aa3b5; } .cartao-mundo.trancado img { filter: grayscale(1); opacity: .6; }
+.cartao-mundo.entra { animation: cartao-entra .7s cubic-bezier(.3, 1.5, .5, 1) .25s both; }
+@keyframes cartao-entra { from { opacity: 0; transform: translateX(var(--de, 0)) scale(.6) rotate(calc(var(--de, 0) / 10vh * 3deg)); } }
+.pontos-mundo { position: absolute; left: 50%; top: 0; translate: -50% 0; display: flex; gap: .9vh; z-index: 2; }
+.pontos-mundo i { width: 1.4vh; height: 1.4vh; border-radius: 999px; background: color-mix(in srgb, var(--c) 35%, #fff); border: .25vh solid #1E2A4A33;
+                  transition: width .35s, background .35s; }
+.pontos-mundo i.sel { width: 4.4vh; background: var(--c); border-color: var(--marinho); }
+.pontos-mundo i.trancado { background: #d5d9e1; }
 .trilha { position: relative; width: min(100%, 140vh); height: 21vh; flex-shrink: 0; }
 .parada.tres-d .bola { width: 9.5vh; height: 9.5vh; border-radius: 2.2vh; transform: rotate(45deg); font: 700 3vh Fredoka, sans-serif; }
 .parada.tres-d .bola > * { transform: rotate(-45deg); }

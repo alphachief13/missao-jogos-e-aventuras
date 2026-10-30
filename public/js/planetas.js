@@ -1,6 +1,5 @@
-// Escolha de mundo: cinco mundinhos redondos lado a lado, girando devagar, cada um com a sua cara
-// (árvores, blocos de montar, engrenagens, pista de gincana, troféus). O escolhido fica maior e com um anel.
-// Os nomes e cadeados ficam em HTML por cima (rótulos), nas mesmas posições (10%, 30%, 50%, 70%, 90%).
+// Escolha de mundo: cada mundo é um mundinho redondo com a sua cara (árvores, blocos de montar, engrenagens,
+// pista de gincana, troféus).
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { MUNDOS, ORDEM_MUNDOS } from './comum.js';
@@ -140,9 +139,17 @@ const DETALHES = {
   },
 };
 
+// Um mundo por vez, grande no meio. Trocar de mundo é uma viagem: o mundo atual sai girando para o lado,
+// riscos de velocidade cruzam a tela e o novo entra com um quique, uma onda de choque e uma chuva de peças.
+// As setas dos lados pulsam e as bolinhas embaixo mostram que há 5 mundos para passar.
+const DURACAO = 1.0;
+const CORES_PECA = ['#3E93D0', '#E3205D', '#F6BB33', '#A0C630'];
+const sai = k => k * k * k;                                         // acelera
+const chega = k => 1 + 2.4 * Math.pow(k - 1, 3) + 1.4 * Math.pow(k - 1, 2); // quique no fim (easeOutBack)
+
 export class Planetas {
-  // aoEscolher(idMundo) quando clicam num mundo liberado
-  constructor(caixa, aoEscolher) {
+  // aoMudar(dir): clicaram/arrastaram para o mundo anterior (-1) ou o próximo (+1)
+  constructor(caixa, aoMudar) {
     this.caixa = caixa;
     this.canvas = document.createElement('canvas');
     caixa.append(this.canvas);
@@ -158,65 +165,108 @@ export class Planetas {
     sol.position.set(-3, 4, 6);
     this.cena.add(sol);
 
+    // brilho redondo atrás do mundo, na cor do selo
+    this.halo = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: texturaHalo(), transparent: true, depthWrite: false, toneMapped: false }));
+    this.halo.position.z = -3;
+    this.cena.add(this.halo);
+
     this.mundos = ORDEM_MUNDOS.map((id, i) => {
       const def = MUNDOS[id];
       const raiz = new THREE.Group();
-      raiz.position.x = -4 + i * 2;
       const planeta = new THREE.Group();
       planeta.rotation.z = 0.2;
-      const globo = new THREE.Mesh(new THREE.SphereGeometry(R, 48, 32), new THREE.MeshStandardMaterial({ map: texturaTerra(def.planeta, i + 1), roughness: 0.7 }));
-      planeta.add(globo);
+      planeta.add(new THREE.Mesh(new THREE.SphereGeometry(R, 48, 32), new THREE.MeshStandardMaterial({ map: texturaTerra(def.planeta, i + 1), roughness: 0.7 })));
       DETALHES[def.planeta.detalhe](planeta);
-      // anel na cor do selo (aparece no mundo escolhido)
-      const anel = new THREE.Mesh(new THREE.TorusGeometry(R * 1.32, 0.035, 8, 64), brilho(def.cor, { emissive: def.cor, emissiveIntensity: 0.4 }));
+      const anel = new THREE.Mesh(new THREE.TorusGeometry(R * 1.32, 0.03, 8, 64), brilho(def.cor, { emissive: def.cor, emissiveIntensity: 0.4 }));
       anel.rotation.x = Math.PI / 2.3;
-      raiz.add(planeta, anel);
+      // estrelinhas em órbita
+      const orbita = new THREE.Group();
+      for (let k = 0; k < 6; k++) {
+        const e = new THREE.Mesh(geoEstrela(0.07), brilho(k % 2 ? '#FFFFFF' : def.cor, { emissive: def.cor, emissiveIntensity: 0.3 }));
+        const a = k * Math.PI / 3;
+        e.position.set(Math.cos(a) * R * 1.55, Math.sin(a * 2) * 0.25, Math.sin(a) * R * 1.55);
+        orbita.add(e);
+      }
+      orbita.rotation.x = 0.35;
+      // trancado: casca acinzentada por cima e um cadeado na frente
+      const casca = new THREE.Mesh(new THREE.SphereGeometry(R * 1.12, 40, 24), new THREE.MeshBasicMaterial({ color: '#E4E7EE', transparent: true, opacity: 0.72, depthWrite: false }));
+      const cadeado = new THREE.Group();
+      const corpo = new THREE.Mesh(new RoundedBoxGeometry(0.62, 0.5, 0.22, 3, 0.07), brilho('#F6BB33', { metalness: 0.3 }));
+      const alca = new THREE.Mesh(new THREE.TorusGeometry(0.2, 0.06, 10, 24, Math.PI), brilho('#9AA3B5', { metalness: 0.5 }));
+      alca.position.y = 0.25;
+      const furo = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.25, 12), fosco('#1E2A4A'));
+      furo.rotation.x = Math.PI / 2; furo.position.set(0, 0.03, 0.02);
+      cadeado.add(corpo, alca, furo);
+      cadeado.position.set(0, -0.05, R * 1.25);
+      const tranca = new THREE.Group();
+      tranca.add(casca, cadeado);
+      tranca.visible = false;
+      raiz.add(planeta, anel, orbita, tranca);
+      raiz.visible = false;
       this.cena.add(raiz);
-      const materiais = [];
-      raiz.traverse(o => { if (o.material) materiais.push({ m: o.material, cor: o.material.color.clone() }); });
-      return { id, raiz, planeta, anel, materiais, escala: 0.7, trancado: false };
+      return { id, def, raiz, planeta, anel, orbita, tranca, cadeado, trancado: false };
     });
 
-    // rótulos em HTML: selo, nome e progresso
-    this.rotulos = ORDEM_MUNDOS.map((id, i) => {
-      const b = document.createElement('button');
-      b.className = 'rotulo-mundo';
-      b.style.left = `${10 + i * 20}%`;
-      b.onclick = () => { if (!this.mundos[i].trancado) aoEscolher(id); };
-      caixa.append(b);
-      return b;
+    // onda de choque, riscos de velocidade e chuva de peças da chegada
+    this.onda = new THREE.Mesh(new THREE.RingGeometry(0.9, 1, 64), new THREE.MeshBasicMaterial({ color: '#fff', transparent: true, opacity: 0, depthWrite: false, toneMapped: false }));
+    this.onda.position.z = -1;
+    this.cena.add(this.onda);
+    this.riscos = Array.from({ length: 14 }, () => {
+      const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 0.035), new THREE.MeshBasicMaterial({ color: '#fff', transparent: true, opacity: 0, depthWrite: false, toneMapped: false }));
+      m.position.z = -2;
+      this.cena.add(m);
+      return m;
     });
-    this.canvas.onclick = ev => {
-      const r = this.canvas.getBoundingClientRect();
-      const i = Math.max(0, Math.min(4, Math.floor((ev.clientX - r.left) / r.width * 5)));
-      if (!this.mundos[i].trancado) aoEscolher(ORDEM_MUNDOS[i]);
-    };
-    this.canvas.onpointermove = ev => {
-      const r = this.canvas.getBoundingClientRect();
-      const i = Math.max(0, Math.min(4, Math.floor((ev.clientX - r.left) / r.width * 5)));
-      this.canvas.style.cursor = this.mundos[i].trancado ? 'not-allowed' : 'pointer';
-      this.sobre = i;
-    };
-    this.canvas.onpointerleave = () => { this.sobre = -1; };
-    this.sobre = -1;
+    this.pecas = [];
+
+    // controles em HTML: setas dos lados, cartão do nome, bolinhas
+    caixa.insertAdjacentHTML('beforeend', `
+      <button class="seta-mundo esq" title="Mundo anterior (↑)"><svg viewBox="0 0 24 24"><path d="M15 4 7 12l8 8"/></svg><span>Mundo<br>anterior</span></button>
+      <button class="seta-mundo dir" title="Próximo mundo (↓)"><span>Próximo<br>mundo</span><svg viewBox="0 0 24 24"><path d="M9 4l8 8-8 8"/></svg></button>
+      <div class="cartao-mundo"></div>
+      <div class="pontos-mundo"></div>`);
+    this.$ = sel => caixa.querySelector(sel);
+    this.$('.seta-mundo.esq').onclick = () => aoMudar(-1);
+    this.$('.seta-mundo.dir').onclick = () => aoMudar(1);
+    // arrastar o dedo/mouse para o lado também troca
+    let x0 = null;
+    this.canvas.onpointerdown = ev => { x0 = ev.clientX; };
+    this.canvas.onpointerup = ev => { if (x0 !== null && Math.abs(ev.clientX - x0) > 50) aoMudar(ev.clientX < x0 ? 1 : -1); x0 = null; };
+    this.aoMudar = aoMudar;
+
+    this.atual = null;
+    this.anim = null;
     this.ligado = false;
     this.antes = performance.now();
+    this.relogio = 0;
     addEventListener('resize', () => this.redimensionar());
   }
 
-  // escolhido: id do mundo; info[id] = { trancado, feitas, total }
-  atualizar(escolhido, info) {
-    this.escolhido = escolhido;
-    this.mundos.forEach((m, i) => {
-      const inf = info[m.id] || {};
-      m.trancado = !!inf.trancado;
-      for (const { m: mat, cor } of m.materiais) mat.color.copy(cor).lerp(new THREE.Color('#C9CED8'), m.trancado ? 0.75 : 0);
-      const def = MUNDOS[m.id];
-      this.rotulos[i].className = `rotulo-mundo ${m.id === escolhido ? 'sel' : ''} ${m.trancado ? 'trancado' : ''}`;
-      this.rotulos[i].style.setProperty('--cor', def.cor);
-      this.rotulos[i].innerHTML = `<img src="${def.selo}" alt=""><span><b>Mundo ${def.n}</b>${def.nome}</span>` +
-        `<i>${m.trancado ? '🔒 trancado' : `${inf.feitas ?? 0} de ${inf.total ?? 11}`}</i>`;
+  // idVisto: mundo mostrado; info[id] = { trancado, feitas, total }
+  atualizar(idVisto, info) {
+    const i = ORDEM_MUNDOS.indexOf(idVisto);
+    this.mundos.forEach(m => {
+      m.trancado = !!info[m.id]?.trancado;
+      m.tranca.visible = m.trancado;
     });
+    const m = this.mundos[i], inf = info[idVisto] || {};
+    const html = `<img src="${m.def.selo}" alt=""><div><b>Mundo ${m.def.n} de ${ORDEM_MUNDOS.length}</b><strong>${m.def.nome}</strong>
+      <i>${m.trancado ? '🔒 Vençam o mundo anterior para liberar' : `${inf.feitas ?? 0} de ${inf.total ?? 11} fases feitas`}</i></div>`;
+    const cartao = this.$('.cartao-mundo');
+    if (this.atual !== i) {
+      const dir = this.atual === null ? 0 : Math.sign(i - this.atual) * (Math.abs(i - this.atual) > 2 ? -1 : 1); // volta da ponta = continua no mesmo sentido
+      if (this.atual !== null) this.anim = { de: this.atual, para: i, dir: dir || 1, t: 0, explodiu: false };
+      else this.mundos[i].raiz.visible = true;
+      this.atual = i;
+      cartao.style.setProperty('--de', `${(dir || 0) * 40}vh`);
+      cartao.classList.remove('entra'); void cartao.offsetWidth; cartao.classList.add('entra');
+    }
+    cartao.innerHTML = html;
+    cartao.style.setProperty('--cor', m.def.cor);
+    cartao.classList.toggle('trancado', m.trancado);
+    this.caixa.style.setProperty('--cor', m.def.cor);
+    this.$('.pontos-mundo').innerHTML = this.mundos.map((o, k) =>
+      `<i class="${k === i ? 'sel' : ''} ${o.trancado ? 'trancado' : ''}" style="--c:${o.def.cor}"></i>`).join('');
   }
 
   ligar(sim) {
@@ -229,30 +279,127 @@ export class Planetas {
     const w = this.caixa.clientWidth, h = this.caixa.clientHeight;
     if (!w || !h) return;
     this.renderer.setSize(w, h, false);
-    // os rótulos ocupam o pé da caixa: o centro dos mundinhos fica um pouco acima do meio
     const alt = 10 * h / w;
-    Object.assign(this.camera, { left: -5, right: 5, top: alt * 0.42, bottom: -alt * 0.58 });
+    Object.assign(this.camera, { left: -5, right: 5, top: alt * 0.5, bottom: -alt * 0.5 });
     this.camera.updateProjectionMatrix();
+    this.alt = alt;
+    this.tam = Math.min(1.25, alt * 0.3 / R);    // o mundo ocupa ~60% da altura
+    this.meio = alt * 0.07;                      // um pouco acima do centro (o cartão fica embaixo)
+  }
+
+  explodir(cor) {
+    this.onda.material.color.set(cor);
+    this.onda.userData.t = 0;
+    for (let k = 0; k < 36; k++) {
+      const geo = k % 3 ? new RoundedBoxGeometry(0.12, 0.08, 0.12, 1, 0.02) : geoEstrela(0.08);
+      const p = new THREE.Mesh(geo, brilho(k % 3 ? CORES_PECA[k % 4] : cor));
+      const a = Math.random() * Math.PI * 2, v = 2 + Math.random() * 3;
+      p.userData = { vx: Math.cos(a) * v, vy: Math.sin(a) * v * 0.7 + 1, vida: 0.9 + Math.random() * 0.5, giro: (Math.random() - 0.5) * 12 };
+      p.position.set(0, this.meio || 0, 1.5);
+      this.cena.add(p);
+      this.pecas.push(p);
+    }
   }
 
   quadro(agora) {
     if (!this.ligado) return;
     const dt = Math.min(0.05, (agora - this.antes) / 1000);
     this.antes = agora;
+    this.relogio += dt;
     if (this.canvas.width !== Math.round(this.caixa.clientWidth * this.renderer.getPixelRatio())) this.redimensionar();
-    const t = agora / 1000;
-    this.mundos.forEach((m, i) => {
-      const sel = m.id === this.escolhido;
-      const alvo = sel ? 0.98 : this.sobre === i && !m.trancado ? 0.82 : 0.7;
-      m.escala += (alvo - m.escala) * Math.min(1, dt * 8);
-      m.raiz.scale.setScalar(m.escala);
-      m.raiz.position.y = sel ? Math.sin(t * 2) * 0.05 : 0;
-      m.planeta.rotation.y += dt * (sel ? 0.5 : 0.18) * (m.trancado ? 0.3 : 1);
-      m.anel.visible = sel;
+    const t = this.relogio, S = this.tam || 1;
+
+    // mundo parado no meio: flutua e gira devagar
+    const atual = this.mundos[this.atual];
+    for (const m of this.mundos) {
+      if (!m.raiz.visible) continue;
+      m.planeta.rotation.y += dt * (m.trancado ? 0.12 : 0.45);
+      m.orbita.rotation.y += dt * 0.8;
       m.anel.rotation.z = t * 0.6;
+      m.orbita.visible = m.anel.visible = !m.trancado;
+      if (m.trancado) { m.cadeado.rotation.z = Math.sin(t * 2.4) * 0.12; m.cadeado.position.y = -0.05 + Math.sin(t * 1.7) * 0.04; }
       m.planeta.traverse(o => { if (o.userData.gira) o.userData.gira.rotation.z = t * 1.5; });
+    }
+    let zoom = 1;
+    if (this.anim) {
+      const a = this.anim;
+      a.t += dt / DURACAO;
+      const k = Math.min(1, a.t);
+      const velho = this.mundos[a.de], novo = this.mundos[a.para];
+      // o velho sai (0 → 0.45), o novo entra (0.3 → 1)
+      const ks = Math.min(1, k / 0.45);
+      velho.raiz.visible = ks < 1;
+      velho.raiz.position.set(-a.dir * 7 * sai(ks), (this.meio || 0) + Math.sin(ks * Math.PI) * 0.4, 0);
+      velho.raiz.scale.setScalar(S * (1 - 0.6 * ks));
+      velho.planeta.rotation.y -= dt * 14 * a.dir;
+      const ke = Math.max(0, (k - 0.3) / 0.7);
+      novo.raiz.visible = k > 0.3;
+      novo.raiz.position.set(a.dir * 7 * (1 - chega(ke)), (this.meio || 0) + Math.sin(ke * Math.PI) * -0.3, 0);
+      novo.raiz.scale.setScalar(S * (0.35 + 0.65 * Math.min(1.2, chega(ke))));
+      novo.planeta.rotation.y += dt * 10 * (1 - ke) * a.dir;
+      // riscos de velocidade no meio da viagem
+      const forca = Math.sin(Math.min(1, k / 0.8) * Math.PI);
+      this.riscos.forEach((r, n) => {
+        r.material.color.set(n % 3 ? novo.def.cor : '#1E2A4A');
+        r.material.opacity = forca * (0.3 + (n % 3) * 0.2);
+        r.scale.x = 1.5 + (n % 4);
+        r.position.set(((n * 2.7 + t * 30 * -a.dir) % 14 + 14) % 14 - 7, ((n * 0.37) % 1 - 0.5) * 2.2, -2);
+      });
+      zoom = 1 + forca * 0.06;
+      if (ke > 0.55 && !a.explodiu) { a.explodiu = true; if (!novo.trancado) this.explodir(novo.def.cor); }
+      if (k >= 1) { velho.raiz.visible = false; velho.raiz.position.set(0, 0, 0); this.riscos.forEach(r => { r.material.opacity = 0; }); this.anim = null; }
+    } else if (atual) {
+      atual.raiz.visible = true;
+      atual.raiz.position.set(0, (this.meio || 0) + Math.sin(t * 1.8) * 0.06, 0);
+      atual.raiz.scale.setScalar(S);
+    }
+    // halo na cor do mundo (troca suave)
+    if (atual) this.halo.material.color.lerp(new THREE.Color(atual.trancado ? '#C9CED8' : atual.def.cor), Math.min(1, dt * 4));
+    this.halo.scale.setScalar((this.alt || 2) * (0.96 + Math.sin(t * 2) * 0.03));
+    this.halo.position.y = this.meio || 0;
+    // onda de choque
+    const o = this.onda.userData;
+    if (o.t !== undefined && o.t < 1) {
+      o.t += dt * 1.6;
+      this.onda.scale.setScalar(S * (0.8 + o.t * 1.6));
+      this.onda.position.y = this.meio || 0;
+      this.onda.material.opacity = (1 - o.t) * 0.8;
+    } else this.onda.material.opacity = 0;
+    // chuva de peças
+    this.pecas = this.pecas.filter(p => {
+      const u = p.userData;
+      u.vida -= dt;
+      if (u.vida <= 0) { this.cena.remove(p); p.geometry.dispose(); p.material.dispose(); return false; }
+      u.vy -= 6 * dt;
+      p.position.x += u.vx * dt; p.position.y += u.vy * dt;
+      p.rotation.z += u.giro * dt; p.rotation.x += u.giro * 0.5 * dt;
+      p.scale.setScalar(Math.min(1, u.vida * 2));
+      return true;
     });
+    this.camera.zoom = zoom;
+    this.camera.updateProjectionMatrix();
     this.renderer.render(this.cena, this.camera);
     requestAnimationFrame(tt => this.quadro(tt));
   }
+}
+
+function geoEstrela(r) {
+  const sh = new THREE.Shape();
+  for (let k = 0; k < 10; k++) { const rr = k % 2 ? r * 0.45 : r, a = Math.PI / 2 + k * Math.PI / 5; sh[k ? 'lineTo' : 'moveTo'](Math.cos(a) * rr, Math.sin(a) * rr); }
+  return new THREE.ExtrudeGeometry(sh, { depth: r * 0.3, bevelEnabled: false });
+}
+
+function texturaHalo() {
+  const c = document.createElement('canvas');
+  c.width = c.height = 256;
+  const g = c.getContext('2d');
+  const grad = g.createRadialGradient(128, 128, 20, 128, 128, 128);
+  grad.addColorStop(0, 'rgba(255,255,255,0.75)');
+  grad.addColorStop(0.45, 'rgba(255,255,255,0.35)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = grad;
+  g.fillRect(0, 0, 256, 256);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
 }
