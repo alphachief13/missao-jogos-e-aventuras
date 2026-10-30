@@ -23,15 +23,26 @@ export const LOJA = {
 };
 
 export class Sala {
-  // tudo: libera todas as fases (para testar; a tela abre com ?tudo)
-  constructor({ tudo = false } = {}) {
+  // tudo: libera todas as fases (para testar; a tela abre com ?tudo).
+  // progresso: o que estava salvo ({ liberadas, carteira, faseIdx, trapaca }); salvar(progresso) guarda a cada mudança.
+  constructor({ tudo = false, progresso = null, salvar = null } = {}) {
     this.clientes = new Set();
     this.jogadores = [];
     this.estado = 'lobby';
     this.etapa = 'inicio';  // passo do menu dentro do lobby: inicio → times → fase
     this.faseIdx = 0;
-    this.liberadas = tudo ? FASES.length : 1;
+    this.liberadas = tudo ? FASES.length : 1;  // fases liberadas de verdade (vencendo)
     this.carteira = 0;
+    this.trapaca = false;   // modo livre (cheat): todas as fases e oficina de graça, sem perder o progresso real
+    this.salvar = salvar;
+    this.salvo = '';
+    if (progresso) {
+      const n = v => (Number.isInteger(v) && v >= 0 ? v : 0);
+      this.liberadas = Math.max(this.liberadas, Math.min(FASES.length, n(progresso.liberadas) || 1));
+      this.carteira = n(progresso.carteira);
+      this.faseIdx = Math.min(n(progresso.faseIdx), this.liberadas - 1);
+      this.trapaca = !!progresso.trapaca;
+    }
     this.compras = {};      // { azul: { coracao: 1, mola: 1 } } para a próxima fase
     this.ultimoGanho = 0;
     this.jogo = null;
@@ -52,32 +63,86 @@ export class Sala {
   }
 
   // Liga um cliente. Devolve { receber(texto), fechar() } para o transporte chamar.
-  conectar(enviar) {
-    const cli = { enviar, jogador: null };
-    this.clientes.add(cli);
-    this.enviar(cli, { t: 'oi', ...this.resumo() });
-    if (this.jogo) this.enviar(cli, { t: 'fase', fase: this.jogo.fase });
+  // local: a própria tela anfitriã (nunca cai). Os outros mandam 'ping'; calado por muito tempo = desligado
+  // (celular que foi para o fundo nem sempre fecha a conexão).
+  conectar(enviar, { local = false } = {}) {
+    const cli = { enviar, jogador: null, local, visto: Date.now() };
+    this.ligar(cli);
     return {
       receber: raw => {
         let m; try { m = JSON.parse(raw); } catch { return; }
+        if (!this.clientes.has(cli)) this.voltou(cli); // voltou depois de ser dado como desligado
+        cli.visto = Date.now();
         this.mensagem(cli, m);
       },
       fechar: () => {
         if (!this.clientes.delete(cli)) return;
-        if (cli.jogador) this.sair(cli.jogador);
+        if (cli.jogador) this.desligou(cli.jogador, cli);
       },
     };
+  }
+  // Conexão que tinha sido dada como desligada voltou a falar: devolve o jogador dela, se ninguém o pegou.
+  voltou(cli) {
+    this.ligar(cli);
+    const j = cli.antigo;
+    if (j && !j.cli && this.jogadores.includes(j)) {
+      j.cli = cli; j.ausente = null; j.entrada = {}; cli.jogador = j;
+      this.enviar(cli, { t: 'voce', id: j.id });
+      this.anunciar();
+    }
+  }
+  ligar(cli) {
+    this.clientes.add(cli);
+    this.enviar(cli, { t: 'oi', ...this.resumo() });
+    if (this.jogo) this.enviar(cli, { t: 'fase', fase: this.jogo.fase });
+  }
+
+  // Quem caiu durante a partida fica "ausente" (com o personagem guardado) para poder voltar no mesmo lugar.
+  desligou(j, cli) {
+    if (j.cli !== cli) return;
+    j.cli = null;
+    cli.jogador = null;
+    cli.antigo = j;
+    if (this.jogo) { j.ausente = Date.now(); j.entrada = {}; this.anunciar(); }
+    else this.sair(j);
+  }
+  limparAusentes(maisVelhoQue = 0) {
+    const agora = Date.now();
+    const sairam = this.jogadores.filter(j => j.ausente && agora - j.ausente >= maisVelhoQue);
+    if (!sairam.length) return;
+    this.jogadores = this.jogadores.filter(j => !sairam.includes(j));
+    this.distribuir();
+    if (!this.jogadores.length) this.irParaLobby();
+    else this.anunciar();
+  }
+  liberadasAgora() { return this.trapaca ? FASES.length : this.liberadas; }
+  guardar() {
+    const p = JSON.stringify({ liberadas: this.liberadas, carteira: this.carteira, faseIdx: this.faseIdx, trapaca: this.trapaca });
+    if (p !== this.salvo) { this.salvo = p; this.salvar?.(JSON.parse(p)); }
   }
 
   mensagem(cli, m) {
     const j = cli.jogador;
     switch (m.t) {
+      case 'ping': break;
       case 'entrar': {
         if (j) return;
+        // mesmo aparelho voltando (chave guardada nele): reassume o próprio jogador e personagem
+        const chave = String(m.chave || '').slice(0, 40);
+        const antigo = chave && this.jogadores.find(o => o.chave === chave);
+        if (antigo) {
+          if (antigo.cli && antigo.cli !== cli) antigo.cli.jogador = null;
+          antigo.cli = cli; antigo.ausente = null; antigo.entrada = {};
+          cli.jogador = antigo;
+          this.enviar(cli, { t: 'voce', id: antigo.id });
+          this.anunciar();
+          break;
+        }
+        if (this.jogadores.length >= MAX_JOGADORES) this.limparAusentes();
         if (this.jogadores.length >= MAX_JOGADORES) return this.enviar(cli, { t: 'cheio' });
         const nome = String(m.nome || '').trim().slice(0, 14) || `Jogador ${this.jogadores.length + 1}`;
         const novo = { id: this.proxId++, nome, tipo: m.tipo === 'celular' ? 'celular' : 'teclado',
-                       pref: null, entrada: {}, pers: [], ativo: 0, cli };
+                       pref: null, entrada: {}, pers: [], ativo: 0, cli, chave, ausente: null };
         cli.jogador = novo;
         this.jogadores.push(novo);
         this.distribuir();
@@ -110,7 +175,7 @@ export class Sala {
         }
         break;
       case 'escolherFase':
-        if (this.estado === 'lobby' && Number.isInteger(m.idx) && m.idx >= 0 && m.idx < this.liberadas) {
+        if (this.estado === 'lobby' && Number.isInteger(m.idx) && m.idx >= 0 && m.idx < this.liberadasAgora()) {
           this.faseIdx = m.idx;
           this.anunciar();
         }
@@ -169,6 +234,18 @@ export class Sala {
         else this.irParaLobby();
         break;
       case 'comprar': this.comprar(m.item, m.cor); break;
+      case 'novoJogo':  // apaga o progresso: volta para a fase 1, sem peças, sem modo livre
+        if (this.estado !== 'lobby' || this.jogo) return;
+        Object.assign(this, { liberadas: 1, carteira: 0, faseIdx: 0, compras: {}, trapaca: false, ultimoGanho: 0 });
+        this.evento({ e: 'novoJogo' });
+        this.anunciar();
+        break;
+      case 'trapaca':   // liga/desliga o modo livre (cheat): todas as fases e oficina de graça
+        if (this.estado !== 'lobby' || this.jogo) return;
+        this.trapaca = !this.trapaca;
+        if (!this.trapaca) this.faseIdx = Math.min(this.faseIdx, this.liberadas - 1);
+        this.anunciar();
+        break;
       case 'jogar':
         if (this.estado === 'loja') this.iniciar();
         break;
@@ -180,6 +257,7 @@ export class Sala {
 
   // Volta ao menu na escolha de fase (ou no início, se a sala esvaziou).
   irParaLobby() {
+    this.jogadores = this.jogadores.filter(j => !j.ausente); // quem caiu na partida e não voltou sai da sala
     this.estado = 'lobby';
     this.etapa = this.jogadores.length ? 'fase' : 'inicio';
     this.jogo = null;
@@ -193,8 +271,8 @@ export class Sala {
     const def = LOJA[item];
     if (this.estado !== 'loja' || !def || !this.timesAtivos().includes(cor)) return;
     const c = (this.compras[cor] ??= {});
-    if ((c[item] || 0) >= def.max || this.carteira < def.preco) return;
-    this.carteira -= def.preco;
+    if ((c[item] || 0) >= def.max || (!this.trapaca && this.carteira < def.preco)) return;
+    if (!this.trapaca) this.carteira -= def.preco;
     c[item] = (c[item] || 0) + 1;
     this.evento({ e: 'compra', item, cor });
     this.anunciar();
@@ -242,6 +320,7 @@ export class Sala {
 
   // treino: 'lado' ou 'iso' para jogar o treino daquele modo em vez da fase escolhida
   iniciar(treino = null) {
+    this.limparAusentes();  // quem caiu e não voltou não conta na partida nova
     if (!this.jogadores.length) return;
     this.jogo = null;
     this.distribuir();
@@ -249,7 +328,7 @@ export class Sala {
     const fase = treino ? TREINOS[treino].fase : FASES[this.faseIdx];
     this.treino = treino ? { passo: 0, modo: treino } : null;
     this.jogo = fase.modo === 'iso'
-      ? new JogoIso(fase, this.compras, ativos, this.jogadores.length)
+      ? new JogoIso(fase, treino ? {} : this.compras, ativos, this.jogadores.length)
       : new Jogo(fase, treino ? {} : this.compras, ativos);
     if (!treino) { this.comprasDaFase = this.compras; this.compras = {}; }
     this.pausado = null;
@@ -262,6 +341,11 @@ export class Sala {
 
   passo() {
     this.tick++;
+    if (this.tick % 60 === 0) {
+      const agora = Date.now();
+      for (const c of [...this.clientes]) if (!c.local && agora - c.visto > 20000) { this.clientes.delete(c); if (c.jogador) this.desligou(c.jogador, c); }
+      this.limparAusentes(90000);
+    }
     if (this.estado === 'contagem' && Date.now() >= this.contagemFim) { this.estado = 'jogando'; this.anunciar(); }
     if (this.estado === 'jogando' && !this.pausado) {
       const entradas = {};
@@ -303,12 +387,13 @@ export class Sala {
       treino: this.treino,
       pausado: this.pausado,
       contagemFim: this.estado === 'contagem' ? this.contagemFim - Date.now() : 0,
-      jogadores: this.jogadores.map((j, n) => ({ id: j.id, n: n + 1, nome: j.nome, tipo: j.tipo, pers: j.pers, ativo: j.pers[j.ativo] ?? null })),
+      jogadores: this.jogadores.map((j, n) => ({ id: j.id, n: n + 1, nome: j.nome, tipo: j.tipo, pers: j.pers, ativo: j.pers[j.ativo] ?? null, ausente: !!j.ausente })),
       times: this.timesAtivos(),
       resultado: this.jogo?.resultado ?? null,
       placar: this.jogo?.resultado ? this.jogo.placar() : null,
       faseIdx: this.faseIdx,
-      liberadas: this.liberadas,
+      liberadas: this.liberadasAgora(),
+      trapaca: this.trapaca,
       fases: FASES.map(f => ({ id: f.id, nome: f.nome, coracoes: f.coracoes, dica: f.dica, mundo: f.mundo, modo: f.modo || 'lado' })),
       carteira: this.carteira,
       ultimoGanho: this.ultimoGanho,
@@ -318,7 +403,7 @@ export class Sala {
     };
   }
 
-  anunciar() { this.difundir({ t: 'sala', ...this.resumo() }); }
+  anunciar() { this.difundir({ t: 'sala', ...this.resumo() }); this.guardar(); }
   evento(e) { this.difundir({ t: 'ev', ...e }); }
   enviar(cli, m) { cli.enviar(JSON.stringify(m)); }
   difundir(m) { const s = JSON.stringify(m); for (const c of this.clientes) c.enviar(s); }

@@ -59,12 +59,19 @@ requestAnimationFrame(laco);
 let bussolaHtml = '';
 function desenharBussola(s, j) {
   const b = bussola(fase, s, fase.personagens.findIndex(p => p.id === j.ativo));
-  const html = b ? `<span class="seta">${SETA}</span><span>Missão ${b.numero} · ${b.m.nome} <small>${b.m.dica}</small></span>`
+  const html = b ? `<span class="seta">${SETA}</span><span>${b.numero} · ${b.m.nome} <small>${b.passo.texto}</small></span>`
                  : '<span class="seta">✓</span><span>Todas as missões feitas!</span>';
   if (html !== bussolaHtml) { $('bussola').innerHTML = html; bussolaHtml = html; }
   const svg = $('bussola').querySelector('svg');
   if (svg && b) svg.style.transform = `rotate(${b.angulo}deg)`;
 }
+
+// Chave fixa deste celular: ao voltar (aba recarregada, rede caiu), a tela devolve o mesmo jogador e personagem.
+let chave = '';
+try { chave = localStorage.getItem('mja_chave') || ''; if (!chave) { chave = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem('mja_chave', chave); } } catch {}
+const pedirEntrada = () => rede.enviar({ t: 'entrar', tipo: 'celular', nome: $('nome').value, chave });
+// Página restaurada do cache do navegador (voltou de outro app): recarrega para não mostrar uma tela velha.
+addEventListener('pageshow', e => { if (e.persisted) location.reload(); });
 
 // Liga na tela anfitriã pelo código (vem no QR code; sem ele, a pessoa digita).
 let rede = null;
@@ -73,11 +80,18 @@ function ligar(codigo) {
   rede = entrarNaSala(codigo, receber, (ok, motivo) => {
     $('msgNome').textContent = ok ? '' : motivo === 'sala' ? `Procurando a sala ${codigo}… a tela do jogo está aberta?` : 'Conectando…';
     // Ao reconectar, a tela esqueceu este celular: entra de novo com o mesmo nome.
-    if (ok && entrei) { meuId = null; rede.enviar({ t: 'entrar', tipo: 'celular', nome: $('nome').value }); }
+    if (ok && entrei) { meuId = null; pedirEntrada(); }
   });
 }
 if (codigoDaUrl()) ligar(codigoDaUrl());
 else $('codigo').classList.remove('oculto');
+// Já estava jogando nesta sala (a aba recarregou): entra de novo sozinho, no mesmo lugar.
+try {
+  if (codigoDaUrl() && localStorage.getItem('mja_sala_celular') === codigoDaUrl() && localStorage.getItem('mja_nome')) {
+    entrei = true;
+    $('msgNome').textContent = 'Voltando para a partida…';
+  }
+} catch {}
 
 const eu = () => sala.jogadores.find(j => j.id === meuId);
 
@@ -90,7 +104,8 @@ $('btnEntrar').onclick = () => {
     ligar(codigo);
   }
   entrei = true;
-  rede.enviar({ t: 'entrar', tipo: 'celular', nome: $('nome').value });
+  try { localStorage.setItem('mja_sala_celular', codigoDaUrl()); } catch {}
+  pedirEntrada();
   telaCheia();
 };
 $('nome').onkeydown = e => { if (e.key === 'Enter') $('btnEntrar').click(); };
@@ -138,7 +153,7 @@ function atualizar() {
     for (const d of $('cards').children) d.onclick = () => rede.enviar({ t: 'escolher', pers: d.dataset.p });
   } else if (sala.estado === 'loja') {
     mostrar('pgLoja');
-    $('carteira').textContent = sala.carteira;
+    $('carteira').textContent = sala.trapaca ? '∞' : sala.carteira;
     const f = sala.fases[sala.faseIdx];
     $('msgLoja').textContent = `Próxima: ${f.id} · ${f.nome} (${f.coracoes} corações por time)`;
     const meus = j.pers.map(p => PERS_COR[p]);
@@ -147,7 +162,7 @@ function atualizar() {
       ${meus.map(cor => {
         const qt = sala.compras[cor]?.[item] || 0;
         const cheio = qt >= def.max;
-        const pode = !cheio && sala.carteira >= def.preco;
+        const pode = !cheio && (sala.trapaca || sala.carteira >= def.preco);
         return `<button class="${cheio ? 'cheio' : ''}" style="background:${CORES[cor]}" data-item="${item}" data-cor="${cor}" ${pode ? '' : 'disabled'}>
           <img src="assets/personagens/${COR_PERS[cor]}/retrato.png">${qt ? (def.max > 1 ? qt + '×' : '✓') : 'Montar'}</button>`;
       }).join('')}</div>`).join('');
@@ -200,8 +215,10 @@ function posJoystick(x, y, x0 = x, y0 = y) {
   base.style.left = x0 + 'px'; base.style.top = y0 + 'px';
   pino.style.left = x + 'px'; pino.style.top = y + 'px';
 }
+let joyUsado = false;
+try { joyUsado = localStorage.getItem('mja_joy_ok') === '1'; } catch {}
 function joystickParado() {
-  $('joy').classList.add('dica');
+  $('joy').classList.toggle('dica', !joyUsado);
   const x = Math.max(110, innerWidth * 0.17), y = innerHeight - Math.max(110, innerHeight * 0.3);
   posJoystick(x, y);
 }
@@ -217,6 +234,7 @@ function lerJoystick(e) {
     if (!joy && t.clientX < innerWidth * 0.45 && !document.elementFromPoint(t.clientX, t.clientY)?.closest('.ctl, button')) {
       joy = { id, x0: t.clientX, y0: t.clientY, jx: 0, jy: 0 };
       $('joy').classList.remove('dica');
+      if (!joyUsado) { joyUsado = true; try { localStorage.setItem('mja_joy_ok', '1'); } catch {} }
     }
     if (joy && joy.id === id) {
       let dx = t.clientX - joy.x0, dy = t.clientY - joy.y0;

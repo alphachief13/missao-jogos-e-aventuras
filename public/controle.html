@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#FFFBF3">
+  <!-- adicionado à tela de início do celular, abre em tela cheia (sem barras do navegador) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Controle · Missão, Jogos e Aventuras</title>
   <link rel="icon" href="assets/ui/ic_bussola.png">
   <link rel="stylesheet" href="css/base.css">
@@ -101,6 +105,24 @@
     #bussola .seta { width: 40px; height: 40px; border-radius: 50%; background: var(--amarelo); display: grid; place-items: center; flex: none; }
     #bussola .seta svg { width: 26px; height: 26px; transition: transform .15s; }
     #bussola small { display: block; font: 600 12px Nunito, sans-serif; line-height: 1.15; white-space: normal; }
+    /* Mundo 2: interface enxuta por cima do jogo */
+    #jogo.iso #topo { left: auto; right: max(10px, env(safe-area-inset-right)); transform: none; gap: 6px; padding: 3px 10px 3px 3px; font-size: 13px; }
+    #jogo.iso #topo img.r { height: 30px; }
+    #jogo.iso #topo img.r.inativo { height: 22px; }
+    #jogo.iso #topo > span:not(.cor) { display: none; }
+    #jogo.iso #topo .cor img { height: 13px; }
+    #jogo.iso #btnPausa { width: 38px; height: 38px; padding: 9px; }
+    #jogo.iso #bussola { top: max(8px, env(safe-area-inset-top)); left: calc(max(10px, env(safe-area-inset-left)) + 46px); max-width: 50vw; text-align: left;
+                         font-size: 12px; padding: 3px 10px 3px 3px; gap: 6px; background: #ffffffE6; }
+    #jogo.iso #bussola .seta { width: 30px; height: 30px; }
+    #jogo.iso #bussola .seta svg { width: 20px; height: 20px; }
+    #jogo.iso #bussola small { font-size: 11px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    #jogo.iso .ctl { opacity: .78; }
+    #jogo.iso .ctl.grande { width: min(21vh, 16vw); }
+    #jogo.iso .ctl.pequeno { width: min(14vh, 11vw); }
+    #jogo.iso .lado { padding-bottom: 3vh; }
+    #jogo.iso #joy .base { width: 110px; height: 110px; margin: -55px 0 0 -55px; background: #ffffff33; border-width: 3px; }
+    #jogo.iso #joy .pino { width: 50px; height: 50px; margin: -25px 0 0 -25px; opacity: .85; }
     #girar { display: none; position: fixed; inset: 0; background: var(--creme); z-index: 9; flex-direction: column;
              align-items: center; justify-content: center; gap: 16px; font: 700 22px Fredoka, sans-serif; text-align: center; padding: 24px; }
     @media (orientation: portrait) { #jogo:not(.oculto) ~ #girar { display: flex; } }

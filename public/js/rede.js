@@ -11,9 +11,16 @@ export const codigoDaUrl = () => (new URLSearchParams(location.search).get('sala
 // Tela anfitriã: cria a sala, liga a própria tela por um canal local e aceita celulares/outros PCs.
 // aoMudar(ok) avisa se a sala está visível na internet (sem isso, só esta tela joga).
 export function hospedar(aoReceber, aoMudar = () => {}) {
-  const sala = new Sala({ tudo: new URLSearchParams(location.search).has('tudo') });
+  // o progresso (fases liberadas, peças, modo livre) fica guardado neste navegador
+  let progresso = null;
+  try { progresso = JSON.parse(localStorage.getItem('mja_progresso') || 'null'); } catch {}
+  const sala = new Sala({
+    tudo: new URLSearchParams(location.search).has('tudo'), progresso,
+    salvar: p => { try { localStorage.setItem('mja_progresso', JSON.stringify(p)); } catch {} },
+  });
+  globalThis.salaDoJogo = sala; // para inspecionar no console do navegador
   // canal local: entrega assíncrona, como numa rede de verdade
-  const local = sala.conectar(texto => queueMicrotask(() => aoReceber(JSON.parse(texto))));
+  const local = sala.conectar(texto => queueMicrotask(() => aoReceber(JSON.parse(texto))), { local: true });
   const api = { enviar: m => local.receber(JSON.stringify(m)), codigo: null, aoCodigo: () => {} };
 
   let codigo = null;
@@ -53,15 +60,29 @@ export function entrarNaSala(codigo, aoReceber, aoMudar = () => {}) {
   };
   const peer = new Peer();
   let tentando = false;
+  // Uma conexão por vez: eventos de uma conexão antiga são ignorados (senão o celular "duplica" ao voltar).
   function ligar() {
-    if (tentando || peer.destroyed) return;
+    if (tentando || peer.destroyed || conn?.open) return;
     tentando = true;
-    conn = peer.connect(PREFIXO + codigo, { serialization: 'raw', reliable: true });
-    conn.on('open', () => { tentando = false; aoMudar(true); for (const s of fila) conn.send(s); fila = []; });
-    conn.on('data', texto => aoReceber(JSON.parse(texto)));
-    conn.on('close', () => { tentando = false; aoMudar(false); setTimeout(ligar, 1500); });
+    const c = peer.connect(PREFIXO + codigo, { serialization: 'raw', reliable: true });
+    conn = c;
+    const desistir = setTimeout(() => { if (c === conn && !c.open) { tentando = false; c.close(); conn = null; ligar(); } }, 10000);
+    c.on('open', () => {
+      clearTimeout(desistir);
+      if (c !== conn) { c.close(); return; }
+      tentando = false; aoMudar(true); for (const s of fila) c.send(s); fila = [];
+    });
+    c.on('data', texto => { if (c === conn) aoReceber(JSON.parse(texto)); });
+    c.on('close', () => { if (c !== conn) return; conn = null; tentando = false; aoMudar(false); setTimeout(ligar, 1500); });
   }
   peer.on('open', ligar);
+  // sinal de vida a cada 3 s (a tela dá como desligado quem some) e reconexão rápida ao voltar para a aba
+  setInterval(() => { if (conn?.open) conn.send(JSON.stringify({ t: 'ping' })); }, 3000);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible') return;
+    if (conn?.open) conn.send(JSON.stringify({ t: 'ping' }));
+    else { tentando = false; if (peer.disconnected && !peer.destroyed) peer.reconnect(); else ligar(); }
+  });
   peer.on('disconnected', () => setTimeout(() => !peer.destroyed && peer.reconnect(), 2000));
   peer.on('error', err => {
     // sala não encontrada (tela fechada ou código errado) ou queda: tenta de novo

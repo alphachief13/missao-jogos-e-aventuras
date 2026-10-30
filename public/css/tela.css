@@ -192,7 +192,8 @@ kbd { font: 700 .9em Fredoka, sans-serif; background: var(--marinho); color: #ff
 .missoes { position: absolute; right: 1.4vw; top: 10vh; padding: 1.2vh 1.4vh; display: flex; flex-direction: column; gap: .7vh; min-width: 17vw; }
 .missoes h4 { margin: 0 0 .3vh; font: 700 2vh Fredoka, sans-serif; display: flex; align-items: center; gap: .6vh; }
 .missoes h4 img { height: 2.6vh; }
-.missoes .m { display: flex; align-items: center; gap: .9vh; font: 600 1.8vh Fredoka, sans-serif; }
+.missoes .m { display: flex; align-items: flex-start; gap: .9vh; font: 600 1.8vh Fredoka, sans-serif; max-width: 24vw; }
+.missoes .m small { display: block; font: 600 1.5vh Nunito, sans-serif; opacity: .8; line-height: 1.25; margin-top: .2vh; }
 .missoes .m b { width: 3vh; height: 3vh; border-radius: 50%; display: grid; place-items: center; background: var(--azul); color: #fff; font-size: 1.7vh; flex: none; }
 .missoes .m.feita { opacity: .55; text-decoration: line-through; }
 .missoes .m.feita b { background: var(--verde); }
@@ -216,3 +217,13 @@ kbd { font: 700 .9em Fredoka, sans-serif; background: var(--marinho); color: #ff
                 animation: surge .5s cubic-bezier(.3,1.6,.5,1); }
 .aviso-missao small { display: block; font: 600 2.2vh Nunito, sans-serif; }
 @keyframes surge { from { transform: translate(-50%, -50%) scale(.4); opacity: 0; } }
+
+/* início: progresso salvo, novo jogo e modo livre (cheat) */
+.opcoes-inicio { position: absolute; bottom: 2.4vh; left: 50%; transform: translateX(-50%); display: flex; gap: 1.4vw; align-items: center;
+                 font: 600 1.8vh Fredoka, sans-serif; white-space: nowrap; }
+.opcoes-inicio .link { all: unset; cursor: pointer; padding: .6vh 1.6vh; border-radius: 999px; background: #fff; box-shadow: var(--sombra);
+                       border: 2px solid var(--linha); }
+.opcoes-inicio .link:hover { border-color: var(--azul); }
+.opcoes-inicio .link.ligado { background: var(--amarelo); border-color: var(--marinho); }
+#progressoInfo { opacity: .7; }
+.pilula.livre { background: var(--amarelo); border-color: var(--marinho); }

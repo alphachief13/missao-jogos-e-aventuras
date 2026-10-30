@@ -173,6 +173,11 @@ function exigeDupla(fase) {
   r.vai('ruivo', 27.5, 14.6);
   r.espera(60 * 3, { ruivo: joy(0, -1) });
   if (r.j.caixas[0].l !== 13) throw new Error('caixa pesada andou com um time só');
+  // empurrar para o lado errado (para baixo) não mexe a caixa: ela não pode ficar presa no fim do corredor
+  r.vai('loira', 27.5, 12.4);
+  r.vai('ruivo', 27.5, 12.4);
+  r.espera(60 * 3, { ruivo: joy(0, 1), loira: joy(0, 1) });
+  if (r.j.caixas[0].l !== 13) throw new Error('caixa andou para o lado errado');
   return 'ok';
 }
 

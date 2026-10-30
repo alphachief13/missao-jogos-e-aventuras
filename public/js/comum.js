@@ -34,21 +34,51 @@ export const ITENS = {
   planador: { icone: ICONE.planador, desc: 'Segure PULAR caindo para planar devagar.' },
 };
 
-// Mundo 2: missão que a bússola aponta para um personagem (a mais perto entre as liberadas e não feitas)
+// Mundo 2: em que passo cada missão está. O passo atual é o seguinte ao último passo já feito.
+// feito: { obra } pronta, { placa } pisada agora, { alavancas: [...] } todas puxadas, { encaixe } cheio, { missao } concluída.
+export function passoDaMissao(fase, s, k, cor = null) {
+  const m = fase.missoes[k];
+  const lista = m.passos || [{ texto: m.dica, feito: { missao: m.id } }];
+  const idx = (arr, id) => arr?.findIndex(o => o.id === id) ?? -1;
+  const feito = f => {
+    if (f.missao) return !!s.missoes[idx(fase.missoes, f.missao)];
+    if (f.obra) return !!s.obras?.[idx(fase.obras, f.obra)]?.[3];
+    if (f.placa) return !!s.bot?.[idx(fase.botoes, f.placa)];
+    if (f.encaixe) return !!s.enc?.[idx(fase.encaixes, f.encaixe)];
+    if (f.alavancas) return f.alavancas.every(id => idx(fase.alavancas, id) < 0 || s.alav[idx(fase.alavancas, id)]);
+    return false;
+  };
+  let i = 0;
+  lista.forEach((p, n) => { if (feito(p.feito)) i = n + 1; });
+  i = Math.min(i, lista.length - 1);
+  const passo = lista[i];
+  let alvo = passo.alvo || [m.x, m.z];
+  // alavancas: aponta a da cor do time (se ainda não foi puxada), senão qualquer uma que falte
+  if (passo.feito.alavancas) {
+    const falta = passo.feito.alavancas.map(id => fase.alavancas[idx(fase.alavancas, id)]).filter((a, n) => a && !s.alav[idx(fase.alavancas, a.id)]);
+    const minha = falta.find(a => a.cor === cor) || falta.find(a => !a.cor) || falta[0];
+    if (minha) alvo = [minha.x, minha.z + 0.8];
+  }
+  return { i, total: lista.length, texto: passo.texto, alvo };
+}
+
+// Missão que a bússola aponta para um personagem (a mais perto entre as liberadas e não feitas), com o passo atual
 // e o ângulo da seta na tela (0 = direita), já na visão isométrica (direita = +x −z, baixo = +x +z).
 export function bussola(fase, s, i) {
   if (!fase?.missoes || !s?.missoes || !s.ch[i]) return null;
   const [x, z] = s.ch[i];
+  const cor = PERS_COR[fase.personagens[i]?.id];
   const feita = id => s.missoes[fase.missoes.findIndex(m => m.id === id)];
   let melhor = null;
   fase.missoes.forEach((m, k) => {
     if (s.missoes[k] || (m.depois && !m.depois.every(feita))) return;
-    const d = Math.hypot(m.x - x, m.z - z);
-    if (!melhor || d < melhor.d) melhor = { m, k, d };
+    const passo = passoDaMissao(fase, s, k, cor);
+    const d = Math.hypot(passo.alvo[0] - x, passo.alvo[1] - z);
+    if (!melhor || d < melhor.d) melhor = { m, k, d, passo };
   });
   if (!melhor) return null;
-  const dx = melhor.m.x - x, dz = melhor.m.z - z;
+  const dx = melhor.passo.alvo[0] - x, dz = melhor.passo.alvo[1] - z;
   return { ...melhor, numero: melhor.k + 1, feitas: s.missoes.filter(Boolean).length, total: fase.missoes.length,
-           angulo: Math.atan2(dx + dz, dx - dz) * 180 / Math.PI };
+           alvo: melhor.passo.alvo, perto: melhor.d < 1.5, angulo: Math.atan2(dx + dz, dx - dz) * 180 / Math.PI };
 }
 export const SETA = '<svg viewBox="0 0 24 24"><path d="M4 12h13M12 5l7 7-7 7" fill="none" stroke="#1E2A4A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';

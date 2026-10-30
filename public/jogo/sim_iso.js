@@ -376,6 +376,9 @@ export class JogoIso {
       if (cx.forca < EMPURRAO) continue;
       cx.forca = 0;
       const [dc, dl] = melhor[0].split(',').map(Number);
+      // caixa com trilho só anda nas direções permitidas (assim não fica presa num canto)
+      const DIRS = { norte: [0, -1], sul: [0, 1], leste: [1, 0], oeste: [-1, 0] };
+      if (cx.direcoes && !cx.direcoes.some(d => DIRS[d][0] === dc && DIRS[d][1] === dl)) { this.eventos.push({ e: 'travou', x: cx.px, z: cx.pz }); continue; }
       const c = cx.c + dc, l = cx.l + dl;
       if (!this.caixaPodeIr(cx, c, l)) { this.eventos.push({ e: 'travou', x: cx.px, z: cx.pz }); continue; }
       cx.de = { x: cx.px, z: cx.pz }; cx.t = 0; cx.c = c; cx.l = l;

@@ -5,7 +5,7 @@
 // seguir([]) é a plateia (mapa inteiro).
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
-import { CORES, PERS_COR, COR_PERS, ICONE } from './comum.js';
+import { CORES, PERS_COR, COR_PERS, ICONE, bussola } from './comum.js';
 
 const CHAO = { grama: '#CFE3A8', grama2: '#C4DB9B', terra: '#B38A60', topo: '#F3E7CC', lado: '#E0CBA5',
                muro: '#FFFFFF', muro2: '#EFE8D8', madeira: '#C98B4E', madeira2: '#E2AE74', agua: '#6EC1EA', fundo: '#9CCBDD' };
@@ -216,6 +216,7 @@ export class CenaIso {
     this.montarEncaixes(fase.encaixes || []);
     this.montarMissoes(fase.missoes || []);
     this.montarPersonagens(fase.personagens);
+    this.montarGuias();
     if (!this.vistas.length) this.seguir([]);
     for (const v of this.vistas) v.alvo = null;
     this.redimensionar();
@@ -521,7 +522,45 @@ export class CenaIso {
     });
   }
 
+  // Seta grande que mostra o próximo lugar da missão (uma por personagem seguido, na cor do time).
+  montarGuias() {
+    this.guias = [0, 1].map(() => {
+      const g = new THREE.Group();
+      const seta = new THREE.Mesh(new THREE.ConeGeometry(0.42, 0.9, 4), plastico('#fff', { emissive: '#fff', emissiveIntensity: 0.25 }));
+      seta.rotation.x = Math.PI;
+      const haste = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.7, 12), seta.material);
+      haste.position.y = 0.75;
+      const anel = new THREE.Mesh(new THREE.RingGeometry(0.55, 0.78, 36),
+        new THREE.MeshBasicMaterial({ color: '#fff', transparent: true, opacity: 0.9, depthWrite: false }));
+      anel.rotation.x = -Math.PI / 2;
+      g.add(seta, haste);
+      g.visible = anel.visible = false;
+      this.grupo.add(g, anel);
+      return { g, anel, mat: seta.material };
+    });
+  }
+
+  // Setinhas no chão mostrando para onde a caixa anda (do lugar dela até a placa).
+  trilhoDaCaixa(c) {
+    const DIRS = { norte: [0, -1], sul: [0, 1], leste: [1, 0], oeste: [-1, 0] };
+    const d = DIRS[c.direcoes?.[0]];
+    if (!d) return;
+    const tex = texIcone('data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20 70 L50 30 L80 70" fill="none" stroke="#F6BB33" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>'));
+    const placas = (this.fase.botoes || []).map(b => `${Math.floor(b.x)},${Math.floor(b.z)}`);
+    let col = Math.floor(c.x), lin = Math.floor(c.z);
+    for (let n = 0; n < 6; n++) {
+      col += d[0]; lin += d[1];
+      if (this.fase.mapa[lin]?.[col] !== '0') break;
+      const m = new THREE.Mesh(new THREE.PlaneGeometry(0.7, 0.7), new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false }));
+      m.rotation.set(-Math.PI / 2, 0, Math.atan2(-d[0], -d[1]));
+      m.position.set(col + 0.5, 0.03, lin + 0.5);
+      this.grupo.add(m);
+      if (placas.includes(`${col},${lin}`)) break;
+    }
+  }
+
   montarCaixas(caixas) {
+    for (const c of caixas) this.trilhoDaCaixa(c);
     const mao = texIcone(ICONE.acao, CORES.marinho);
     this.caixas = caixas.map(c => {
       const g = new THREE.Group();
@@ -806,6 +845,24 @@ export class CenaIso {
         if (m.trofeu) m.trofeu.rotation.y = t * 0.8;
       });
     }
+    // setas-guia: próximo lugar da missão de cada personagem seguido
+    this.guias.forEach((guia, k) => {
+      const id = this.vistas[k]?.id;
+      const i = id ? this.fase.personagens.findIndex(p => p.id === id) : -1;
+      const b = s && i >= 0 ? bussola(this.fase, s, i) : null;
+      const mostrar = !!b && !b.perto;
+      guia.g.visible = guia.anel.visible = mostrar;
+      if (!mostrar) return;
+      const [x, z] = b.alvo;
+      const h = this.chaoEm(x, z);
+      const cor = CORES[PERS_COR[id]];
+      guia.mat.color.set(cor); guia.mat.emissive.set(cor);
+      guia.anel.material.color.set(cor);
+      guia.g.position.set(x, h + 2.2 + Math.sin(t * 4) * 0.25, z);
+      guia.g.rotation.y = t * 1.5;
+      guia.anel.position.set(x, h + 0.05, z);
+      guia.anel.scale.setScalar(1 + Math.sin(t * 4) * 0.12);
+    });
     for (const a of this.agua) a.m.position.y = -0.35 + Math.sin(t * 1.6 + a.fase) * 0.025;
     this.atualizarParticulas(dt);
 
@@ -880,7 +937,7 @@ export class CenaIso {
     for (const v of this.vistas) {
       const aspecto = (W / n) / H;
       // altura visível em tiles: plateia vê o mapa todo; celular vê menos (fica maior na tela)
-      let alt = this.celular ? 9 : 12;
+      let alt = this.celular ? 10 : 12;
       if (!v.id && this.fase) alt = Math.max(this.L * 0.95, (this.C * 0.85) / aspecto);
       v.cam.top = alt / 2; v.cam.bottom = -alt / 2;
       v.cam.left = -alt * aspecto / 2; v.cam.right = alt * aspecto / 2;

@@ -1,7 +1,7 @@
 // Tela do jogo (PC): mostra a partida e, se a pessoa entrar, joga pelo teclado.
 import { Cena } from './cena.js';
 import { CenaIso } from './cena_iso.js';
-import { PERSONAGENS, CORES, PERS_COR, COR_PERS, NOME_TIME, MUNDOS, ICONE, ITENS, bussola, SETA } from './comum.js';
+import { PERSONAGENS, CORES, PERS_COR, COR_PERS, NOME_TIME, MUNDOS, ICONE, ITENS, bussola, passoDaMissao, SETA } from './comum.js';
 import { hospedar, entrarNaSala, codigoDaUrl, Interpolador } from './rede.js';
 import { liberarAudio, tocar, alternarMudo } from './som.js';
 import { TREINOS } from '../jogo/treino.js';
@@ -87,6 +87,18 @@ const irPara = e => { liberarAudio(); tocar('clique'); rede.enviar({ t: 'etapa',
 $('turma').innerHTML = PERSONAGENS.map((p, i) =>
   `<img src="assets/personagens/${p}/arte.png" style="--i:${i}" alt="${NOME_TIME[corDe(p)]}">`).join('');
 $('btnComecar').onclick = () => irPara('times');
+// progresso salvo neste navegador: novo jogo apaga; modo livre (cheat) libera todas as fases e a oficina de graça
+$('btnNovoJogo').onclick = () => {
+  if (confirm('Começar um jogo novo? O progresso salvo (fases liberadas e peças) será apagado.')) { tocar('clique'); rede.enviar({ t: 'novoJogo' }); }
+};
+$('btnTrapaca').onclick = () => { tocar('clique'); rede.enviar({ t: 'trapaca' }); };
+function atualizarInicio() {
+  const total = sala.fases.length;
+  $('progressoInfo').textContent = sala.trapaca ? 'Modo livre ligado: todas as fases e a oficina de graça'
+    : `Progresso salvo: ${sala.liberadas} de ${total} fases · ${sala.carteira} peças`;
+  $('btnTrapaca').textContent = sala.trapaca ? 'Desligar modo livre' : 'Modo livre (cheat)';
+  $('btnTrapaca').classList.toggle('ligado', !!sala.trapaca);
+}
 
 function montarCards() {
   $('cards').innerHTML = '';
@@ -150,7 +162,7 @@ function atualizarFase() {
   const doMundo = sala.fases.map((f, i) => [f, i]).filter(([f]) => f.mundo === idMundo);
   const mundos = [...new Set(sala.fases.map(f => f.mundo))];
   $('tituloMundo').innerHTML = `<img src="${mundo.selo}" alt="">Mundo ${mundo.n} · ${mundo.nome}`;
-  $('subMundo').innerHTML = `Escolha a fase. Cada vitória libera a próxima. <span class="pilula"><img src="assets/ui/ic_bloco.png">${sala.carteira} peças</span>
+  $('subMundo').innerHTML = `Escolha a fase. Cada vitória libera a próxima. ${sala.trapaca ? '<span class="pilula livre">Modo livre</span>' : `<span class="pilula"><img src="assets/ui/ic_bloco.png">${sala.carteira} peças</span>`}
     <span class="mundos">${mundos.map(id => {
       const primeira = sala.fases.findIndex(f => f.mundo === id);
       return `<button data-i="${primeira}" class="${id === idMundo ? 'sel' : ''}" ${primeira >= sala.liberadas ? 'disabled' : ''}>
@@ -197,19 +209,22 @@ function atualizarPassos() {
   }
 }
 
-function entrar() { if (!meuId) rede.enviar({ t: 'entrar', tipo: 'teclado', nome: '' }); }
+// chave desta aba: se outro PC recarregar a página, volta como o mesmo jogador
+let chave = '';
+try { chave = sessionStorage.getItem('mja_chave') || ''; if (!chave) { chave = Math.random().toString(36).slice(2); sessionStorage.setItem('mja_chave', chave); } } catch {}
+function entrar() { if (!meuId) rede.enviar({ t: 'entrar', tipo: 'teclado', nome: '', chave }); }
 $('btnLoja').onclick = () => { liberarAudio(); tocar('clique'); rede.enviar({ t: 'loja' }); };
 
 // ---------- oficina ----------
 function atualizarLoja() {
-  $('carteira').textContent = sala.carteira;
+  $('carteira').textContent = sala.trapaca ? '∞' : sala.carteira;
   const f = sala.fases[sala.faseIdx];
   $('lojaFase').innerHTML = `Próxima fase: <b>${f.id} · ${f.nome}</b> · ${f.coracoes} corações por time`;
   $('itens').innerHTML = Object.entries(sala.loja).map(([item, def]) => {
     const botoes = sala.times.map(cor => {
       const qt = sala.compras[cor]?.[item] || 0;
       const cheio = qt >= def.max;
-      const pode = !cheio && sala.carteira >= def.preco;
+      const pode = !cheio && (sala.trapaca || sala.carteira >= def.preco);
       return `<button class="comprar ${cheio ? 'cheio' : ''}" style="border-color:${CORES[cor]}" data-item="${item}" data-cor="${cor}" ${pode ? '' : 'disabled'}
         title="Montar para o ${NOME_TIME[cor]}"><img src="assets/personagens/${COR_PERS[cor]}/retrato.png">${qt ? `<span class="qt">${def.max > 1 ? qt : '✓'}</span>` : ''}</button>`;
     }).join('');
@@ -255,7 +270,9 @@ function atualizarMissoes(s) {
   const html = `<h4><img src="assets/ui/ic_bussola.png" alt="">Missões ${s.missoes.filter(Boolean).length}/${fase.missoes.length}</h4>` +
     fase.missoes.map((m, k) => {
       const trancada = m.depois && !m.depois.every(feita);
-      return `<div class="m ${s.missoes[k] ? 'feita' : ''} ${trancada ? 'trancada' : ''}"><b>${s.missoes[k] ? '✓' : trancada ? CADEADO.replace('<svg', '<svg width="14"') : k + 1}</b>${m.nome}</div>`;
+      const p = !s.missoes[k] && !trancada ? passoDaMissao(fase, s, k) : null;
+      return `<div class="m ${s.missoes[k] ? 'feita' : ''} ${trancada ? 'trancada' : ''}"><b>${s.missoes[k] ? '✓' : trancada ? CADEADO.replace('<svg', '<svg width="14"') : k + 1}</b>
+        <span>${m.nome}${trancada ? '<small>abre quando as outras 4 estiverem feitas</small>' : ''}${p ? `<small>${p.total > 1 ? `Passo ${p.i + 1} de ${p.total}: ` : ''}${p.texto}</small>` : ''}</span></div>`;
     }).join('');
   if (html !== missoesHtml) { $('missoes').innerHTML = html; missoesHtml = html; }
 }
@@ -267,7 +284,7 @@ function atualizarBussolas(s) {
   const html = meus.map(id => {
     const b = bussola(fase, s, fase.personagens.findIndex(p => p.id === id));
     const borda = `style="border:.4vh solid ${CORES[corDe(id)]}${meus.length > 1 && id !== ativo ? ';opacity:.6' : ''}"`;
-    return b ? `<div class="bussola ${meus.length > 1 ? 'dupla' : ''}" ${borda} data-ang="${b.angulo}"><span class="seta">${SETA}</span><span><b>Missão ${b.numero} · ${b.m.nome}</b><small>${b.m.dica}</small></span></div>`
+    return b ? `<div class="bussola ${meus.length > 1 ? 'dupla' : ''}" ${borda} data-ang="${b.angulo}"><span class="seta">${SETA}</span><span><b>Missão ${b.numero} · ${b.m.nome}${b.passo.total > 1 ? ` · passo ${b.passo.i + 1} de ${b.passo.total}` : ''}</b><small>${b.passo.texto}</small></span></div>`
              : `<div class="bussola ${meus.length > 1 ? 'dupla' : ''}" ${borda}><span class="seta">✓</span><span><b>Todas as missões feitas!</b></span></div>`;
   }).join('');
   const caixa = $('bussolaPc');
@@ -426,6 +443,7 @@ function atualizarTudo() {
   $('pausa').classList.toggle('oculto', !sala.pausado);
   $('btnPausa').classList.toggle('oculto', est !== 'jogando' || !!sala.pausado);
   if (sala.pausado) mostrarPausa();
+  if (tela === 'inicio') atualizarInicio();
   if (tela === 'times') atualizarTimes();
   if (tela === 'fase') atualizarFase();
   if (est === 'loja') atualizarLoja();
