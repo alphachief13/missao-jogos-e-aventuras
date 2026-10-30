@@ -11,7 +11,7 @@ export const codigoDaUrl = () => (new URLSearchParams(location.search).get('sala
 // Tela anfitriã: cria a sala, liga a própria tela por um canal local e aceita celulares/outros PCs.
 // aoMudar(ok) avisa se a sala está visível na internet (sem isso, só esta tela joga).
 export function hospedar(aoReceber, aoMudar = () => {}) {
-  const sala = new Sala();
+  const sala = new Sala({ tudo: new URLSearchParams(location.search).has('tudo') });
   // canal local: entrega assíncrona, como numa rede de verdade
   const local = sala.conectar(texto => queueMicrotask(() => aoReceber(JSON.parse(texto))));
   const api = { enviar: m => local.receber(JSON.stringify(m)), codigo: null, aoCodigo: () => {} };
@@ -86,6 +86,18 @@ export class Interpolador {
     const a = b[i - 1], c = b[i];
     const k = Math.min(1, Math.max(0, (alvo - a.t) / (c.t - a.t)));
     const lerp = (x, y) => x + (y - x) * k;
+    // modo isométrico: x, z, y dos personagens; caixas e blocos (x, z, y); altura das plataformas
+    const lerpN = (lista, antes, n) => lista.map((p, j) => {
+      const q = antes?.[j];
+      return q ? [...p.slice(0, n).map((v, m) => lerp(q[m], v)), ...p.slice(n)] : p;
+    });
+    if (c.s.iso) return {
+      ...c.s,
+      ch: lerpN(c.s.ch, a.s.ch, 3),
+      caixas: lerpN(c.s.caixas, a.s.caixas, 2),
+      blocos: lerpN(c.s.blocos, a.s.blocos, 3),
+      plat: c.s.plat.map((h, j) => { const q = a.s.plat[j]; return h !== null && q !== null && q !== undefined ? lerp(q, h) : h; }),
+    };
     return {
       ...c.s,
       ch: c.s.ch.map((p, j) => {

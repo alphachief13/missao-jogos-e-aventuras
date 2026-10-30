@@ -1,0 +1,100 @@
+/* Tutorial "Como jogar" (js/tutorial.js). Medidas em clamp(px, vh, px): crescem na TV e não somem no celular deitado. */
+.tut { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; background: #1E2A4A73; backdrop-filter: blur(4px);
+       animation: tut-fundo .2s ease-out; }
+@keyframes tut-fundo { from { opacity: 0; } }
+.tut-janela { width: min(94vw, 150vh); max-height: 94vh; display: flex; flex-direction: column; gap: clamp(10px, 2vh, 23px);
+              background: var(--creme); border-radius: clamp(18px, 3vh, 42px); padding: clamp(14px, 3vh, 34px) clamp(19px, 4vh, 46px);
+              box-shadow: 0 2vh 6vh #1E2A4A40; animation: tut-entra .3s cubic-bezier(.2, 1.4, .4, 1); }
+@keyframes tut-entra { from { transform: scale(.92); opacity: 0; } }
+.tut-janela header { display: flex; align-items: center; justify-content: space-between; }
+.tut-janela h2 { font-size: clamp(21px, 4.4vh, 49px); }
+.tut-fechar { all: unset; cursor: pointer; width: clamp(29px, 6vh, 68px); height: clamp(29px, 6vh, 68px); border-radius: 50%; display: grid; place-items: center;
+              background: #fff; box-shadow: var(--sombra); font: 700 clamp(19px, 4vh, 46px) Fredoka, sans-serif; color: var(--marinho); }
+
+.tut-abas { display: flex; gap: clamp(8px, 1.6vh, 19px); }
+.tut-abas button { all: unset; cursor: pointer; flex: 1; display: flex; align-items: center; gap: clamp(6px, 1.4vh, 15px);
+                   padding: clamp(5px, 1.2vh, 11px) clamp(10px, 2vh, 23px); border-radius: clamp(11px, 2vh, 27px); background: #fff;
+                   border: clamp(2px, .5vh, 6px) solid transparent; box-shadow: var(--sombra); transition: border-color .2s; }
+.tut-abas img { height: clamp(27px, 6vh, 65px); }
+.tut-abas b { display: block; font: 700 clamp(13px, 2.6vh, 30px) Fredoka, sans-serif; }
+.tut-abas small { font-size: clamp(9px, 1.7vh, 21px); opacity: .7; }
+.tut-abas button.sel { border-color: var(--azul); }
+.tut-abas button.sel b { color: var(--azul); }
+
+.tut-slide { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(14px, 3vh, 34px); align-items: center; background: #fff;
+             border-radius: clamp(13px, 2.4vh, 30px); padding: clamp(11px, 3vh, 27px); min-height: clamp(152px, 42vh, 361px); box-shadow: var(--sombra);
+             animation: tut-slide .3s ease-out; }
+@keyframes tut-slide { from { opacity: 0; transform: translateX(1.5vh); } }
+.tut-arte { display: grid; place-items: center; height: 100%; border-radius: clamp(10px, 2vh, 23px);
+            background: radial-gradient(circle at 50% 60%, #EAF3FA, #fff 72%); }
+.tut-num { font: 700 clamp(9px, 1.8vh, 21px) Fredoka, sans-serif; color: var(--rosa); letter-spacing: .08em; text-transform: uppercase; }
+.tut-texto h3 { font-size: clamp(18px, 4vh, 42px); margin: clamp(2px, .6vh, 6px) 0 clamp(4px, 1vh, 10px); }
+.tut-texto p { margin: 0; font-size: clamp(11px, 2.5vh, 27px); line-height: 1.5; }
+.tut-texto b { color: var(--azul); }
+
+.tut-janela footer { display: flex; align-items: center; justify-content: space-between; }
+.tut-janela footer .btn { font-size: clamp(12px, 2.4vh, 28px); }
+.tut-janela footer .btn:disabled { visibility: hidden; }
+.tut-pontos { display: flex; gap: clamp(5px, 1vh, 11px); }
+.tut-pontos button { all: unset; cursor: pointer; width: clamp(7px, 1.4vh, 17px); height: clamp(7px, 1.4vh, 17px); border-radius: 999px; background: #1E2A4A26;
+                     transition: width .2s, background .2s; }
+.tut-pontos button.sel { width: clamp(19px, 4vh, 46px); background: var(--azul); }
+
+/* ilustrações */
+.tut-linha { display: flex; align-items: flex-end; justify-content: center; gap: clamp(8px, 1.6vh, 19px); }
+.tut-sprite { display: inline-block; width: clamp(77px, 20vh, 182px); aspect-ratio: 1; background-repeat: no-repeat; background-position: 0 0; }
+.tut-sprite.iso { width: clamp(96px, 26vh, 228px); }
+.tut-ic { height: clamp(35px, 9vh, 84px); }
+.tut-ic.grande { height: clamp(64px, 16vh, 152px); }
+.tut-seta { font: 700 clamp(22px, 5vh, 53px) Fredoka, sans-serif; color: var(--rosa); align-self: center; }
+.tut-cors { display: flex; gap: clamp(3px, .6vh, 8px); align-self: center; }
+.tut-cors img { height: clamp(24px, 6vh, 57px); }
+.tut-poca { width: clamp(35px, 9vh, 84px); height: clamp(18px, 4.4vh, 42px); border-radius: 50% / 60%; background: var(--cor); align-self: center;
+            box-shadow: inset 0 -.6vh 0 #0002, inset 0 .5vh 0 #fff6; }
+.tut-poca.curto { background: var(--marinho); display: grid; place-items: center; }
+.tut-poca.curto img { display: none; }
+.tut-poca.curto::after { content: '⚡'; font-size: clamp(13px, 3vh, 30px); }
+.tut-bloco { width: clamp(35px, 9vh, 84px); height: clamp(24px, 6vh, 57px); border-radius: clamp(5px, 1vh, 11px); background: var(--cor); position: relative; align-self: center;
+             box-shadow: inset 0 -.6vh 0 #0002; }
+.tut-bloco::before { content: ''; position: absolute; top: -18%; left: 18%; width: 22%; height: 25%; border-radius: 30%; background: inherit;
+                     box-shadow: clamp(13px, 3.4vh, 30px) 0 0 var(--cor); }
+.tut-encaixe { width: clamp(40px, 10vh, 95px); height: clamp(16px, 4vh, 38px); border: clamp(2px, .5vh, 6px) dashed var(--marinho); border-radius: clamp(5px, 1vh, 11px);
+               align-self: center; opacity: .5; }
+.tut-chao span { width: clamp(32px, 8vh, 76px); height: clamp(32px, 8vh, 76px); background: var(--cor); transform: rotateX(55deg) rotateZ(45deg);
+                 border-radius: clamp(5px, 1vh, 11px); box-shadow: 0 .8vh 0 #0002; }
+
+.tut-controles { display: grid; gap: clamp(5px, 1.2vh, 11px); justify-items: start; }
+.tut-controles > div { display: flex; align-items: center; gap: clamp(4px, 1vh, 10px); font-size: clamp(10px, 2.2vh, 25px); }
+.tut-controles span:first-child { width: clamp(38px, 9vh, 91px); font: 700 clamp(10px, 2.2vh, 25px) Fredoka, sans-serif; }
+.tut-controles small { opacity: .6; margin-left: clamp(3px, .6vh, 8px); }
+.tut kbd { font-size: clamp(10px, 2vh, 23px); padding: .2em .5em; }
+.tut-bot { width: clamp(21px, 5vh, 49px); height: clamp(21px, 5vh, 49px); border-radius: 50%; background: var(--cor); display: grid; place-items: center;
+           box-shadow: 0 .4vh 0 #1E2A4A40; }
+.tut-bot img { width: 60%; }
+
+/* botão de abrir (início e menu) */
+.btn-tutorial { display: inline-flex; align-items: center; gap: .5em; }
+.btn-tutorial::before { content: '?'; width: 1.3em; height: 1.3em; border-radius: 50%; display: grid; place-items: center;
+                        background: var(--azul); color: #fff; font-size: .8em; }
+.btn-tutorial.link { cursor: pointer; font-size: .9em; color: var(--azul); margin-left: .6em; vertical-align: middle; }
+.acoes-inicio { display: flex; gap: 2vh; align-items: center; }
+
+/* treino jogável: painel de objetivo embaixo da tela */
+.objetivo { position: absolute; left: 50%; top: 8.4vh; transform: translateX(-50%); padding: 1vh 2.6vh; min-width: 70vh; max-width: 90vw;
+            text-align: center; display: flex; flex-direction: column; gap: .8vh; align-items: center; border: .4vh solid var(--azul); }
+.objetivo.feito { animation: obj-feito .6s ease-out; }
+@keyframes obj-feito { 0% { transform: translateX(-50%) scale(1.12); border-color: var(--verde); } 100% { transform: translateX(-50%) scale(1); } }
+.obj-num { font: 700 1.7vh Fredoka, sans-serif; color: var(--rosa); letter-spacing: .08em; text-transform: uppercase; }
+.obj-texto { font: 700 2.8vh Fredoka, sans-serif; display: flex; align-items: center; gap: 1.2vh; flex-wrap: wrap; justify-content: center; }
+.obj-teclas { display: inline-flex; gap: .5vh; }
+.obj-teclas kbd { font-size: 2.6vh; padding: .2vh 1vh; }
+.obj-extra { font-size: 1.8vh; opacity: .75; }
+.obj-barra { display: flex; gap: .6vh; }
+.obj-barra i { width: 4vh; height: .8vh; border-radius: 999px; background: #1E2A4A1F; }
+.obj-barra i.ok { background: var(--verde); }
+.obj-barra i.agora { background: var(--azul); }
+.tut-treinar { display: flex; align-items: center; justify-content: space-between; gap: 2vh; padding: clamp(8px, 1.6vh, 18px) clamp(12px, 2.4vh, 26px);
+               border-radius: clamp(12px, 2vh, 22px); background: var(--azul); color: #fff; }
+.tut-treinar b { font: 700 clamp(14px, 2.8vh, 28px) Fredoka, sans-serif; display: block; }
+.tut-treinar span { font-size: clamp(11px, 1.9vh, 18px); opacity: .9; }
+.tut-treinar .btn { background: var(--amarelo); color: var(--marinho); white-space: nowrap; font-size: clamp(13px, 2.4vh, 24px); }

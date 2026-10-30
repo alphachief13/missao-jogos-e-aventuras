@@ -2,6 +2,7 @@
 // Uso: node tools/testar_fases.mjs [id-da-fase]
 import { Jogo, COR_DO_PERSONAGEM } from '../public/jogo/sim.js';
 import { FASES } from '../public/jogo/fases.js';
+import { FASE_TREINO, PASSOS_TREINO } from '../public/jogo/treino.js';
 
 const COMBOS = [
   ['ruivo', 'loira', 'cacheado', 'sapo'],
@@ -19,6 +20,7 @@ class Robo {
     this.ativos = ativos;
     this.log = [];
     this.f = 0;
+    this.passoTreino = fase.treino ? 0 : null; // no treino, confere que os objetivos avançam em ordem
   }
   P(id) { return this.j.personagens.find(p => p.id === id); }
   tick(id, e = {}) {
@@ -28,10 +30,15 @@ class Robo {
       if (ev.e === 'morte') throw new Error(`${ev.id} morreu (${ev.poca}) em x=${ev.x.toFixed(2)} y=${ev.y.toFixed(2)}`);
       if (!['pouso', 'pulo', 'botao'].includes(ev.e)) this.log.push(`${ev.e}${ev.id ? ':' + ev.id : ''}`);
     }
+    if (this.passoTreino !== null && this.passoTreino < PASSOS_TREINO.length &&
+        PASSOS_TREINO[this.passoTreino].feito(this.j, this.j.eventos)) this.passoTreino++;
     if (this.f > 60 * 600) throw new Error('tempo esgotado');
   }
   espera(n, id) { for (let k = 0; k < n; k++) this.tick(id); }
-  ate(cond, max = 900) { for (let k = 0; k < max; k++) { if (cond()) return; this.tick(); } throw new Error('condição nunca aconteceu'); }
+  ate(cond, max = 900) {
+    for (let k = 0; k < max; k++) { if (cond()) return; this.tick(); }
+    throw new Error('condição nunca aconteceu (' + this.j.personagens.map(p => `${p.id} ${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ') + ')');
+  }
 
   anda(id, x, max = 900) {
     const p = this.P(id);
@@ -205,15 +212,36 @@ const ROTEIROS = {
   },
 };
 
+// Treino: degrau com bandeirinhas, poças, elevador automático, curto-circuito, alavanca do portão e arcos.
+ROTEIROS.Treino = (r, ids) => {
+  const elev = r.j.plataformas.find(p => p.id === 'elev');
+  ids.forEach((c, k) => {
+    r.anda(c, 3.1);
+    r.pulaPara(c, 4.5);                  // degrau (pega a bandeirinha)
+    r.anda(c, 4.75);
+    r.pulaPara(c, 8.6);                  // do degrau, por cima da poça azul
+    r.irPorChao(c, 20.5);                // poças
+    r.ate(() => Math.abs(elev.py - elev.y) < 0.02 && elev.espera > 0.3);
+    r.anda(c, 22);
+    r.ate(() => Math.abs(elev.py - elev.y2) < 0.02);
+    r.anda(c, 20.3);
+    r.irPorChao(c, 15.2);                // curto-circuito
+    if (k === 0) { r.anda(c, 14.5); r.acao(c); r.ate(() => r.j.plataformas.find(p => p.id === 'portao').py < -1.1); }
+    r.aoPortal(c);
+  });
+};
+
 const so = process.argv[2];
 let falhas = 0;
-for (const fase of FASES) {
+for (const fase of [FASE_TREINO, ...FASES]) {
   if (so && fase.id !== so) continue;
   for (const combo of COMBOS) {
     const ids = combo;
     const r = new Robo(fase, ids);
     let res;
     try { ROTEIROS[fase.id](r, ids); res = r.fim(); } catch (e) { res = 'ERRO: ' + e.message; }
+    if (res === 'vitoria' && r.passoTreino !== null && r.passoTreino < PASSOS_TREINO.length)
+      res = `objetivos parados no passo ${r.passoTreino + 1}: ${PASSOS_TREINO[r.passoTreino].texto}`;
     const ok = res === 'vitoria';
     if (!ok) falhas++;
     const pl = r.j.placar();

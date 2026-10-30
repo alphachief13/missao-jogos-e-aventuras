@@ -7,7 +7,11 @@
   <title>Controle · Missão, Jogos e Aventuras</title>
   <link rel="icon" href="assets/ui/ic_bussola.png">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/tutorial.css">
   <script src="vendor/peerjs/peerjs.min.js"></script>
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three/build/three.module.js", "three/addons/": "./vendor/three/examples/jsm/" } }
+  </script>
   <style>
     body { background: url("assets/fundos/lobby/longe.png") center / cover; touch-action: none; }
     .pagina { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -26,6 +30,21 @@
     .cards .meu { border-color: var(--marinho); }
     .cards small { display: block; font: 600 12px Fredoka, sans-serif; padding: 2px 0 6px; }
     .msg { font: 600 15px Fredoka, sans-serif; max-width: 92vw; }
+    .pagina > h2 { margin-top: -4px; }
+    .mini-passos { display: flex; align-items: center; gap: 6px; font: 700 13px Fredoka, sans-serif; }
+    .mini-passos > * { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: #1E2A4A14; color: #1E2A4A80; }
+    .mini-passos b { background: var(--azul); color: #fff; }
+    .mini-passos b.ok { background: var(--verde); }
+    .mini-passos i { width: 22px; height: 3px; border-radius: 2px; background: #1E2A4A1F; }
+    .rodape { display: flex; gap: 12px; justify-content: center; align-items: center; }
+    .btn:disabled { filter: grayscale(1); opacity: .45; }
+    .fases { display: flex; gap: 8px; }
+    .fases button { all: unset; width: 92px; padding: 8px 4px; border-radius: 14px; background: #fff; text-align: center; box-shadow: var(--sombra);
+                    font: 600 12px Fredoka, sans-serif; border: 3px solid transparent; line-height: 1.2; }
+    .fases button b { display: block; font-size: 22px; color: var(--azul); }
+    .fases button.sel { border-color: var(--azul); background: var(--azul); color: #fff; }
+    .fases button.sel b { color: #fff; }
+    .fases button:disabled { opacity: .4; }
 
     .itens { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
     .item { padding: 10px 12px; width: 150px; display: flex; flex-direction: column; align-items: center; gap: 4px; font: 600 14px Fredoka, sans-serif; }
@@ -55,6 +74,33 @@
     #topo img.r.inativo { height: 30px; opacity: .6; }
     #topo .cor { display: flex; gap: 2px; background: #fff; border-radius: 999px; padding: 3px 6px; }
     #topo .cor img { height: 16px; }
+    #btnPausa { position: absolute; top: max(8px, env(safe-area-inset-top)); left: max(10px, env(safe-area-inset-left)); width: 48px; height: 48px;
+                border-radius: 50%; border: 0; background: #fff; box-shadow: var(--sombra); padding: 11px; z-index: 2; }
+    #btnPausa svg { width: 100%; height: 100%; display: block; fill: var(--marinho); }
+    /* Mundo 2 (mapa 3D): o jogo aparece no próprio celular, com joystick à esquerda e botões à direita por cima */
+    #cenaCel { position: absolute; inset: 0; width: 100%; height: 100%; display: none; }
+    #jogo.iso { background: #DCEFD0; }
+    #jogo.iso #cenaCel { display: block; }
+    #jogo.iso .lado.esquerda { visibility: hidden; }
+    #jogo .lado, #topo, #bussola, #joy { z-index: 1; }
+    #jogo.iso .ctl { opacity: .88; }
+    #joy { position: absolute; left: 0; top: 0; width: 0; height: 0; pointer-events: none; display: none; }
+    #jogo.iso #joy { display: block; }
+    #joy .base { position: absolute; width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%;
+                 background: #ffffff55; border: 4px solid #ffffffcc; box-shadow: var(--sombra); }
+    #joy .pino { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%;
+                 background: var(--cor, var(--azul)); border: 4px solid #fff; box-shadow: 0 6px 0 #1E2A4A33; }
+    #joy.dica .base { animation: respira 1.6s ease-in-out infinite; }
+    #joy.dica .base::after { content: 'arraste aqui'; position: absolute; left: 50%; top: 100%; transform: translate(-50%, 8px); white-space: nowrap;
+                             font: 700 15px Fredoka, sans-serif; color: var(--marinho); background: #fffD; border-radius: 999px; padding: 2px 10px; }
+    @keyframes respira { 50% { transform: scale(1.08); } }
+    #bussola { position: absolute; top: max(66px, calc(env(safe-area-inset-top) + 58px)); left: max(10px, env(safe-area-inset-left));
+               display: none; align-items: center; gap: 8px; background: #fff; border-radius: 999px; padding: 4px 12px 4px 4px;
+               box-shadow: var(--sombra); font: 700 14px Fredoka, sans-serif; max-width: 46vw; }
+    #jogo.iso #bussola { display: flex; }
+    #bussola .seta { width: 40px; height: 40px; border-radius: 50%; background: var(--amarelo); display: grid; place-items: center; flex: none; }
+    #bussola .seta svg { width: 26px; height: 26px; transition: transform .15s; }
+    #bussola small { display: block; font: 600 12px Nunito, sans-serif; line-height: 1.15; white-space: normal; }
     #girar { display: none; position: fixed; inset: 0; background: var(--creme); z-index: 9; flex-direction: column;
              align-items: center; justify-content: center; gap: 16px; font: 700 22px Fredoka, sans-serif; text-align: center; padding: 24px; }
     @media (orientation: portrait) { #jogo:not(.oculto) ~ #girar { display: flex; } }
@@ -69,25 +115,39 @@
     <input id="nome" maxlength="14" placeholder="Seu nome" autocomplete="off">
     <button class="btn grande" id="btnEntrar">Entrar</button>
     <div class="msg" id="msgNome"></div>
+    <button class="btn claro btn-tutorial" data-tutorial>Como jogar</button>
   </div>
 
-  <div id="pgLobby" class="pagina oculto">
-    <h2>Escolha seu time</h2>
+  <div id="pgTimes" class="pagina oculto">
+    <div class="mini-passos"><b>1</b><i></i><span>2</span><i></i><span>3</span></div>
+    <h2>Escolha seu time <button class="pilula btn-tutorial link" data-tutorial>Como jogar</button></h2>
     <div class="cards" id="cards"></div>
-    <div class="msg" id="msgLobby"></div>
-    <button class="btn" id="btnLoja">Jogar</button>
+    <div class="rodape"><span></span><button class="btn" id="btnIrFase">Escolher fase →</button></div>
+  </div>
+
+  <div id="pgFase" class="pagina oculto">
+    <div class="mini-passos"><b class="ok">✓</b><i></i><b>2</b><i></i><span>3</span></div>
+    <h2>Escolha a fase</h2>
+    <div class="fases" id="fasesCel"></div>
+    <div class="msg" id="msgFase"></div>
+    <div class="rodape"><button class="btn claro" id="btnVoltarTimes">← Voltar</button><button class="btn" id="btnLoja">Oficina →</button></div>
   </div>
 
   <div id="pgLoja" class="pagina oculto">
+    <div class="mini-passos"><b class="ok">✓</b><i></i><b class="ok">✓</b><i></i><b>3</b></div>
     <h2>Oficina da equipe · <span class="pilula" style="font-size:16px"><img src="assets/ui/ic_bloco.png" style="height:20px"><span id="carteira">0</span> peças</span></h2>
     <div class="msg" id="msgLoja"></div>
     <div class="itens" id="itens"></div>
-    <button class="btn" id="btnJogar">Começar fase</button>
+    <div class="rodape"><button class="btn claro" id="btnLojaVoltar">← Voltar</button><button class="btn" id="btnJogar">Começar fase →</button></div>
   </div>
 
   <div id="jogo" class="pagina oculto">
+    <canvas id="cenaCel"></canvas>
     <div id="topo"></div>
-    <div class="lado">
+    <div id="bussola"></div>
+    <div id="joy" class="dica"><div class="base"></div><div class="pino"></div></div>
+    <button id="btnPausa" aria-label="Pausa"><svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg></button>
+    <div class="lado esquerda">
       <div class="ctl" data-k="esq"></div>
       <div class="ctl" data-k="dir"></div>
     </div>
@@ -101,6 +161,18 @@
   </div>
   <div id="girar"><div class="icone">📱</div>Vire o celular de lado para jogar</div>
 
+  <div id="pgPausa" class="pagina oculto">
+    <h2 style="font-size:32px">Pausa</h2>
+    <div class="msg" id="pausaQuem"></div>
+    <button class="btn grande" id="btnRetomar">Continuar</button>
+    <div class="rodape" style="flex-wrap:wrap">
+      <button class="btn azul" id="btnReiniciar">Recomeçar a fase</button>
+      <button class="btn claro" id="btnPausaLoja">Oficina</button>
+      <button class="btn claro" id="btnPausaMenu">Outra fase</button>
+    </div>
+    <button class="pilula btn-tutorial link" id="pausaTutorial" data-tutorial>Como jogar</button>
+  </div>
+
   <div id="pgFim" class="pagina oculto">
     <h2 id="fimTitulo" style="font-size:32px"></h2>
     <div class="msg" id="fimMsg"></div>
@@ -109,5 +181,6 @@
   </div>
 
   <script type="module" src="js/controle.js"></script>
+  <script type="module" src="js/tutorial.js"></script>
 </body>
 </html>

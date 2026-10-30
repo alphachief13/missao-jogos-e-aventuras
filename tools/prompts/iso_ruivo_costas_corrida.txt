@@ -1,0 +1,13 @@
+Use the attached reference images as the strict visual base: same art style, same character design,
+same colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),
+sunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:
+pink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:
+no video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,
+no letters, no logos, no watermark. Clean edges, fully inside the frame with margin.
+Use case: identity-preserve. Asset: isometric full-body animation sprite strip.
+Input 1 is the APPROVED current platform sprite: strict identity, proportions, clothes, palette and physical scale reference. Input 2 is the official campaign character design reference only; REMOVE the handheld map and omit the logo, as in input 1.
+Character: same small red-haired boy with huge head, spiky orange hair, brown eyes, open white lab coat, blue T-shirt, beige cargo shorts, olive green backpack with rolled green bedroll, binoculars hanging at chest, white socks and BLUE-and-white sneakers. Hands EMPTY in every frame. No map, headset, controller, box, tool, logo or text. Do not add accessories or change the backpack color.
+Camera: orthographic isometric game camera elevated 35 degrees above horizon, looking down. Show top surfaces of hair, shoulders and shoes. Preserve the approved character proportions, not an older or taller child. Same scale for every pose; never make running frames smaller. Fully transparent background, no ground, no cast shadow, no rim glow or ambient haze. Alpha 255 inside character and 0 outside silhouette.
+Layout: one horizontal row, full body in every cell, large transparent gaps between poses and margins on ALL sides, no overlap or cropping. No cell borders, captions or arrows. Keep head size and model scale identical across the strip.
+Exactly 4 separate full-body poses, evenly spaced from left to right.
+REAR three-quarter view from ABOVE. Boy runs diagonally UP-RIGHT on the screen, AWAY from viewer, showing back of head, BACKPACK, coat back and right side of body. The face and chest must NOT turn toward camera. Four successive run phases: right leg forward/left back; passing; left leg forward/right back; opposite passing. Arms swing opposite legs, both hands empty. Show blue-and-white sneaker uppers and blue shirt at side/coat opening so BLUE team remains readable from behind, without adding symbols or changing clothing. Use the same compact child scale as front view. No front-facing or sideways poses.

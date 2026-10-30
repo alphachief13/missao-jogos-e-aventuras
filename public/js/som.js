@@ -1,9 +1,13 @@
 // Efeitos sonoros via Web Audio. O navegador só libera o áudio depois de um clique/tecla.
 // Se o arquivo novo ainda não existir, usa o antigo equivalente (ANTIGO) até o Codex gerar os sons novos.
 const NOMES = ['pulo', 'pouso', 'bandeira', 'peca', 'alavanca', 'botao', 'chegada', 'perdeu_coracao', 'derrota', 'vitoria',
-               'clique', 'trocar', 'entrou', 'contagem', 'compra'];
+               'clique', 'trocar', 'entrou', 'contagem', 'compra',
+               'pegar', 'soltar', 'empurrar', 'construir', 'ajudar', 'caiu', 'missao', 'placa'];
 const ANTIGO = { bandeira: 'gema', peca: 'estrela_xp', chegada: 'portal_abre', perdeu_coracao: 'derrota', clique: 'clique_ui',
-                 trocar: 'trocar_personagem', entrou: 'jogador_entrou', contagem: 'contagem_regressiva', compra: 'gema' };
+                 trocar: 'trocar_personagem', entrou: 'jogador_entrou', contagem: 'contagem_regressiva', compra: 'gema',
+                 // Mundo 2: até o Codex gerar os sons novos, toca os parecidos que já existem
+                 pegar: 'peca', soltar: 'pouso', empurrar: 'pouso', construir: 'compra', ajudar: 'chegada',
+                 caiu: 'perdeu_coracao', missao: 'bandeira', placa: 'botao' };
 const VOLUME = { pulo: 0.35, pouso: 0.25, botao: 0.6, clique: 0.5, peca: 0.6 };
 
 let ctx = null;

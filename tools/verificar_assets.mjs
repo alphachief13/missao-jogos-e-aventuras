@@ -11,7 +11,7 @@ const ANIMS = { idle: 2, corrida: 4, pulo: 1, queda: 1, empurrar: 1, derrota: 1,
 const CORES = ['azul', 'rosa', 'amarelo', 'verde'];
 const SONS = ['pulo', 'pouso', 'bandeira', 'peca', 'alavanca', 'botao', 'chegada', 'perdeu_coracao', 'derrota', 'vitoria',
               'clique', 'trocar', 'entrou', 'contagem', 'compra'];
-const MUNDOS = [...new Set(FASES.map(f => f.mundo))];
+const MUNDOS = [...new Set(FASES.map(f => f.mundo))]; // só o Mundo 1 tem fundo pintado (o Mundo 2 é visto de cima)
 
 const exigidos = [
   ['kit/logo.png'], ['kit/logo_roboeduc.png'], ...[1, 2, 3, 4, 5].map(i => [`kit/selo_${i}.png`]),
@@ -42,5 +42,27 @@ for (const [rel, w, h] of exigidos) {
     if (lw !== w || lh !== h) { console.log(`✗ tamanho    ${rel}: ${lw}×${lh} (esperado ${w}×${h})`); faltas++; }
   }
 }
+// Mundo 2: sprites isométricos, enfeites e sons novos são opcionais (o jogo usa substitutos enquanto faltam),
+// mas quando existem precisam ter o tamanho certo.
+const ISO = { frente_idle: 2, costas_idle: 2, frente_corrida: 4, costas_corrida: 4, frente_pulo: 1, costas_pulo: 1,
+              frente_queda: 1, costas_queda: 1, frente_carregar: 4, costas_carregar: 4, frente_empurrar: 2, costas_empurrar: 2,
+              ajudar: 2, caido: 1 };
+const ENFEITES = { arvore_1: [512, 768], arvore_2: [512, 768], arbusto: [384, 256], flores: [256, 192], pedra: [256, 192],
+                   cerca: [512, 256], placa: [256, 320], pilha_blocos: [384, 384], guindaste: [768, 1024], cone: [192, 256], carrinho: [384, 320] };
+const opcionais = [
+  ...PERS.flatMap(p => Object.entries(ISO).map(([a, n]) => [`personagens/${p}/iso/${a}.png`, 384 * n, 384])),
+  ...Object.entries(ENFEITES).map(([e, [w, h]]) => [`mundo2/enfeites/${e}.png`, w, h]),
+  ...['pegar', 'soltar', 'empurrar', 'construir', 'ajudar', 'caiu', 'missao', 'placa'].map(s => [`sons/${s}.wav`]),
+];
+let pendentes = 0;
+for (const [rel, w, h] of opcionais) {
+  const arq = path.join(A, rel);
+  if (!fs.existsSync(arq)) { pendentes++; continue; }
+  if (w && rel.endsWith('.png')) {
+    const [lw, lh] = tamanhoPng(arq);
+    if (lw !== w || lh !== h) { console.log(`✗ tamanho    ${rel}: ${lw}×${lh} (esperado ${w}×${h})`); faltas++; }
+  }
+}
+console.log(`· Mundo 2: ${opcionais.length - pendentes}/${opcionais.length} assets novos prontos` + (pendentes ? ' (o jogo usa substitutos para os que faltam)' : ''));
 console.log(faltas ? `\n${faltas} problema(s).` : `✓ ${exigidos.length} arquivos conferidos, nada faltando.`);
 process.exit(faltas ? 1 : 0);

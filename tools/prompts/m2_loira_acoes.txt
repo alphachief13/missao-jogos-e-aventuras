@@ -1,0 +1,18 @@
+Use the attached reference images as the strict visual base: same art style, same character design,
+same colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),
+sunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:
+pink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:
+no video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,
+no letters, no logos, no watermark. Clean edges, fully inside the frame with margin.
+Use case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.
+Input 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.
+Character: Blonde girl with wavy hair, yellow construction helmet with goggles on brim and pink bow, white lab coat, pink blouse, tool belt, denim skirt, pink sneakers. No handheld block tower. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.
+Camera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.
+Cell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.
+Cell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.
+Cell 3 (row 1, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.
+Cell 4 (row 1, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.
+Cell 5 (row 2, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; right knee bent.
+Cell 6 (row 2, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; slightly higher crouch.
+Cell 7 (row 2, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. sitting on ground, cute dizzy expression, small simple stars near head, no pain.
+Cells 8 through 8 stay EMPTY and transparent.

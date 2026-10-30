@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server/index.js",
     "site": "bash tools/montar_site.sh",
-    "testar": "node tools/testar_fases.mjs && node tools/verificar_assets.mjs"
+    "testar": "node tools/testar_fases.mjs && node tools/testar_mundo2.mjs && node tools/testar_treino_iso.mjs && node tools/verificar_assets.mjs"
   },
   "dependencies": {
     "peerjs": "^1.5.4",

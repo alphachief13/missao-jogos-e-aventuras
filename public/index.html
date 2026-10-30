@@ -7,6 +7,7 @@
   <link rel="icon" href="assets/ui/ic_bussola.png">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/tela.css">
+  <link rel="stylesheet" href="css/tutorial.css">
   <script src="vendor/peerjs/peerjs.min.js"></script>
   <script src="vendor/qrcode/qrcode.js"></script>
   <script type="importmap">
@@ -15,6 +16,7 @@
 </head>
 <body>
   <canvas id="cena"></canvas>
+  <canvas id="cenaIso" class="oculto"></canvas>
 
   <div id="hud" class="camada oculto">
     <div class="times" id="hudTimes"></div>
@@ -23,6 +25,10 @@
       <div class="caixa" id="hudTempo">0:00</div>
       <div class="caixa"><img src="assets/ui/ic_bloco.png"><span id="hudPecas">0</span></div>
     </div>
+    <div id="objetivo" class="objetivo cartao oculto"></div>
+    <div id="divisor" class="oculto"></div>
+    <div id="missoes" class="missoes cartao oculto"></div>
+    <div id="bussolaPc" class="oculto"></div>
     <div id="rotulos"></div>
     <div id="baloes"></div>
   </div>
@@ -32,41 +38,89 @@
     <div class="dica-fase cartao" id="contagemDica"></div>
   </div>
 
-  <!-- Lobby: logo, times, fases e como entrar -->
-  <div id="lobby" class="camada tela-clara">
-    <img class="logo" src="assets/kit/logo.png" alt="Missão, Jogos e Aventuras">
-    <p class="slogan">Brinque, explore, crie e viva novas aventuras!</p>
-    <div class="cards" id="cards"></div>
-    <div class="linha-baixo">
-      <div class="cartao fases" id="fases"></div>
-      <div class="cartao entrar">
-        <img class="qr" id="qr" alt="QR code do controle">
-        <div class="passos">
-          <div><b>No celular:</b> aponte a câmera e vire o celular de lado.</div>
-          <div>Código da sala: <b class="codigo" id="codigo">…</b></div>
-          <div class="url" id="url"></div>
-          <div><b>Neste PC:</b> aperte <kbd>ENTER</kbd> e escolha um time.</div>
-        </div>
-      </div>
-    </div>
-    <button class="btn grande" id="btnLoja">Jogar</button>
-    <div class="status" id="status"></div>
-  </div>
+  <!-- Barra de passos do menu (equipe → fase → oficina) -->
+  <ol id="passos" class="passos oculto">
+    <li data-p="times"><span>1</span>Equipe</li>
+    <li data-p="fase"><span>2</span>Fase</li>
+    <li data-p="loja"><span>3</span>Oficina</li>
+    <li data-p="jogar"><span>4</span>Jogar!</li>
+  </ol>
 
-  <!-- Oficina: as peças da equipe viram itens para a próxima fase -->
-  <div id="loja" class="camada tela-clara">
-    <div class="cab-loja">
-      <img src="assets/ui/ic_engrenagem.png" alt="">
-      <h2>Oficina da equipe</h2>
-      <div class="pilula carteira"><img src="assets/ui/ic_bloco.png"><span id="carteira">0</span> peças</div>
+  <!-- Início -->
+  <section id="inicio" class="camada tela-clara menu oculto">
+    <img class="logo-grande" src="assets/kit/logo.png" alt="Missão, Jogos e Aventuras">
+    <p class="slogan">Brinque, explore, crie e viva novas aventuras!</p>
+    <div class="turma" id="turma"></div>
+    <div class="acoes-inicio"><button class="btn grande" id="btnComecar">Começar</button>
+      <button class="btn claro btn-tutorial" data-tutorial>Como jogar</button></div>
+    <div class="dica">ou aperte <kbd>ENTER</kbd></div>
+  </section>
+
+  <!-- Passo 1: quem vai jogar -->
+  <section id="times" class="camada tela-clara menu oculto">
+    <header class="cab-passo"><h2>Quem vai jogar?</h2><p>De 1 a 4 pessoas. Cada pessoa é um time; sozinho, você controla dois.
+      <button class="pilula btn-tutorial link" data-tutorial>Como jogar</button></p></header>
+    <div class="corpo-times">
+      <div class="cards" id="cards"></div>
+      <aside class="como-entrar">
+        <div class="cartao modo">
+          <div class="modo-tit"><img src="assets/ui/ic_bussola.png" alt="">Pelo celular</div>
+          <img class="qr" id="qr" alt="QR code do controle">
+          <div class="codigo-sala">Código <b id="codigo">····</b></div>
+          <div class="url" id="url"></div>
+        </div>
+        <div class="cartao modo">
+          <div class="modo-tit"><img src="assets/ui/ic_bloco.png" alt="">Neste computador</div>
+          <p>Clique num time ou aperte <kbd>ENTER</kbd>.<br>Anda com <kbd>←</kbd><kbd>→</kbd>, pula com <kbd>↑</kbd>.</p>
+        </div>
+      </aside>
     </div>
-    <div class="info-fase" id="lojaFase"></div>
+    <footer class="rodape">
+      <button class="btn claro" id="btnVoltarInicio">Voltar</button>
+      <div class="status" id="status"></div>
+      <button class="btn grande" id="btnIrFase">Escolher fase</button>
+    </footer>
+  </section>
+
+  <!-- Passo 2: escolher a fase numa trilha -->
+  <section id="fase" class="camada tela-clara menu oculto">
+    <header class="cab-passo"><h2 id="tituloMundo">Escolha a fase</h2><p id="subMundo"></p></header>
+    <div class="trilha" id="trilha"></div>
+    <div class="cartao detalhe" id="detalhe"></div>
+    <footer class="rodape">
+      <button class="btn claro" id="btnVoltarTimes">Voltar</button>
+      <div class="status">Use <kbd>←</kbd><kbd>→</kbd> para escolher</div>
+      <button class="btn grande" id="btnLoja">Ir para a oficina</button>
+    </footer>
+  </section>
+
+  <!-- Passo 3: oficina — as peças da equipe viram itens para a próxima fase -->
+  <section id="loja" class="camada tela-clara menu oculto">
+    <header class="cab-passo"><h2>Oficina da equipe</h2><p>As peças são de todos. O que montar vale só para a próxima fase.</p></header>
+    <div class="pilula carteira"><img src="assets/ui/ic_bloco.png"><span id="carteira">0</span> peças</div>
     <div class="itens" id="itens"></div>
-    <div class="acoes">
-      <button class="btn grande" id="btnJogar">Começar fase</button>
+    <div class="info-fase cartao" id="lojaFase"></div>
+    <footer class="rodape">
       <button class="btn claro" id="btnLojaMenu">Voltar</button>
+      <div class="status">Montar é opcional</div>
+      <button class="btn grande" id="btnJogar">Começar fase</button>
+    </footer>
+  </section>
+
+  <!-- Pausa: a partida para para todo mundo -->
+  <div id="pausa" class="camada oculto">
+    <div class="painel cartao">
+      <h2>Pausa</h2>
+      <div class="sub" id="pausaQuem"></div>
+      <div class="opcoes">
+        <button class="btn grande" data-pausa="retomar">Continuar</button>
+        <button class="btn azul" data-pausa="reiniciar">Recomeçar a fase</button>
+        <button class="btn claro" data-pausa="loja">Ir para a oficina</button>
+        <button class="btn claro" data-pausa="menu">Escolher outra fase</button>
+        <button class="btn claro btn-tutorial" id="pausaTutorial" data-tutorial>Como jogar</button>
+      </div>
+      <div class="dica">ESC ou P continua · saindo da fase, as peças dela não contam</div>
     </div>
-    <div class="dica">As peças são da equipe toda. O que montar vale só para a próxima fase. ENTER começa.</div>
   </div>
 
   <div id="fim" class="camada oculto">
@@ -74,9 +128,11 @@
   </div>
 
   <div class="roboeduc" id="roboeduc"><img src="assets/kit/logo_roboeduc.png" alt="RoboEduc"></div>
+  <button id="btnPausa" class="oculto" title="Pausa (ESC)"><svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg></button>
   <button id="som" title="Som"><img id="somIcone" alt="Som"></button>
   <div id="aviso" class="oculto"></div>
 
   <script type="module" src="js/tela.js"></script>
+  <script type="module" src="js/tutorial.js"></script>
 </body>
 </html>

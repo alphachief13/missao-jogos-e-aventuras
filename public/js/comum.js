@@ -5,7 +5,10 @@ export const CORES = { azul: '#3E93D0', rosa: '#E3205D', amarelo: '#F6BB33', ver
 export const PERS_COR = { ruivo: 'azul', loira: 'rosa', cacheado: 'amarelo', sapo: 'verde' };
 export const COR_PERS = Object.fromEntries(Object.entries(PERS_COR).map(([p, c]) => [c, p]));
 export const NOME_TIME = { azul: 'Time Azul', rosa: 'Time Rosa', amarelo: 'Time Amarelo', verde: 'Time Verde' };
-export const MUNDOS = { exploradores: { nome: 'Exploradores em Ação', selo: 'assets/kit/selo_1.png' } };
+export const MUNDOS = {
+  exploradores: { n: 1, nome: 'Exploradores em Ação', selo: 'assets/kit/selo_1.png' },
+  construtores: { n: 2, nome: 'Desafio dos Construtores', selo: 'assets/kit/selo_2.png' },
+};
 
 const svg = corpo => 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">${corpo}</svg>`);
 const M = '#1E2A4A';
@@ -30,3 +33,22 @@ export const ITENS = {
   mola: { icone: ICONE.mola, desc: 'Pula bem mais alto durante a fase.' },
   planador: { icone: ICONE.planador, desc: 'Segure PULAR caindo para planar devagar.' },
 };
+
+// Mundo 2: missão que a bússola aponta para um personagem (a mais perto entre as liberadas e não feitas)
+// e o ângulo da seta na tela (0 = direita), já na visão isométrica (direita = +x −z, baixo = +x +z).
+export function bussola(fase, s, i) {
+  if (!fase?.missoes || !s?.missoes || !s.ch[i]) return null;
+  const [x, z] = s.ch[i];
+  const feita = id => s.missoes[fase.missoes.findIndex(m => m.id === id)];
+  let melhor = null;
+  fase.missoes.forEach((m, k) => {
+    if (s.missoes[k] || (m.depois && !m.depois.every(feita))) return;
+    const d = Math.hypot(m.x - x, m.z - z);
+    if (!melhor || d < melhor.d) melhor = { m, k, d };
+  });
+  if (!melhor) return null;
+  const dx = melhor.m.x - x, dz = melhor.m.z - z;
+  return { ...melhor, numero: melhor.k + 1, feitas: s.missoes.filter(Boolean).length, total: fase.missoes.length,
+           angulo: Math.atan2(dx + dz, dx - dz) * 180 / Math.PI };
+}
+export const SETA = '<svg viewBox="0 0 24 24"><path d="M4 12h13M12 5l7 7-7 7" fill="none" stroke="#1E2A4A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';

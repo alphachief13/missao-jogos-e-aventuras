@@ -307,5 +307,809 @@
     "prompt_file": "tools/prompts/lobby_longe.txt",
     "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nWide horizontal 20:9 backdrop, composed to fit 2400x1080. Cream clean map background with dotted trail, blocks and leaves only in corners. No characters except the distant blurred friendly brick robot for conquistas only. No playable platforms or foreground floor. Calm spacious slightly defocused center; details at edges. No lettering, badge outlines, borders or logos. Use references for visual style and objects only, not poster composition.",
     "transparent": false
+  },
+  "iso_ruivo_frente_idle": {
+    "key": "iso_ruivo_frente_idle",
+    "out": "assets/_bruto/iso_ruivo_frente_idle.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/ruivo/idle.png",
+      "referencias/kit/personagens/01_heroi-explorador.png"
+    ],
+    "prompt_file": "tools/prompts/iso_ruivo_frente_idle.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: isometric full-body animation sprite strip.\nInput 1 is the APPROVED current platform sprite: strict identity, proportions, clothes, palette and physical scale reference. Input 2 is the official campaign character design reference only; REMOVE the handheld map and omit the logo, as in input 1.\nCharacter: same small red-haired boy with huge head, spiky orange hair, brown eyes, open white lab coat, blue T-shirt, beige cargo shorts, olive green backpack with rolled green bedroll, binoculars hanging at chest, white socks and BLUE-and-white sneakers. Hands EMPTY in every frame. No map, headset, controller, box, tool, logo or text. Do not add accessories or change the backpack color.\nCamera: orthographic isometric game camera elevated 35 degrees above horizon, looking down. Show top surfaces of hair, shoulders and shoes. Preserve the approved character proportions, not an older or taller child. Same scale for every pose; never make running frames smaller. Fully transparent background, no ground, no cast shadow, no rim glow or ambient haze. Alpha 255 inside character and 0 outside silhouette.\nLayout: one horizontal row, full body in every cell, large transparent gaps between poses and margins on ALL sides, no overlap or cropping. No cell borders, captions or arrows. Keep head size and model scale identical across the strip.\nExactly 2 separate full-body poses, evenly spaced from left to right.\nFRONT three-quarter view from ABOVE. Boy faces diagonally DOWN-RIGHT on the screen: toward viewer and a little to the right. We see face, chest, and the right side of body, PLUS top of hair and shoulders. Not a level camera and not a side profile. Both feet point diagonally down-right. Frame 1 relaxed happy standing, arms relaxed, EMPTY hands. Frame 2 exactly same stance and proportions, subtle breathing and blink. Blue shirt clearly visible, binoculars hanging at neck.",
+    "transparent": true,
+    "quadros": 2,
+    "destino": "assets/personagens/ruivo/iso/frente_idle.png"
+  },
+  "iso_ruivo_costas_corrida": {
+    "key": "iso_ruivo_costas_corrida",
+    "out": "assets/_bruto/iso_ruivo_costas_corrida.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/ruivo/idle.png",
+      "referencias/kit/personagens/01_heroi-explorador.png"
+    ],
+    "prompt_file": "tools/prompts/iso_ruivo_costas_corrida.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: isometric full-body animation sprite strip.\nInput 1 is the APPROVED current platform sprite: strict identity, proportions, clothes, palette and physical scale reference. Input 2 is the official campaign character design reference only; REMOVE the handheld map and omit the logo, as in input 1.\nCharacter: same small red-haired boy with huge head, spiky orange hair, brown eyes, open white lab coat, blue T-shirt, beige cargo shorts, olive green backpack with rolled green bedroll, binoculars hanging at chest, white socks and BLUE-and-white sneakers. Hands EMPTY in every frame. No map, headset, controller, box, tool, logo or text. Do not add accessories or change the backpack color.\nCamera: orthographic isometric game camera elevated 35 degrees above horizon, looking down. Show top surfaces of hair, shoulders and shoes. Preserve the approved character proportions, not an older or taller child. Same scale for every pose; never make running frames smaller. Fully transparent background, no ground, no cast shadow, no rim glow or ambient haze. Alpha 255 inside character and 0 outside silhouette.\nLayout: one horizontal row, full body in every cell, large transparent gaps between poses and margins on ALL sides, no overlap or cropping. No cell borders, captions or arrows. Keep head size and model scale identical across the strip.\nExactly 4 separate full-body poses, evenly spaced from left to right.\nREAR three-quarter view from ABOVE. Boy runs diagonally UP-RIGHT on the screen, AWAY from viewer, showing back of head, BACKPACK, coat back and right side of body. The face and chest must NOT turn toward camera. Four successive run phases: right leg forward/left back; passing; left leg forward/right back; opposite passing. Arms swing opposite legs, both hands empty. Show blue-and-white sneaker uppers and blue shirt at side/coat opening so BLUE team remains readable from behind, without adding symbols or changing clothing. Use the same compact child scale as front view. No front-facing or sideways poses.",
+    "transparent": true,
+    "quadros": 4,
+    "destino": "assets/personagens/ruivo/iso/costas_corrida.png"
+  },
+  "m2_ruivo_movimento": {
+    "key": "m2_ruivo_movimento",
+    "out": "assets/_bruto/m2_ruivo_movimento.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/ruivo/idle.png",
+      "referencias/kit/personagens/01_heroi-explorador.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_ruivo_movimento.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Red-haired boy with orange spiky hair, large brown eyes, white lab coat, blue T-shirt, beige cargo shorts, binoculars hanging from neck, olive green backpack, blue and white sneakers. No headset, controller or handheld map. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run, near leg forward and far leg back.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run passing pose, near leg under hips, far knee raised.\nCell 3 (row 1, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run, far leg forward and near leg back.\nCell 4 (row 1, column 4): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run passing pose, far foot under hips, near knee raised.\nCell 5 (row 2, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. stand relaxed; eyes open.\nCell 6 (row 2, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. stand relaxed; subtle breathing/blink.\nCells 7 through 8 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_corrida",
+        0
+      ],
+      [
+        "frente_corrida",
+        1
+      ],
+      [
+        "frente_corrida",
+        2
+      ],
+      [
+        "frente_corrida",
+        3
+      ],
+      [
+        "costas_idle",
+        0
+      ],
+      [
+        "costas_idle",
+        1
+      ]
+    ],
+    "char": "ruivo"
+  },
+  "m2_ruivo_ar": {
+    "key": "m2_ruivo_ar",
+    "out": "assets/_bruto/m2_ruivo_ar.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/ruivo/idle.png",
+      "referencias/kit/personagens/01_heroi-explorador.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_ruivo_ar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 2 columns by 2 rows of equal cells, read row-major. Requested canvas 1024x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Red-haired boy with orange spiky hair, large brown eyes, white lab coat, blue T-shirt, beige cargo shorts, binoculars hanging from neck, olive green backpack, blue and white sneakers. No headset, controller or handheld map. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. ascending jump with bent knees and raised empty arms.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. descending with arms open for balance and bent knees.\nCell 3 (row 2, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. ascending jump with bent knees and raised empty arms.\nCell 4 (row 2, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. descending with arms open for balance and bent knees.\nCells 5 through 4 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 2,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_pulo",
+        0
+      ],
+      [
+        "frente_queda",
+        0
+      ],
+      [
+        "costas_pulo",
+        0
+      ],
+      [
+        "costas_queda",
+        0
+      ]
+    ],
+    "char": "ruivo"
+  },
+  "m2_ruivo_carregar": {
+    "key": "m2_ruivo_carregar",
+    "out": "assets/_bruto/m2_ruivo_carregar.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/ruivo/idle.png",
+      "referencias/kit/personagens/01_heroi-explorador.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_ruivo_carregar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Red-haired boy with orange spiky hair, large brown eyes, white lab coat, blue T-shirt, beige cargo shorts, binoculars hanging from neck, olive green backpack, blue and white sneakers. No headset, controller or handheld map. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 1 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 2 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 3 (row 1, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 3 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 4 (row 1, column 4): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 4 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 5 (row 2, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 1 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 6 (row 2, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 2 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 7 (row 2, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 3 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 8 (row 2, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 4 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCells 9 through 8 stay EMPTY and transparent.\nCRITICAL POSE REQUIREMENT: BOTH ARMS REACHING STRAIGHT UP HIGH ABOVE HEAD. Elbows above forehead. Palms and ALL fingers must be ABOVE the HIGHEST HAIR TIP, with clear empty space between hair crown and upturned palms. Do not touch hair, do not put hands beside ears. Like carrying a wide invisible crate OVERHEAD. Both wrists higher than crown in every front and back cell. No crate is visible. Keep body smaller within cell to allow this vertical reach, but same head size in all cells. Arms are the highest opaque part of each figure.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_carregar",
+        0
+      ],
+      [
+        "frente_carregar",
+        1
+      ],
+      [
+        "frente_carregar",
+        2
+      ],
+      [
+        "frente_carregar",
+        3
+      ],
+      [
+        "costas_carregar",
+        0
+      ],
+      [
+        "costas_carregar",
+        1
+      ],
+      [
+        "costas_carregar",
+        2
+      ],
+      [
+        "costas_carregar",
+        3
+      ]
+    ],
+    "char": "ruivo"
+  },
+  "m2_ruivo_acoes": {
+    "key": "m2_ruivo_acoes",
+    "out": "assets/_bruto/m2_ruivo_acoes.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/ruivo/idle.png",
+      "referencias/kit/personagens/01_heroi-explorador.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_ruivo_acoes.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Red-haired boy with orange spiky hair, large brown eyes, white lab coat, blue T-shirt, beige cargo shorts, binoculars hanging from neck, olive green backpack, blue and white sneakers. No headset, controller or handheld map. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.\nCell 3 (row 1, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.\nCell 4 (row 1, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.\nCell 5 (row 2, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; right knee bent.\nCell 6 (row 2, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; slightly higher crouch.\nCell 7 (row 2, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. sitting on ground, cute dizzy expression, small simple stars near head, no pain.\nCells 8 through 8 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_empurrar",
+        0
+      ],
+      [
+        "frente_empurrar",
+        1
+      ],
+      [
+        "costas_empurrar",
+        0
+      ],
+      [
+        "costas_empurrar",
+        1
+      ],
+      [
+        "ajudar",
+        0
+      ],
+      [
+        "ajudar",
+        1
+      ],
+      [
+        "caido",
+        0
+      ]
+    ],
+    "char": "ruivo"
+  },
+  "m2_loira_movimento": {
+    "key": "m2_loira_movimento",
+    "out": "assets/_bruto/m2_loira_movimento.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/loira/idle.png",
+      "referencias/kit/personagens/03_fase2-construtora-loira.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_loira_movimento.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 3 rows of equal cells, read row-major. Requested canvas 2048x1536. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Blonde girl with wavy hair, yellow construction helmet with goggles on brim and pink bow, white lab coat, pink blouse, tool belt, denim skirt, pink sneakers. No handheld block tower. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. stand relaxed; eyes open.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. stand relaxed; subtle breathing/blink.\nCell 3 (row 1, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. stand relaxed; eyes open.\nCell 4 (row 1, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. stand relaxed; subtle breathing/blink.\nCell 5 (row 2, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run, near leg forward and far leg back.\nCell 6 (row 2, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run passing pose, near leg under hips, far knee raised.\nCell 7 (row 2, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run, far leg forward and near leg back.\nCell 8 (row 2, column 4): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run passing pose, far foot under hips, near knee raised.\nCell 9 (row 3, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run, near leg forward and far leg back.\nCell 10 (row 3, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run passing pose, near leg under hips, far knee raised.\nCell 11 (row 3, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run, far leg forward and near leg back.\nCell 12 (row 3, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run passing pose, far foot under hips, near knee raised.\nCells 13 through 12 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 3,
+    "cells": [
+      [
+        "frente_idle",
+        0
+      ],
+      [
+        "frente_idle",
+        1
+      ],
+      [
+        "costas_idle",
+        0
+      ],
+      [
+        "costas_idle",
+        1
+      ],
+      [
+        "frente_corrida",
+        0
+      ],
+      [
+        "frente_corrida",
+        1
+      ],
+      [
+        "frente_corrida",
+        2
+      ],
+      [
+        "frente_corrida",
+        3
+      ],
+      [
+        "costas_corrida",
+        0
+      ],
+      [
+        "costas_corrida",
+        1
+      ],
+      [
+        "costas_corrida",
+        2
+      ],
+      [
+        "costas_corrida",
+        3
+      ]
+    ],
+    "char": "loira"
+  },
+  "m2_loira_ar": {
+    "key": "m2_loira_ar",
+    "out": "assets/_bruto/m2_loira_ar.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/loira/idle.png",
+      "referencias/kit/personagens/03_fase2-construtora-loira.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_loira_ar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 2 columns by 2 rows of equal cells, read row-major. Requested canvas 1024x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Blonde girl with wavy hair, yellow construction helmet with goggles on brim and pink bow, white lab coat, pink blouse, tool belt, denim skirt, pink sneakers. No handheld block tower. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. ascending jump with bent knees and raised empty arms.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. descending with arms open for balance and bent knees.\nCell 3 (row 2, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. ascending jump with bent knees and raised empty arms.\nCell 4 (row 2, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. descending with arms open for balance and bent knees.\nCells 5 through 4 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 2,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_pulo",
+        0
+      ],
+      [
+        "frente_queda",
+        0
+      ],
+      [
+        "costas_pulo",
+        0
+      ],
+      [
+        "costas_queda",
+        0
+      ]
+    ],
+    "char": "loira"
+  },
+  "m2_loira_carregar": {
+    "key": "m2_loira_carregar",
+    "out": "assets/_bruto/m2_loira_carregar.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/loira/idle.png",
+      "referencias/kit/personagens/03_fase2-construtora-loira.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_loira_carregar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Blonde girl with wavy hair, yellow construction helmet with goggles on brim and pink bow, white lab coat, pink blouse, tool belt, denim skirt, pink sneakers. No handheld block tower. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 1 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 2 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 3 (row 1, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 3 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 4 (row 1, column 4): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 4 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 5 (row 2, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 1 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 6 (row 2, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 2 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 7 (row 2, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 3 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 8 (row 2, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 4 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCells 9 through 8 stay EMPTY and transparent.\nCRITICAL POSE REQUIREMENT: BOTH ARMS REACHING STRAIGHT UP HIGH ABOVE HEAD. Elbows above forehead. Palms and ALL fingers must be ABOVE the HIGHEST HAIR TIP, with clear empty space between hair crown and upturned palms. Do not touch hair, do not put hands beside ears. Like carrying a wide invisible crate OVERHEAD. Both wrists higher than crown in every front and back cell. No crate is visible. Keep body smaller within cell to allow this vertical reach, but same head size in all cells. Arms are the highest opaque part of each figure.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_carregar",
+        0
+      ],
+      [
+        "frente_carregar",
+        1
+      ],
+      [
+        "frente_carregar",
+        2
+      ],
+      [
+        "frente_carregar",
+        3
+      ],
+      [
+        "costas_carregar",
+        0
+      ],
+      [
+        "costas_carregar",
+        1
+      ],
+      [
+        "costas_carregar",
+        2
+      ],
+      [
+        "costas_carregar",
+        3
+      ]
+    ],
+    "char": "loira"
+  },
+  "m2_loira_acoes": {
+    "key": "m2_loira_acoes",
+    "out": "assets/_bruto/m2_loira_acoes.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/loira/idle.png",
+      "referencias/kit/personagens/03_fase2-construtora-loira.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_loira_acoes.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Blonde girl with wavy hair, yellow construction helmet with goggles on brim and pink bow, white lab coat, pink blouse, tool belt, denim skirt, pink sneakers. No handheld block tower. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.\nCell 3 (row 1, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.\nCell 4 (row 1, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.\nCell 5 (row 2, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; right knee bent.\nCell 6 (row 2, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; slightly higher crouch.\nCell 7 (row 2, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. sitting on ground, cute dizzy expression, small simple stars near head, no pain.\nCells 8 through 8 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_empurrar",
+        0
+      ],
+      [
+        "frente_empurrar",
+        1
+      ],
+      [
+        "costas_empurrar",
+        0
+      ],
+      [
+        "costas_empurrar",
+        1
+      ],
+      [
+        "ajudar",
+        0
+      ],
+      [
+        "ajudar",
+        1
+      ],
+      [
+        "caido",
+        0
+      ]
+    ],
+    "char": "loira"
+  },
+  "m2_cacheado_movimento": {
+    "key": "m2_cacheado_movimento",
+    "out": "assets/_bruto/m2_cacheado_movimento.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/cacheado/idle.png",
+      "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_cacheado_movimento.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 3 rows of equal cells, read row-major. Requested canvas 2048x1536. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Black boy with curly hair, beige safari hat, explorer vest with pockets, white T-shirt, beige shorts, brown backpack, blue sneakers. Magnifying glass and compass attached to BELT. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. stand relaxed; eyes open.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. stand relaxed; subtle breathing/blink.\nCell 3 (row 1, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. stand relaxed; eyes open.\nCell 4 (row 1, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. stand relaxed; subtle breathing/blink.\nCell 5 (row 2, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run, near leg forward and far leg back.\nCell 6 (row 2, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run passing pose, near leg under hips, far knee raised.\nCell 7 (row 2, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run, far leg forward and near leg back.\nCell 8 (row 2, column 4): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run passing pose, far foot under hips, near knee raised.\nCell 9 (row 3, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run, near leg forward and far leg back.\nCell 10 (row 3, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run passing pose, near leg under hips, far knee raised.\nCell 11 (row 3, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run, far leg forward and near leg back.\nCell 12 (row 3, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run passing pose, far foot under hips, near knee raised.\nCells 13 through 12 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 3,
+    "cells": [
+      [
+        "frente_idle",
+        0
+      ],
+      [
+        "frente_idle",
+        1
+      ],
+      [
+        "costas_idle",
+        0
+      ],
+      [
+        "costas_idle",
+        1
+      ],
+      [
+        "frente_corrida",
+        0
+      ],
+      [
+        "frente_corrida",
+        1
+      ],
+      [
+        "frente_corrida",
+        2
+      ],
+      [
+        "frente_corrida",
+        3
+      ],
+      [
+        "costas_corrida",
+        0
+      ],
+      [
+        "costas_corrida",
+        1
+      ],
+      [
+        "costas_corrida",
+        2
+      ],
+      [
+        "costas_corrida",
+        3
+      ]
+    ],
+    "char": "cacheado"
+  },
+  "m2_cacheado_ar": {
+    "key": "m2_cacheado_ar",
+    "out": "assets/_bruto/m2_cacheado_ar.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/cacheado/idle.png",
+      "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_cacheado_ar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 2 columns by 2 rows of equal cells, read row-major. Requested canvas 1024x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Black boy with curly hair, beige safari hat, explorer vest with pockets, white T-shirt, beige shorts, brown backpack, blue sneakers. Magnifying glass and compass attached to BELT. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. ascending jump with bent knees and raised empty arms.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. descending with arms open for balance and bent knees.\nCell 3 (row 2, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. ascending jump with bent knees and raised empty arms.\nCell 4 (row 2, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. descending with arms open for balance and bent knees.\nCells 5 through 4 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 2,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_pulo",
+        0
+      ],
+      [
+        "frente_queda",
+        0
+      ],
+      [
+        "costas_pulo",
+        0
+      ],
+      [
+        "costas_queda",
+        0
+      ]
+    ],
+    "char": "cacheado"
+  },
+  "m2_cacheado_carregar": {
+    "key": "m2_cacheado_carregar",
+    "out": "assets/_bruto/m2_cacheado_carregar.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/cacheado/idle.png",
+      "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_cacheado_carregar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Black boy with curly hair, beige safari hat, explorer vest with pockets, white T-shirt, beige shorts, brown backpack, blue sneakers. Magnifying glass and compass attached to BELT. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 1 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 2 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 3 (row 1, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 3 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 4 (row 1, column 4): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 4 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 5 (row 2, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 1 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 6 (row 2, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 2 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 7 (row 2, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 3 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 8 (row 2, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 4 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCells 9 through 8 stay EMPTY and transparent.\nCRITICAL POSE REQUIREMENT: BOTH ARMS REACHING STRAIGHT UP HIGH ABOVE HEAD. Elbows above forehead. Palms and ALL fingers must be ABOVE the HIGHEST HAIR TIP, with clear empty space between hair crown and upturned palms. Do not touch hair, do not put hands beside ears. Like carrying a wide invisible crate OVERHEAD. Both wrists higher than crown in every front and back cell. No crate is visible. Keep body smaller within cell to allow this vertical reach, but same head size in all cells. Arms are the highest opaque part of each figure.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_carregar",
+        0
+      ],
+      [
+        "frente_carregar",
+        1
+      ],
+      [
+        "frente_carregar",
+        2
+      ],
+      [
+        "frente_carregar",
+        3
+      ],
+      [
+        "costas_carregar",
+        0
+      ],
+      [
+        "costas_carregar",
+        1
+      ],
+      [
+        "costas_carregar",
+        2
+      ],
+      [
+        "costas_carregar",
+        3
+      ]
+    ],
+    "char": "cacheado"
+  },
+  "m2_cacheado_acoes": {
+    "key": "m2_cacheado_acoes",
+    "out": "assets/_bruto/m2_cacheado_acoes.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/cacheado/idle.png",
+      "referencias/kit/personagens/02_fase1-explorador-cacheado.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_cacheado_acoes.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: Black boy with curly hair, beige safari hat, explorer vest with pockets, white T-shirt, beige shorts, brown backpack, blue sneakers. Magnifying glass and compass attached to BELT. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.\nCell 3 (row 1, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.\nCell 4 (row 1, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.\nCell 5 (row 2, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; right knee bent.\nCell 6 (row 2, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; slightly higher crouch.\nCell 7 (row 2, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. sitting on ground, cute dizzy expression, small simple stars near head, no pain.\nCells 8 through 8 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_empurrar",
+        0
+      ],
+      [
+        "frente_empurrar",
+        1
+      ],
+      [
+        "costas_empurrar",
+        0
+      ],
+      [
+        "costas_empurrar",
+        1
+      ],
+      [
+        "ajudar",
+        0
+      ],
+      [
+        "ajudar",
+        1
+      ],
+      [
+        "caido",
+        0
+      ]
+    ],
+    "char": "cacheado"
+  },
+  "m2_sapo_movimento": {
+    "key": "m2_sapo_movimento",
+    "out": "assets/_bruto/m2_sapo_movimento.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/sapo/idle.png",
+      "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_sapo_movimento.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 3 rows of equal cells, read row-major. Requested canvas 2048x1536. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: ONLY green #A0C630 and white robot FROG on RIGHT, black visor with smiling blue LED eyes, green and white headband, whistle hanging from neck. No ball, no lion. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. stand relaxed; eyes open.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. stand relaxed; subtle breathing/blink.\nCell 3 (row 1, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. stand relaxed; eyes open.\nCell 4 (row 1, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. stand relaxed; subtle breathing/blink.\nCell 5 (row 2, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run, near leg forward and far leg back.\nCell 6 (row 2, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run passing pose, near leg under hips, far knee raised.\nCell 7 (row 2, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run, far leg forward and near leg back.\nCell 8 (row 2, column 4): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. run passing pose, far foot under hips, near knee raised.\nCell 9 (row 3, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run, near leg forward and far leg back.\nCell 10 (row 3, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run passing pose, near leg under hips, far knee raised.\nCell 11 (row 3, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run, far leg forward and near leg back.\nCell 12 (row 3, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. run passing pose, far foot under hips, near knee raised.\nCells 13 through 12 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 3,
+    "cells": [
+      [
+        "frente_idle",
+        0
+      ],
+      [
+        "frente_idle",
+        1
+      ],
+      [
+        "costas_idle",
+        0
+      ],
+      [
+        "costas_idle",
+        1
+      ],
+      [
+        "frente_corrida",
+        0
+      ],
+      [
+        "frente_corrida",
+        1
+      ],
+      [
+        "frente_corrida",
+        2
+      ],
+      [
+        "frente_corrida",
+        3
+      ],
+      [
+        "costas_corrida",
+        0
+      ],
+      [
+        "costas_corrida",
+        1
+      ],
+      [
+        "costas_corrida",
+        2
+      ],
+      [
+        "costas_corrida",
+        3
+      ]
+    ],
+    "char": "sapo"
+  },
+  "m2_sapo_ar": {
+    "key": "m2_sapo_ar",
+    "out": "assets/_bruto/m2_sapo_ar.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/sapo/idle.png",
+      "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_sapo_ar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 2 columns by 2 rows of equal cells, read row-major. Requested canvas 1024x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: ONLY green #A0C630 and white robot FROG on RIGHT, black visor with smiling blue LED eyes, green and white headband, whistle hanging from neck. No ball, no lion. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. ascending jump with bent knees and raised empty arms.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. descending with arms open for balance and bent knees.\nCell 3 (row 2, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. ascending jump with bent knees and raised empty arms.\nCell 4 (row 2, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. descending with arms open for balance and bent knees.\nCells 5 through 4 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 2,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_pulo",
+        0
+      ],
+      [
+        "frente_queda",
+        0
+      ],
+      [
+        "costas_pulo",
+        0
+      ],
+      [
+        "costas_queda",
+        0
+      ]
+    ],
+    "char": "sapo"
+  },
+  "m2_sapo_carregar": {
+    "key": "m2_sapo_carregar",
+    "out": "assets/_bruto/m2_sapo_carregar.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/sapo/idle.png",
+      "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_sapo_carregar.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: ONLY green #A0C630 and white robot FROG on RIGHT, black visor with smiling blue LED eyes, green and white headband, whistle hanging from neck. No ball, no lion. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 1 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 2 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 3 (row 1, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 3 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 4 (row 1, column 4): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. walking phase 4 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 5 (row 2, column 1): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 1 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 6 (row 2, column 2): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 2 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 7 (row 2, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 3 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCell 8 (row 2, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. walking phase 4 of 4, BOTH EMPTY HANDS ABOVE TOP OF HEAD, palms upward supporting an INVISIBLE box, elbows bent, never hold any object.\nCells 9 through 8 stay EMPTY and transparent.\nCRITICAL POSE REQUIREMENT: BOTH ARMS REACHING STRAIGHT UP HIGH ABOVE HEAD. Elbows above forehead. Palms and ALL fingers must be ABOVE the HIGHEST HAIR TIP, with clear empty space between hair crown and upturned palms. Do not touch hair, do not put hands beside ears. Like carrying a wide invisible crate OVERHEAD. Both wrists higher than crown in every front and back cell. No crate is visible. Keep body smaller within cell to allow this vertical reach, but same head size in all cells. Arms are the highest opaque part of each figure.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_carregar",
+        0
+      ],
+      [
+        "frente_carregar",
+        1
+      ],
+      [
+        "frente_carregar",
+        2
+      ],
+      [
+        "frente_carregar",
+        3
+      ],
+      [
+        "costas_carregar",
+        0
+      ],
+      [
+        "costas_carregar",
+        1
+      ],
+      [
+        "costas_carregar",
+        2
+      ],
+      [
+        "costas_carregar",
+        3
+      ]
+    ],
+    "char": "sapo"
+  },
+  "m2_sapo_acoes": {
+    "key": "m2_sapo_acoes",
+    "out": "assets/_bruto/m2_sapo_acoes.png",
+    "size": "1536x1024",
+    "refs": [
+      "assets/personagens/sapo/idle.png",
+      "referencias/kit/personagens/05_fase4-gincana-leao-e-sapo.png",
+      "assets/personagens/ruivo/iso/frente_idle.png",
+      "assets/personagens/ruivo/iso/costas_corrida.png"
+    ],
+    "prompt_file": "tools/prompts/m2_sapo_acoes.txt",
+    "prompt": "Use the attached reference images as the strict visual base: same art style, same character design,\nsame colors and same rendering quality. Style: polished stylized 3D children's animation (Pixar-like),\nsunny outdoor adventure mood, rounded shapes, soft daylight, vivid saturated colors. Brand palette:\npink #E3205D, blue #3E93D0, yellow #F6BB33, green #A0C630, navy #1E2A4A, white. Real-world play only:\nno video game controller, no headset, no screens, no game coins, no pixels, no outer space. No text,\nno letters, no logos, no watermark. Clean edges, fully inside the frame with margin.\nUse case: identity-preserve. Asset: ONE animation sprite ATLAS, exactly 4 columns by 2 rows of equal cells, read row-major. Requested canvas 2048x1024. Transparent background, NO visible grid, labels, borders, floor, shadows or glow. Each figure fully INSIDE its own cell with 8% margin. No overlapping figures. Empty unused cells remain transparent.\nInput 1: this character's current sprite, STRICT face, head/body proportions, clothes, colors and scale. Input 2: official identity reference, ignore handheld props and logos, use only requested character. Inputs 3 and 4: APPROVED isometric camera elevation and front/back directions, NOT the identity of this character unless it is the ruivo.\nCharacter: ONLY green #A0C630 and white robot FROG on RIGHT, black visor with smiling blue LED eyes, green and white headband, whistle hanging from neck. No ball, no lion. No logos or writing. Same compact toy proportions as current sprite. Empty hands in EVERY pose. Objects from reference stay ATTACHED TO BODY, never held. The robot frog must not acquire lion parts, a hat or backpack.\nCamera fixed at 35 degrees above horizon, orthographic three-quarter top view like inputs 3/4. Front = down-right on screen; back = up-right. No left versions, no flat side profile. IDENTICAL MODEL SCALE AND HEAD SIZE in all cells, including crouch/sit/jump/carry; bent poses occupy less height. Do not shrink raised-hand poses to fit: leave enough overhead room in all cells. Keep team color visible from back using existing clothes/shoes: blue for ruivo, pink bow/shoes for loira, warm yellow-beige vest/hat for cacheado, green shell for sapo. No invented marks or colored symbols.\nCell 1 (row 1, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.\nCell 2 (row 1, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.\nCell 3 (row 1, column 3): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; legs braced.\nCell 4 (row 1, column 4): BACK, facing diagonally UP-RIGHT away from camera; back of head and backpack visible, face hidden. lean forward, BOTH empty arms extended pushing an INVISIBLE heavy object; small advancing step.\nCell 5 (row 2, column 1): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; right knee bent.\nCell 6 (row 2, column 2): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. crouching, extend one empty hand toward viewer to lift an INVISIBLE friend; slightly higher crouch.\nCell 7 (row 2, column 3): FRONT, facing diagonally DOWN-RIGHT toward camera; face and chest visible. sitting on ground, cute dizzy expression, small simple stars near head, no pain.\nCells 8 through 8 stay EMPTY and transparent.",
+    "transparent": true,
+    "cols": 4,
+    "rows": 2,
+    "cells": [
+      [
+        "frente_empurrar",
+        0
+      ],
+      [
+        "frente_empurrar",
+        1
+      ],
+      [
+        "costas_empurrar",
+        0
+      ],
+      [
+        "costas_empurrar",
+        1
+      ],
+      [
+        "ajudar",
+        0
+      ],
+      [
+        "ajudar",
+        1
+      ],
+      [
+        "caido",
+        0
+      ]
+    ],
+    "char": "sapo"
   }
 }

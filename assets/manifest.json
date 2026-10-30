@@ -1903,6 +1903,74 @@
       "sha256": "c56634edf48bb895b98ccb56c6d0a3a87772de3d83fd3ff7a10b8193deb294d2"
     },
     {
+      "caminho": "personagens/ruivo/iso/costas_corrida.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "quadros": 4,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 10,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "vista": "costas",
+      "camera_elevacao_graus": 35,
+      "calibracao": {
+        "target_hair_width": 156.0,
+        "native_hair_width": 265.5,
+        "scale": 0.5875706214689266,
+        "heights": [
+          353,
+          341,
+          359,
+          356
+        ],
+        "method": "one uniform factor for entire strip; head width matched to current platform sprite; projected body height changes with elevated camera"
+      },
+      "sha256": "fac614b19a230abdf4fd739c83dafd4466ec752f1e59ede89c9a0a2a37fe57d2",
+      "largura": 1536,
+      "altura": 384
+    },
+    {
+      "caminho": "personagens/ruivo/iso/frente_idle.png",
+      "tipo": "imagem",
+      "origem": "ia",
+      "refs": [
+        "referencias/kit/personagens/01_heroi-explorador.png"
+      ],
+      "quadros": 2,
+      "largura_quadro": 384,
+      "altura_quadro": 384,
+      "fps": 3,
+      "ancora": [
+        192,
+        376
+      ],
+      "time": "azul",
+      "cor_hex": "#3E93D0",
+      "vista": "frente",
+      "camera_elevacao_graus": 35,
+      "calibracao": {
+        "target_hair_width": 156.0,
+        "native_hair_width": 391.0,
+        "scale": 0.3989769820971867,
+        "heights": [
+          327,
+          330
+        ],
+        "method": "one uniform factor for entire strip; head width matched to current platform sprite; projected body height changes with elevated camera"
+      },
+      "sha256": "fd6f23ad3c139db1d679376cb35edee89f94da31c5618268baa8dfed3af425d0",
+      "largura": 768,
+      "altura": 384
+    },
+    {
       "caminho": "personagens/ruivo/pulo.png",
       "tipo": "imagem",
       "largura": 384,

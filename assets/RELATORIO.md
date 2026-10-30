@@ -84,3 +84,19 @@ node tools/verificar_assets.mjs
 ```
 
 O build usa os brutos persistidos e não chama IA. `--force <personagem|mundo|all>` sobrescreve apenas os derivados selecionados.
+
+
+# Mundo 2 — Desafio dos Construtores: primeiro checkpoint
+
+Lidos integralmente `CODEX_MUNDO2.md` e as regras de identidade aplicáveis. Esta etapa está **aguardando revisão do usuário**, antes de gerar o restante.
+
+- **2 imagens de IA nativa, 0 regerações** nesta etapa. Referências anexadas em ambas: `assets/personagens/ruivo/idle.png` atual e `referencias/kit/personagens/01_heroi-explorador.png`. Prompts completos em `tools/prompts/iso_ruivo_*.txt`; pedidos em `tools/requests_mundo2.json` e no catálogo comum `tools/requests.json`.
+- Criados `assets/personagens/ruivo/iso/frente_idle.png` (768×384, 2 quadros) e `costas_corrida.png` (1536×384, 4 quadros), RGBA com transparência real, células 384×384 e baseline y=376. Centro por massa do alfa em x=192, seguindo o pipeline atual.
+- Câmera elevada, frente para baixo-direita e costas para cima-direita. Identidade, roupas e cores preservadas; mãos livres; mochila verde-oliva, tênis azuis e branco. Sem selo nos sprites, conforme decisão anterior do usuário.
+- Escala calibrada pela largura do cabelo/cabeça do idle atual, com um fator para a tira inteira; nenhum quadro escalado individualmente. A altura projetada de frente diminui com a vista de cima. Medidas registradas em `assets/_log/mundo2/calibracoes_ruivo.json`.
+- Comparação `assets/preview/ruivo_iso_comparacao.png` aberta e inspecionada: idle de plataforma e os seis quadros novos, sem ampliar/diminuir os arquivos finais na montagem. Originais em `assets/_bruto/native/iso_ruivo_*.png`.
+- Manifest atualizado com as duas novas tiras. Os sprites de plataforma não foram sobrescritos. Só houve gravações em `assets/` e `tools/`.
+
+Falta: revisão destas vistas; outras 12 tiras do ruivo; 14 tiras de cada um dos outros três personagens; 11 enfeites; céu de Construtores; oito sons; folhas completas de Mundo 2 e conferência final. Os demais itens não foram gerados antes deste ponto de revisão.
+
+Para recompor esta prévia sem novas gerações: `.venv/bin/python tools/mundo2.py build-review`.
