@@ -57,6 +57,7 @@ export function entrarNaSala(codigo, aoReceber, aoMudar = () => {}) {
   let conn = null, fila = [];
   const api = {
     enviar(m) { const s = JSON.stringify(m); conn?.open ? conn.send(s) : fila.push(s); },
+    ligado: () => !!conn?.open,
   };
   const peer = new Peer();
   let tentando = false;
@@ -66,7 +67,8 @@ export function entrarNaSala(codigo, aoReceber, aoMudar = () => {}) {
     tentando = true;
     const c = peer.connect(PREFIXO + codigo, { serialization: 'raw', reliable: true });
     conn = c;
-    const desistir = setTimeout(() => { if (c === conn && !c.open) { tentando = false; c.close(); conn = null; ligar(); } }, 10000);
+    // a sala existe mas a ligação direta não fecha (rede bloqueia WebRTC): avisa e tenta de novo
+    const desistir = setTimeout(() => { if (c === conn && !c.open) { tentando = false; c.close(); conn = null; aoMudar(false, 'demorou'); ligar(); } }, 10000);
     c.on('open', () => {
       clearTimeout(desistir);
       if (c !== conn) { c.close(); return; }

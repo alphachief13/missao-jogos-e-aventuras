@@ -202,6 +202,17 @@
     <button class="btn claro" id="btnMenu">Menu</button>
   </div>
 
+  <!-- Se algo não carrega (navegador antigo, arquivo velho no cache), mostra o motivo em vez de um botão que não faz nada. -->
+  <script>
+    addEventListener('error', function (e) {
+      var script = e.target && e.target.tagName === 'SCRIPT';
+      if (window.controlePronto || (e.target !== window && !script)) return;
+      document.getElementById('msgNome').textContent = 'O jogo não carregou (' + (script ? e.target.src.split('/').pop() : e.message) + '). Recarregue a página.';
+    }, true);
+    document.getElementById('btnEntrar').addEventListener('click', function () {
+      if (!window.controlePronto) document.getElementById('msgNome').textContent = 'O jogo ainda não carregou. Recarregue a página ou atualize o Chrome.';
+    });
+  </script>
   <script type="module" src="js/controle.js"></script>
   <script type="module" src="js/tutorial.js"></script>
 </body>

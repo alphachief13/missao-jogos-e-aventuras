@@ -78,7 +78,9 @@ let rede = null;
 function ligar(codigo) {
   history.replaceState(null, '', '?sala=' + codigo);
   rede = entrarNaSala(codigo, receber, (ok, motivo) => {
-    $('msgNome').textContent = ok ? '' : motivo === 'sala' ? `Procurando a sala ${codigo}… a tela do jogo está aberta?` : 'Conectando…';
+    $('msgNome').textContent = ok ? '' : motivo === 'sala' ? `Procurando a sala ${codigo}… a tela do jogo está aberta?`
+      : motivo === 'demorou' ? `Não consegui falar com a tela da sala ${codigo}. Celular e PC estão com internet? Tente o mesmo Wi-Fi.`
+      : 'Conectando…';
     // Ao reconectar, a tela esqueceu este celular: entra de novo com o mesmo nome.
     if (ok && entrei) { meuId = null; pedirEntrada(); }
   });
@@ -104,6 +106,7 @@ $('btnEntrar').onclick = () => {
     ligar(codigo);
   }
   entrei = true;
+  if (!rede.ligado()) $('msgNome').textContent = `Conectando à sala ${codigoDaUrl()}…`;
   try { localStorage.setItem('mja_sala_celular', codigoDaUrl()); } catch {}
   pedirEntrada();
   telaCheia();
@@ -275,3 +278,4 @@ let mouseApertado = false;
 $('jogo').addEventListener('mousedown', e => { mouseApertado = true; lerToques({ preventDefault() {}, touches: [e] }); });
 addEventListener('mousemove', e => { if (mouseApertado && joy) lerToques({ preventDefault() {}, touches: [e] }); });
 addEventListener('mouseup', () => { mouseApertado = false; if (!$('jogo').classList.contains('oculto')) lerToques({ preventDefault() {}, touches: [] }); });
+window.controlePronto = true;
