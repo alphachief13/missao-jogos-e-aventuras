@@ -259,33 +259,49 @@ function atualizarHud(s) {
   if ($('hudTimes').dataset.h !== html) { $('hudTimes').innerHTML = html; $('hudTimes').dataset.h = html; }
   $('hudPecas').textContent = s.pecas;
   $('hudTempo').textContent = fmtTempo(s.tempo);
-  $('hudFase').textContent = `${fase.id} · ${fase.nome}`;
   if (iso()) atualizarMissoes(s);
+  else { $('hudFase').textContent = `${fase.id} · ${fase.nome}`; missoesHtml = ''; }
 }
 
 // ---------- Mundo 2: lista de missões, bússola e câmeras ----------
 let missoesHtml = '';
+// Missões como bolinhas na barra de cima (✓ feita, número, cadeado); o que fazer fica só na bússola.
 function atualizarMissoes(s) {
   const feita = id => s.missoes[fase.missoes.findIndex(m => m.id === id)];
-  const html = `<h4><img src="assets/ui/ic_bussola.png" alt="">Missões ${s.missoes.filter(Boolean).length}/${fase.missoes.length}</h4>` +
-    fase.missoes.map((m, k) => {
-      const trancada = m.depois && !m.depois.every(feita);
-      const p = !s.missoes[k] && !trancada ? passoDaMissao(fase, s, k) : null;
-      return `<div class="m ${s.missoes[k] ? 'feita' : ''} ${trancada ? 'trancada' : ''}"><b>${s.missoes[k] ? '✓' : trancada ? CADEADO.replace('<svg', '<svg width="14"') : k + 1}</b>
-        <span>${m.nome}${trancada ? '<small>abre quando as outras 4 estiverem feitas</small>' : ''}${p ? `<small>${p.total > 1 ? `Passo ${p.i + 1} de ${p.total}: ` : ''}${p.texto}</small>` : ''}</span></div>`;
-    }).join('');
-  if (html !== missoesHtml) { $('missoes').innerHTML = html; missoesHtml = html; }
+  const html = '<span class="rot-missoes">Missões</span>' + fase.missoes.map((m, k) => {
+    const trancada = m.depois && !m.depois.every(feita);
+    return `<b class="mbola ${s.missoes[k] ? 'feita' : ''} ${trancada ? 'trancada' : ''}" title="${m.nome}">${s.missoes[k] ? '✓' : trancada ? CADEADO.replace('<svg', '<svg width="12"') : k + 1}</b>`;
+  }).join('');
+  if (html !== missoesHtml) { $('hudFase').innerHTML = html; missoesHtml = html; }
 }
 // Quem esta tela segue: os personagens de quem joga aqui (2 = tela dividida); ninguém = plateia (mapa todo).
 function meusPersonagens() { return sala.jogadores.find(j => j.id === meuId)?.pers || []; }
+// Dois personagens nesta tela: uma câmera só enquanto estão perto; tela dividida quando se afastam.
+let juntos = true;
+function seguirComCamera(s) {
+  const meus = meusPersonagens();
+  if (meus.length === 2 && s?.iso && fase) {
+    const [a, b] = meus.map(id => s.ch[fase.personagens.findIndex(p => p.id === id)]);
+    if (a && b) {
+      const d = Math.hypot(a[0] - b[0], a[1] - b[1]);
+      if (d > 9) juntos = false;
+      else if (d < 6) juntos = true;
+    }
+  }
+  cenaIso.seguir(meus, { juntos, ativo: sala.jogadores.find(j => j.id === meuId)?.ativo });
+  $('divisor').classList.toggle('oculto', cenaIso.vistas.length < 2);
+}
+// Bússola só do personagem ativo (o que esta tela está controlando), no meio da metade dele.
 function atualizarBussolas(s) {
   const meus = meusPersonagens();
   const ativo = sala.jogadores.find(j => j.id === meuId)?.ativo;
-  const html = meus.map(id => {
+  const html = [ativo].filter(Boolean).map(id => {
     const b = bussola(fase, s, fase.personagens.findIndex(p => p.id === id));
-    const borda = `style="border:.4vh solid ${CORES[corDe(id)]}${meus.length > 1 && id !== ativo ? ';opacity:.6' : ''}"`;
-    return b ? `<div class="bussola ${meus.length > 1 ? 'dupla' : ''}" ${borda} data-ang="${b.angulo}"><span class="seta">${SETA}</span><span><b>Missão ${b.numero} · ${b.m.nome}${b.passo.total > 1 ? ` · passo ${b.passo.i + 1} de ${b.passo.total}` : ''}</b><small>${b.passo.texto}</small></span></div>`
-             : `<div class="bussola ${meus.length > 1 ? 'dupla' : ''}" ${borda}><span class="seta">✓</span><span><b>Todas as missões feitas!</b></span></div>`;
+    const dividida = cenaIso.vistas.length > 1;
+    const lugar = dividida ? (meus.indexOf(id) === 0 ? 25 : 75) : 50;
+    const estilo = `style="border-color:${CORES[corDe(id)]};left:${lugar}%${dividida ? ';max-width:44vw' : ''}"`;
+    return b ? `<div class="bussola" ${estilo} data-ang="${b.angulo}"><span class="seta">${SETA}</span><span><b>${b.numero} · ${b.m.nome}${b.passo.total > 1 ? ` <i>passo ${b.passo.i + 1} de ${b.passo.total}</i>` : ''}</b><small>${b.passo.texto}</small></span></div>`
+             : `<div class="bussola" ${estilo}><span class="seta">✓</span><span><b>Todas as missões feitas!</b></span></div>`;
   }).join('');
   const caixa = $('bussolaPc');
   if (caixa.dataset.h !== html.replace(/data-ang="[^"]*"/g, '')) { caixa.innerHTML = html; caixa.dataset.h = html.replace(/data-ang="[^"]*"/g, ''); }
@@ -329,7 +345,8 @@ function atualizarObjetivo() {
 
 // Nome do jogador em cima do personagem que ele está controlando.
 function atualizarRotulos(s) {
-  if (!fase || !s) { $('rotulos').innerHTML = ''; return; }
+  // jogando sozinho no PC o nome em cima só polui a tela
+  if (!fase || !s || (iso() && sala.jogadores.length < 2)) { $('rotulos').innerHTML = ''; return; }
   $('rotulos').innerHTML = fase.personagens.map((p, i) => {
     const dono = donoDe(p.id);
     if (!dono || dono.ativo !== p.id) return '';
@@ -435,9 +452,9 @@ function atualizarTudo() {
   $('fim').classList.toggle('oculto', est !== 'fim');
   atualizarObjetivo();
   const noMapa = iso() && ['contagem', 'jogando', 'fim'].includes(est);
-  $('missoes').classList.toggle('oculto', !noMapa);
+  $('missoes').classList.add('oculto');
   $('bussolaPc').classList.toggle('oculto', !noMapa || est === 'fim');
-  $('divisor').classList.toggle('oculto', !noMapa || meusPersonagens().length < 2);
+  if (!noMapa) $('divisor').classList.add('oculto');
   if (!noMapa) { $('cenaIso').classList.add('oculto'); $('cena').classList.remove('oculto'); }
   else { $('cenaIso').classList.remove('oculto'); $('cena').classList.add('oculto'); }
   $('pausa').classList.toggle('oculto', !sala.pausado);
@@ -518,7 +535,7 @@ function laco(agora) {
   antes = agora;
   const s = interp.agora();
   const emJogo = ['contagem', 'jogando', 'fim'].includes(sala.estado);
-  if (iso()) cenaIso.seguir(meusPersonagens());
+  if (iso()) seguirComCamera(s);
   if (s && fase && s.ch.length === fase.personagens.length && !!s.iso === iso()) {
     cena.aplicarEstado(s);
     if (s !== ultimoEstado) { atualizarHud(s); ultimoEstado = s; }

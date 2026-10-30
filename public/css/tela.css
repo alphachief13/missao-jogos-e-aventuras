@@ -204,8 +204,6 @@ kbd { font: 700 .9em Fredoka, sans-serif; background: var(--marinho); color: #ff
 .bussola .seta svg { width: 3.4vh; height: 3.4vh; transition: transform .15s; }
 .bussola b { font: 700 2.2vh Fredoka, sans-serif; display: block; }
 .bussola small { font: 600 1.7vh Nunito, sans-serif; }
-.bussola.dupla { left: 25%; }
-.bussola + .bussola { left: 75%; }
 .mundos { display: flex; gap: 1vw; justify-content: center; margin-top: 1vh; }
 .mundos button { all: unset; cursor: pointer; display: flex; align-items: center; gap: .8vh; font: 700 2vh Fredoka, sans-serif; padding: .6vh 1.8vh .6vh .6vh;
                  border-radius: 999px; background: #fff; border: 3px solid transparent; box-shadow: var(--sombra); }
@@ -227,3 +225,12 @@ kbd { font: 700 .9em Fredoka, sans-serif; background: var(--marinho); color: #ff
 .opcoes-inicio .link.ligado { background: var(--amarelo); border-color: var(--marinho); }
 #progressoInfo { opacity: .7; }
 .pilula.livre { background: var(--amarelo); border-color: var(--marinho); }
+
+/* Mundo 2, mais limpo: missões como bolinhas na barra de cima e uma bússola só */
+#hudFase .rot-missoes { font: 700 1.9vh Fredoka, sans-serif; margin-right: .4vw; }
+#hudFase .mbola { display: inline-grid; place-items: center; width: 3.2vh; height: 3.2vh; border-radius: 50%; margin: 0 .15vw;
+                  background: var(--azul); color: #fff; font: 700 1.7vh Fredoka, sans-serif; vertical-align: middle; }
+#hudFase .mbola.feita { background: var(--verde); }
+#hudFase .mbola.trancada { background: #1E2A4A33; }
+#bussolaPc .bussola { border: .4vh solid; width: max-content; max-width: 52vw; }
+#bussolaPc .bussola b i { font: 600 1.6vh Nunito, sans-serif; opacity: .65; margin-left: .4vw; }

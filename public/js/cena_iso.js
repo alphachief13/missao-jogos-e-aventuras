@@ -164,16 +164,20 @@ export class CenaIso {
     addEventListener('resize', () => this.redimensionar());
   }
 
-  // Quem esta tela acompanha: [] plateia, [id] um personagem, [a, b] tela dividida.
-  seguir(ids) {
+  // Quem esta tela acompanha: [] plateia, [id] um personagem, [a, b] tela dividida
+  // (juntos: os dois estão perto, uma câmera só no meio deles). ativo: quem recebe a seta-guia.
+  seguir(ids, { juntos = false, ativo = null } = {}) {
     const lista = (ids || []).slice(0, 2);
-    if (lista.join() === this.seguindo.join() && this.vistas.length) return;
-    this.seguindo = lista;
-    const n = Math.max(1, lista.length);
-    this.vistas = Array.from({ length: n }, (_, i) => ({
-      id: lista[i] ?? null,
+    this.ativo = ativo ?? (lista.length === 1 ? lista[0] : null);
+    const chave = lista.join(juntos ? '+' : ',');
+    if (chave === this.seguindo && this.vistas.length) return;
+    const antes = this.vistas;
+    this.seguindo = chave;
+    const grupos = juntos || lista.length < 2 ? [lista] : lista.map(id => [id]);
+    this.vistas = grupos.map((ids, i) => ({
+      ids, id: ids.length === 1 ? ids[0] : null,
       cam: new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 200),
-      alvo: null,
+      alvo: antes[i]?.alvo?.clone() ?? null, // a câmera desliza ao juntar/separar, sem pulo
     }));
     this.redimensionar();
   }
@@ -846,8 +850,9 @@ export class CenaIso {
       });
     }
     // setas-guia: próximo lugar da missão de cada personagem seguido
+    const comGuia = this.ativo ? [this.ativo] : this.vistas.map(v => v.id).filter(Boolean);
     this.guias.forEach((guia, k) => {
-      const id = this.vistas[k]?.id;
+      const id = comGuia[k];
       const i = id ? this.fase.personagens.findIndex(p => p.id === id) : -1;
       const b = s && i >= 0 ? bussola(this.fase, s, i) : null;
       const mostrar = !!b && !b.perto;
@@ -881,9 +886,10 @@ export class CenaIso {
   }
 
   alvoDaVista(v) {
-    const p = v.id && this.pers.find(q => q.id === v.id);
-    if (p) return new THREE.Vector3(p.x, Math.max(0, p.y) + 0.8, p.z);
-    return new THREE.Vector3(this.C / 2, 0, this.L / 2);
+    const ps = (v.ids || []).map(id => this.pers.find(q => q.id === id)).filter(Boolean);
+    if (!ps.length) return new THREE.Vector3(this.C / 2, 0, this.L / 2);
+    const m = k => ps.reduce((a, p) => a + p[k], 0) / ps.length;
+    return new THREE.Vector3(m('x'), Math.max(0, m('y')) + 0.8, m('z'));
   }
 
   desenharPersonagem(p, t) {
@@ -938,7 +944,7 @@ export class CenaIso {
       const aspecto = (W / n) / H;
       // altura visível em tiles: plateia vê o mapa todo; celular vê menos (fica maior na tela)
       let alt = this.celular ? 10 : 12;
-      if (!v.id && this.fase) alt = Math.max(this.L * 0.95, (this.C * 0.85) / aspecto);
+      if (!v.ids?.length && this.fase) alt = Math.max(this.L * 0.95, (this.C * 0.85) / aspecto);
       v.cam.top = alt / 2; v.cam.bottom = -alt / 2;
       v.cam.left = -alt * aspecto / 2; v.cam.right = alt * aspecto / 2;
       v.cam.updateProjectionMatrix();
