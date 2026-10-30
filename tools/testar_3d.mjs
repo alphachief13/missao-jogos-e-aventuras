@@ -1,8 +1,9 @@
-// Robô do Mundo 2 (isométrico): anda pelo mapa procurando caminho no grid e cumpre as 5 missões
-// com 2, 3 e 4 times; também confere o resgate de um colega caído. Uso: node tools/testar_mundo2.mjs
+// Robô das fases 3D (isométricas, a 11ª de cada mundo): anda pelo mapa procurando caminho no grid e cumpre as missões
+// com 2, 3 e 4 times (e sozinho com 2); no Mundo 2 também confere o resgate de um colega caído e a cooperação.
+// Uso: node tools/testar_3d.mjs [id-da-fase]
 import { JogoIso } from '../public/jogo/sim_iso.js';
 import { COR_DO_PERSONAGEM } from '../public/jogo/sim.js';
-import { FASES_MUNDO2 } from '../public/jogo/fases_mundo2.js';
+import { FASES_3D } from '../public/jogo/fases_3d.js';
 
 const COMBOS = [
   ['ruivo', 'loira', 'cacheado', 'sapo'],
@@ -95,7 +96,7 @@ class Robo {
   feita(m) { return this.j.missoes.find(o => o.id === m).feita; }
 }
 
-function missoes(r, ids) {
+function canteiro(r, ids) {
   const j = r.j;
   const [a, b] = ids;
   const quem = cor => ids.find(i => COR_DO_PERSONAGEM[i] === cor) || a;
@@ -146,6 +147,103 @@ function missoes(r, ids) {
   return j.resultado;
 }
 
+// ---------- ajudas comuns ----------
+function ajuda(r, ids) {
+  const j = r.j, [a, b] = ids;
+  return {
+    j, a, b,
+    quem: cor => ids.find(i => COR_DO_PERSONAGEM[i] === cor) || a,
+    feita(m) { if (!r.feita(m)) throw new Error(`missão ${m} não concluída`); },
+    obraEmDupla(id, [x1, z1], [x2, z2]) {
+      r.vai(a, x1, z1); r.vai(b, x2, z2);
+      r.ate(() => j.obras[id].pronta, () => ({ [a]: { acao: true }, [b]: { acao: true } }), 600, `obra ${id} não ficou pronta`);
+    },
+    empurrar(x, z, dx, dz, pronto) {
+      r.vai(a, x, z); r.vai(b, x, z);
+      const e = joy(dx, dz);
+      r.ate(pronto, () => ({ [a]: e, [b]: e }), 900, 'caixa não chegou na placa');
+    },
+    alavancas() {
+      for (const cor of ['azul', 'rosa', 'amarelo', 'verde']) {
+        const al = j.alavancas[`al_${cor}`], id = this.quem(cor);
+        r.vai(id, al.x + (al.fx ?? 0), al.z + (al.fz ?? 0.8)); r.acao(id);
+        if (!al.ligada) throw new Error(`alavanca ${cor} não ligou`);
+      }
+    },
+    // bloco: a pega, sobe no elevador com b na placa, joga no encaixe olhando para (ox, oz)
+    blocoNoAlto(elevador, [bx, bz], [ex, ez], [px, pz], [ax, az], [ox, oz]) {
+      r.vai(a, bx, bz); r.acao(a);
+      if (!r.P(a).carregando) throw new Error('não pegou o bloco');
+      r.vai(a, ex, ez);
+      r.vai(b, px, pz, { [a]: {} });
+      const el = j.plataformas.find(p => p.id === elevador);
+      r.ate(() => el.h >= el.y1);
+      r.vai(a, ax, az);
+      r.olha(a, ox, oz); r.acao(a); r.espera(40);
+    },
+    final(id, perto, topo, passo = 0.8) {
+      ids.forEach((c, i) => r.vai(c, perto[0] + i * passo, perto[1]));
+      const todos = () => Object.fromEntries(ids.map(c => [c, { acao: true }]));
+      r.ate(() => j.obras[id].pronta, todos, 600, `obra ${id} não ficou pronta`);
+      r.espera(150);
+      ids.forEach((c, i) => r.vai(c, topo[0] + i * 0.6, topo[1]));
+      r.espera(200);
+      return j.resultado;
+    },
+  };
+}
+
+const ROTEIROS = {
+  '1-11'(r, ids) {
+    const h = ajuda(r, ids), { j, a, b } = h;
+    h.obraEmDupla('ponte', [11.5, 10.5], [11.5, 11.5]);
+    r.vai(a, 17.5, 9.5); h.feita('m1');
+    h.empurrar(16.5, 11.5, 1, 0, () => j.caixas[0].c === 21 && !j.caixas[0].de);
+    r.vai(a, 22.5, 3.5); h.feita('m2');
+    r.vai(a, 19.5, 17.9); r.acao(a);
+    if (!r.P(a).carregando) throw new Error('não pegou o bloco');
+    r.vai(a, 23.5, 16.5); r.olha(a, 1, 0); r.acao(a); r.espera(40);
+    if (!j.encaixes.enc3.cheio) throw new Error('bloco não encaixou');
+    r.vai(b, 27.5, 16.5); h.feita('m3');
+    return h.final('escada', [4.3, 6.6], [4.5, 2.5], 0.6);
+  },
+  '2-11': (r, ids) => canteiro(r, ids),
+  '3-11'(r, ids) {
+    const h = ajuda(r, ids), { j, a } = h;
+    h.alavancas();
+    r.vai(a, 5.5, 4.5); h.feita('m1');
+    h.blocoNoAlto('elevador', [28.5, 10.9], [21.5, 5.5], [23.5, 8.5], [23.5, 3.5], [1, 0]);
+    if (!j.encaixes.enc2.cheio) throw new Error('bloco não encaixou');
+    r.vai(a, 29.5, 2.5); h.feita('m2');
+    h.empurrar(30.5, 16.5, -1, 0, () => j.caixas[0].c === 25 && !j.caixas[0].de);
+    r.vai(a, 27.5, 20.5); h.feita('m3');
+    return h.final('ponte', [14.5, 11.6], [14.8, 3.5]);
+  },
+  '4-11'(r, ids) {
+    const h = ajuda(r, ids), { j, a } = h;
+    h.obraEmDupla('ponte', [10.5, 8.5], [10.5, 9.5]);
+    r.vai(a, 2.5, 4.5); h.feita('m1');
+    h.alavancas();
+    r.vai(a, 29.5, 3.5); h.feita('m2');
+    h.empurrar(13.5, 17.5, -1, 0, () => j.caixas[0].c === 8 && !j.caixas[0].de);
+    r.vai(a, 2.5, 17.5); h.feita('m3');
+    return h.final('podio', [15.5, 7.2], [15.8, 2.5]);
+  },
+  '5-11'(r, ids) {
+    const h = ajuda(r, ids), { j, a } = h;
+    h.alavancas();
+    r.vai(a, 10.5, 2.5); h.feita('m1');
+    h.empurrar(28.5, 11.5, 0, -1, () => j.caixas[0].l === 6 && !j.caixas[0].de);
+    r.vai(a, 32.5, 2.5); h.feita('m2');
+    h.blocoNoAlto('elevador', [25.5, 20.9], [29.5, 17.5], [26.5, 14.5], [31.5, 17.5], [0, -1]);
+    if (!j.encaixes.enc3.cheio) throw new Error('bloco não encaixou');
+    r.vai(a, 33.5, 18.5); h.feita('m3');
+    h.obraEmDupla('ponte', [11.5, 16.5], [11.5, 17.5]);
+    r.vai(a, 3.5, 16.5); h.feita('m4');
+    return h.final('torre', [16.5, 12.6], [16.8, 8.5]);
+  },
+};
+
 // Resgate: um personagem cai no lago, o outro chega perto e aperta AÇÃO.
 function resgate(fase) {
   const r = new Robo(fase, ['ruivo', 'loira']);
@@ -181,24 +279,29 @@ function exigeDupla(fase) {
   return 'ok';
 }
 
+const so = process.argv[2];
 let falhas = 0;
-for (const fase of FASES_MUNDO2) {
-  for (const ids of COMBOS) {
-    const r = new Robo(fase, ids);
+for (const fase of Object.values(FASES_3D)) {
+  if (so && fase.id !== so) continue;
+  const jogar = (ids, pessoas) => {
+    const r = new Robo(fase, ids, pessoas);
     let res;
-    try { res = missoes(r, ids); } catch (e) { res = 'ERRO: ' + e.message; }
+    try { res = ROTEIROS[fase.id](r, ids); } catch (e) { res = 'ERRO: ' + e.message; }
+    return [r, res];
+  };
+  for (const ids of COMBOS) {
+    const [r, res] = jogar(ids);
     const ok = res === 'vitoria';
     if (!ok) falhas++;
     console.log(`${ok ? '✓' : '✗'} ${fase.id} [${ids.join(',')}] ${res}  t=${r.j.tempo.toFixed(0)}s pecas=${r.j.pecas}`);
   }
-  // sozinho com 2 personagens: obras e caixa pedem só 1 ajudante
+  // sozinho com 2 personagens: obras e caixas pedem só 1 ajudante
   {
-    const r = new Robo(fase, ['ruivo', 'loira'], 1);
-    let res;
-    try { res = missoes(r, ['ruivo', 'loira']); } catch (e) { res = 'ERRO: ' + e.message; }
+    const [, res] = jogar(['ruivo', 'loira'], 1);
     if (res !== 'vitoria') falhas++;
     console.log(`${res === 'vitoria' ? '✓' : '✗'} ${fase.id} [sozinho com 2] ${res}`);
   }
+  if (fase.id !== '2-11') continue;
   for (const [nome, teste] of [['cooperação obrigatória', exigeDupla], ['resgate de colega caído', resgate]]) {
     let res;
     try { res = teste(fase); } catch (e) { res = 'ERRO: ' + e.message; }

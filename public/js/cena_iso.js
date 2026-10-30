@@ -5,15 +5,17 @@
 // seguir([]) é a plateia (mapa inteiro).
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
-import { CORES, PERS_COR, COR_PERS, ICONE, bussola } from './comum.js';
+import { CORES, PERS_COR, COR_PERS, ICONE, MUNDOS, bussola } from './comum.js';
 
-const CHAO = { grama: '#CFE3A8', grama2: '#C4DB9B', terra: '#B38A60', topo: '#F3E7CC', lado: '#E0CBA5',
+// Cores do chão e do céu: mudam com o mundo (MUNDOS[mundo].iso).
+const CHAO_BASE = { grama: '#CFE3A8', grama2: '#C4DB9B', terra: '#B38A60', topo: '#F3E7CC', lado: '#E0CBA5',
                muro: '#FFFFFF', muro2: '#EFE8D8', madeira: '#C98B4E', madeira2: '#E2AE74', agua: '#6EC1EA', fundo: '#9CCBDD' };
+let CHAO = CHAO_BASE;
 const COR_DO_CHAO = { b: 'azul', r: 'rosa', y: 'amarelo', g: 'verde' };
 const FX = { INVUL: 1, PLANANDO: 4, TEM_MOLA: 8, TEM_PLANADOR: 16, CAIDO_SEM_CORACAO: 32 };
 const CORES_PECA = ['#3E93D0', '#E3205D', '#F6BB33', '#A0C630'];
 const SPRITE_ALT = 2.13, PES = 376 / 384, ESTICA = 1.12;
-const ALTURA_MURO = 1.8;
+const ALTURA_MURO = 1.2;   // muros baixos: não escondem personagens nem objetos atrás deles
 const DIR_CAM = new THREE.Vector3(1, 1.2, 1).normalize();
 // Folhas de sprite: isométricas (do Codex) quando existirem; senão as de plataforma (de lado, espelhadas).
 const ANIM_ISO = {
@@ -192,6 +194,10 @@ export class CenaIso {
     this.L = fase.mapa.length;
     this.C = fase.mapa[0].length;
     this.estado = null;
+    const tema = MUNDOS[fase.mundo] || MUNDOS.construtores;
+    CHAO = { ...CHAO_BASE, ...tema.iso };
+    this.cena.background = new THREE.Color(CHAO.ceu);
+    this.tema = fase.mundo;
     this.timesEmJogo = new Set(fase.personagens.map(p => PERS_COR[p.id]));
     this.coresGatilho = {};
     for (const a of fase.alavancas || []) this.coresGatilho[a.id] = a.cor;
@@ -221,6 +227,7 @@ export class CenaIso {
     this.montarMissoes(fase.missoes || []);
     this.montarPersonagens(fase.personagens);
     this.montarGuias();
+    this.montarTrilha();
     if (!this.vistas.length) this.seguir([]);
     for (const v of this.vistas) v.alvo = null;
     this.redimensionar();
@@ -318,7 +325,8 @@ export class CenaIso {
     for (let i = 0; i < 40; i++) {
       const a = (i / 40) * Math.PI * 2;
       const rx = this.C / 2 + 2.5 + (i % 3), rz = this.L / 2 + 2.5 + (i % 2) * 1.5;
-      this.enfeite('arvore', this.C / 2 + Math.cos(a) * rx, this.L / 2 + Math.sin(a) * rz, false);
+      const fora = { robotica: i % 2 ? 'antena' : 'arbusto', conquistas: i % 3 ? 'arvore' : 'bandeirola', gincana: i % 4 ? 'arvore' : 'cone' }[this.tema] || 'arvore';
+      this.enfeite(fora, this.C / 2 + Math.cos(a) * rx, this.L / 2 + Math.sin(a) * rz, false);
     }
   }
 
@@ -541,6 +549,21 @@ export class CenaIso {
       g.visible = anel.visible = false;
       this.grupo.add(g, anel);
       return { g, anel, mat: seta.material };
+    });
+  }
+
+  // Trilha de setinhas no chão: o caminho de verdade até o próximo lugar da missão (do personagem ativo).
+  montarTrilha() {
+    const forma = new THREE.Shape();
+    forma.moveTo(-0.22, -0.2); forma.lineTo(0.22, 0); forma.lineTo(-0.22, 0.2); forma.lineTo(-0.1, 0); forma.closePath();
+    const geo = new THREE.ShapeGeometry(forma);
+    geo.rotateX(-Math.PI / 2);
+    this.trilha = Array.from({ length: 9 }, () => {
+      const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: '#fff', transparent: true, depthWrite: false, toneMapped: false }));
+      m.renderOrder = 8;
+      m.visible = false;
+      this.grupo.add(m);
+      return m;
     });
   }
 
@@ -857,6 +880,15 @@ export class CenaIso {
       const b = s && i >= 0 ? bussola(this.fase, s, i) : null;
       const mostrar = !!b && !b.perto;
       guia.g.visible = guia.anel.visible = mostrar;
+      if (k === 0) this.trilha.forEach((m, n) => {
+        const ponto = mostrar && b.rota?.[n], prox = mostrar && (b.rota[n + 1] || b.alvo);
+        m.visible = !!ponto;
+        if (!ponto) return;
+        m.position.set(ponto[0], this.chaoEm(ponto[0], ponto[1]) + 0.07, ponto[1]);
+        m.rotation.y = -Math.atan2(prox[1] - ponto[1], prox[0] - ponto[0]);
+        m.material.color.set(CORES[PERS_COR[id]]);
+        m.material.opacity = 0.35 + 0.55 * Math.max(0, Math.sin(t * 5 - n * 0.7));
+      });
       if (!mostrar) return;
       const [x, z] = b.alvo;
       const h = this.chaoEm(x, z);
@@ -1101,6 +1133,129 @@ const FORMAS = {
     bloco.position.set(1.7, 1.8, 0);
     g.add(torre, braco, cabo, bloco);
     g.rotation.y = -Math.PI / 4;
+    return g;
+  },
+  barraca() {
+    const g = new THREE.Group();
+    const lona = new THREE.Mesh(new THREE.ConeGeometry(0.85, 1.2, 4), fosco('#E9A35B'));
+    lona.position.y = 0.6; lona.rotation.y = Math.PI / 4;
+    const porta = new THREE.Mesh(new THREE.ConeGeometry(0.3, 0.6, 3), fosco('#7A4E2C'));
+    porta.position.set(0.45, 0.3, 0.45); porta.rotation.y = Math.PI / 4;
+    g.add(lona, porta);
+    return g;
+  },
+  fogueira() {
+    const g = new THREE.Group();
+    for (let i = 0; i < 4; i++) {
+      const lenha = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.7, 8), fosco('#8B5A2B'));
+      lenha.rotation.set(Math.PI / 2, 0, i * Math.PI / 4); lenha.position.y = 0.08;
+      g.add(lenha);
+    }
+    const fogo = new THREE.Mesh(new THREE.ConeGeometry(0.22, 0.6, 10), plastico('#F6BB33', { emissive: '#F28C28', emissiveIntensity: 0.8 }));
+    fogo.position.y = 0.4;
+    g.add(fogo);
+    return g;
+  },
+  robo() {
+    const g = new THREE.Group();
+    const branco = plastico('#F4F7FB');
+    const corpo = new THREE.Mesh(new RoundedBoxGeometry(0.9, 1.0, 0.7, 3, 0.18), branco);
+    corpo.position.y = 0.8;
+    const cabeca = new THREE.Mesh(new RoundedBoxGeometry(0.8, 0.6, 0.65, 3, 0.2), branco);
+    cabeca.position.y = 1.65;
+    const visor = new THREE.Mesh(new RoundedBoxGeometry(0.62, 0.32, 0.1, 2, 0.08), plastico('#1E2A4A'));
+    visor.position.set(0, 1.65, 0.33);
+    const olhos = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.06, 0.02), plastico('#6FD3FF', { emissive: '#6FD3FF', emissiveIntensity: 1 }));
+    olhos.position.set(0, 1.67, 0.39);
+    for (const dx of [-0.25, 0.25]) { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.4, 10), plastico('#3E93D0')); p.position.set(dx, 0.2, 0); g.add(p); }
+    g.add(corpo, cabeca, visor, olhos);
+    g.rotation.y = Math.PI / 4;
+    return g;
+  },
+  engrenagem() {
+    const g = new THREE.Group();
+    const m = plastico('#93A4B8');
+    const anel = new THREE.Mesh(new THREE.TorusGeometry(0.4, 0.13, 8, 24), m);
+    g.add(anel);
+    for (let i = 0; i < 10; i++) { const d = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.18, 0.2), m); const a = i * Math.PI / 5; d.position.set(Math.cos(a) * 0.56, Math.sin(a) * 0.56, 0); d.rotation.z = a; g.add(d); }
+    g.position.y = 0.7; g.rotation.y = Math.PI / 4;
+    const base = new THREE.Group(); base.add(g);
+    return base;
+  },
+  antena() {
+    const g = new THREE.Group();
+    const haste = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.08, 1.8, 8), fosco('#56677C'));
+    haste.position.y = 0.9;
+    const bola = new THREE.Mesh(new THREE.SphereGeometry(0.16, 12, 10), plastico('#3E93D0', { emissive: '#3E93D0', emissiveIntensity: 0.5 }));
+    bola.position.y = 1.85;
+    const prato = new THREE.Mesh(new THREE.SphereGeometry(0.35, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2.5), fosco('#C3CCD6', { side: THREE.DoubleSide }));
+    prato.position.y = 1.3; prato.rotation.x = 0.6;
+    g.add(haste, bola, prato);
+    return g;
+  },
+  mesa() {
+    const g = new THREE.Group();
+    const tampo = new THREE.Mesh(new RoundedBoxGeometry(1.1, 0.12, 0.7, 2, 0.04), fosco('#C3CCD6'));
+    tampo.position.y = 0.7;
+    for (const [x, z] of [[-0.45, -0.25], [0.45, -0.25], [-0.45, 0.25], [0.45, 0.25]]) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.7, 0.08), fosco('#56677C')); p.position.set(x, 0.35, z); g.add(p); }
+    const peca = new THREE.Mesh(new RoundedBoxGeometry(0.3, 0.2, 0.3, 2, 0.04), plastico('#F6BB33'));
+    peca.position.set(0.2, 0.86, 0);
+    g.add(tampo, peca);
+    return g;
+  },
+  bandeirola() {
+    const g = new THREE.Group();
+    for (const dx of [-0.9, 0.9]) { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.8, 8), fosco('#9B6B43')); p.position.set(dx, 0.9, 0); g.add(p); }
+    ['#E3205D', '#3E93D0', '#F6BB33', '#A0C630', '#E3205D', '#3E93D0'].forEach((c, i) => {
+      const f = new THREE.Mesh(new THREE.ConeGeometry(0.13, 0.3, 3), plastico(c));
+      f.rotation.x = Math.PI; f.position.set(-0.75 + i * 0.3, 1.6 - Math.sin((i + 0.5) / 6 * Math.PI) * 0.15, 0);
+      g.add(f);
+    });
+    g.rotation.y = Math.PI / 4;
+    return g;
+  },
+  trofeu() {
+    const g = new THREE.Group();
+    const ouro = plastico('#F6BB33', { metalness: 0.4, emissive: '#F6BB33', emissiveIntensity: 0.15 });
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.38, 0.25, 16), fosco('#6B5A8E'));
+    base.position.y = 0.12;
+    const pe = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.12, 0.4, 12), ouro);
+    pe.position.y = 0.45;
+    const taca = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.12, 0.6, 20), ouro);
+    taca.position.y = 0.95;
+    g.add(base, pe, taca);
+    return g;
+  },
+  estrela() {
+    const sh = new THREE.Shape();
+    for (let i = 0; i < 10; i++) { const r = i % 2 ? 0.2 : 0.48, a = Math.PI / 2 + i * Math.PI / 5; sh[i ? 'lineTo' : 'moveTo'](Math.cos(a) * r, Math.sin(a) * r); }
+    const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: 0.14, bevelEnabled: false }), plastico('#F6BB33', { emissive: '#F6BB33', emissiveIntensity: 0.2 }));
+    m.position.y = 0.9; m.rotation.y = Math.PI / 4;
+    const haste = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.5, 6), fosco('#B89A4A'));
+    haste.position.y = 0.25;
+    const g = new THREE.Group(); g.add(m, haste);
+    return g;
+  },
+  podio() {
+    const g = new THREE.Group();
+    [[0, 0.9, '#9C7FD0'], [-0.7, 0.6, '#B89A4A'], [0.7, 0.4, '#C8644E']].forEach(([x, h, c]) => {
+      const b = new THREE.Mesh(new RoundedBoxGeometry(0.66, h, 0.66, 2, 0.05), fosco(c));
+      b.position.set(x, h / 2, 0);
+      g.add(b);
+    });
+    g.rotation.y = Math.PI / 4;
+    return g;
+  },
+  medalha() {
+    const g = new THREE.Group();
+    const fita = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.6, 0.04), plastico('#3E93D0'));
+    fita.position.y = 1.1;
+    const disco = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.08, 20), plastico('#F6BB33', { metalness: 0.4 }));
+    disco.rotation.x = Math.PI / 2; disco.position.y = 0.7;
+    const poste = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.5, 6), fosco('#B89A4A'));
+    poste.position.y = 0.25;
+    g.add(fita, disco, poste);
+    g.rotation.y = Math.PI / 4;
     return g;
   },
   placa() {

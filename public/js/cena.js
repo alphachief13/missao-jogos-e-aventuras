@@ -4,9 +4,10 @@
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { CORES, PERS_COR, COR_PERS } from './comum.js';
+import { CORES, PERS_COR, COR_PERS, MUNDOS } from './comum.js';
 
-const NEUTRO = { creme: '#F3E7CC', cinza: '#E0CBA5', moldura: '#8A6A48', grama: '#5F8A4A', mecanismo: '#FFFFFF' };
+// Cores da estrutura: mudam com o mundo da fase (MUNDOS[mundo].lado).
+let NEUTRO = { ...MUNDOS.exploradores.lado, mecanismo: '#FFFFFF' };
 // Fundo empurrado para longe: desfoque, névoa clara e menos saturação, para os objetos 3D se destacarem.
 const NEVOA = { longe: { desfoque: 1.6, nevoa: 0.3, cinza: 0.25 }, meio: { desfoque: 0.7, nevoa: 0.12, cinza: 0.1 } };
 // Poças de tinta (cada time só pisa na sua cor) e o curto-circuito, que derruba todos.
@@ -17,7 +18,7 @@ const ANIMS = { idle: 2, corrida: 4, pulo: 1, queda: 1, empurrar: 1, derrota: 1,
 const FPS = { corrida: 10 };
 const SPRITE_ALT = 2.13;               // célula 384 px em tiles
 const PES = 376 / 384;                 // linha dos pés dentro da célula
-const VISTA = { w: 24, h: 13.5 };       // área da fase que precisa caber na tela
+const VISTA_MIN = { w: 24, h: 13.5 };   // área mínima que precisa caber na tela (a fase inteira sempre cabe)
 
 const carregador = new THREE.TextureLoader();
 const cacheTex = new Map();
@@ -81,7 +82,12 @@ export class Cena {
     this.cena.add(this.grupo);
     this.particulas = [];
     this.linhas = fase.mapa.length;
-    this.centro = new THREE.Vector3(VISTA.w / 2, -(this.linhas - VISTA.h / 2), 0);
+    const colunas = fase.mapa[0].length;
+    this.vista = { w: Math.max(VISTA_MIN.w, colunas), h: Math.max(VISTA_MIN.h, this.linhas) };
+    this.centro = new THREE.Vector3(colunas / 2, -(this.linhas - this.vista.h / 2), 0);
+    const tema = MUNDOS[fase.mundo] || MUNDOS.exploradores;
+    NEUTRO = { ...tema.lado, mecanismo: '#FFFFFF' };
+    this.tom = tema.lado.tom;
     this.timesEmJogo = new Set(fase.personagens.map(p => PERS_COR[p.id]));
     this.coresGatilho = {};
     for (const a of fase.alavancas || []) this.coresGatilho[a.id] = a.cor;
@@ -95,21 +101,25 @@ export class Cena {
     this.montarAlavancas(fase.alavancas || []);
     this.montarBotoes(fase.botoes || []);
     this.montarPlataformas(fase.plataformas || []);
+    this.montarEnfeites(fase.enfeites || [], fase.mundo);
+    this.montarSetas(fase.setas || []);
     this.montarPersonagens(fase.personagens);
     this.redimensionar();
   }
 
   montarFundos(mundo) {
-    const plano = (url, transp, ajuste) => {
-      const mat = new THREE.MeshBasicMaterial({ map: tex(url), transparent: transp, depthWrite: !transp, toneMapped: false });
+    // Mundo sem fundo pintado ainda: usa o dos Exploradores tingido com o tom do mundo.
+    const plano = (nome, transp, ajuste) => {
+      const mat = new THREE.MeshBasicMaterial({ transparent: transp, depthWrite: !transp, toneMapped: false });
+      mat.map = texFundo(mundo, nome, () => mat.color.set(this.tom));
       afastar(mat, ajuste);
       const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat);
       this.grupo.add(m);
       return m;
     };
     this.fundos = [
-      { mesh: plano(`assets/fundos/${mundo}/longe.png`, false, NEVOA.longe), z: -26, parallax: 0.25 },
-      { mesh: plano(`assets/fundos/${mundo}/meio.png`, true, NEVOA.meio), z: -9, parallax: 0.6 },
+      { mesh: plano('longe', false, NEVOA.longe), z: -26, parallax: 0.25 },
+      { mesh: plano('meio', true, NEVOA.meio), z: -9, parallax: 0.6 },
     ];
   }
 
@@ -235,8 +245,11 @@ export class Cena {
       piv.add(haste, bola);
       g.add(base, piv);
       if (a.cor) g.add(icone(retrato(a.cor), 0.5, 0, 1.25));
+      const marca = setaMarcador(cor);   // "puxe aqui": some quando a alavanca é puxada
+      marca.position.set(0, a.cor ? 2.0 : 1.5, 0.2);
+      g.add(marca);
       this.grupo.add(g);
-      return { piv, ang: 0.6 };
+      return { piv, ang: 0.6, marca, y0: marca.position.y };
     });
   }
 
@@ -251,8 +264,11 @@ export class Cena {
       tampa.position.y = 0.16;
       g.add(base, tampa);
       if (b.cor) g.add(icone(retrato(b.cor), 0.5, 0, 0.9));
+      const marca = setaMarcador(b.cor ? cor : '#FFFFFF', 0.7);   // "pise aqui": some enquanto alguém aperta
+      marca.position.set(0, b.cor ? 1.6 : 1.1, 0.2);
+      g.add(marca);
       this.grupo.add(g);
-      return { tampa };
+      return { tampa, marca, y0: marca.position.y };
     });
   }
 
@@ -299,6 +315,29 @@ export class Cena {
       this.grupo.add(g);
       return { g, w: p.w, h: p.h, lampadas, x: p.x, y: p.y };
     });
+  }
+
+  // Setas do caminho, pintadas no fundo do corredor: para que lado ir em cada andar e onde subir.
+  montarSetas(setas) {
+    const ROT = { dir: 0, esq: Math.PI, cima: Math.PI / 2 };
+    this.setas = setas.map((s, i) => {
+      const m = new THREE.Mesh(geoSeta(), new THREE.MeshBasicMaterial({ map: texturaSeta(), transparent: true, depthWrite: false, toneMapped: false }));
+      m.position.set(s.x, -s.y, -0.45);
+      m.rotation.z = ROT[s.dir] ?? 0;
+      m.userData.fase = i * 1.3;
+      this.grupo.add(m);
+      return m;
+    });
+  }
+
+  // Enfeites do mundo no fundo do corredor (sem colisão): árvores, cones, engrenagens, bandeirinhas, troféus.
+  montarEnfeites(lista, mundo) {
+    const forma = ENFEITES_LADO[mundo] || ENFEITES_LADO.exploradores;
+    for (const e of lista) {
+      const g = forma[e.v % forma.length]();
+      g.position.set(e.x, -e.y, -0.32);
+      this.grupo.add(g);
+    }
   }
 
   montarPersonagens(lista) {
@@ -408,8 +447,15 @@ export class Cena {
       else g.mesh.userData.pano.rotation.y = Math.sin(t * 5 + g.fase) * 0.35; // bandeira tremulando
       g.mesh.position.y = g.base + Math.sin(t * 3 + g.fase) * 0.06;
     }
-    for (const a of this.alavancas) { a.ang += ((a.alvo ?? 0.6) - a.ang) * Math.min(1, dt * 12); a.piv.rotation.z = a.ang; }
+    for (const a of this.alavancas) {
+      a.ang += ((a.alvo ?? 0.6) - a.ang) * Math.min(1, dt * 12); a.piv.rotation.z = a.ang;
+      a.marca.visible = (a.alvo ?? 0.6) > 0;
+      a.marca.position.y = a.y0 + Math.abs(Math.sin(t * 3.2)) * 0.25;
+    }
+    for (const s of this.setas) s.material.opacity = 0.55 + Math.sin(t * 2.5 + s.userData.fase) * 0.25;
     for (const b of this.botoes) {
+      b.marca.visible = !b.on;
+      b.marca.position.y = b.y0 + Math.abs(Math.sin(t * 3.2 + 1)) * 0.2;
       b.tampa.position.y += ((b.on ? 0.08 : 0.16) - b.tampa.position.y) * Math.min(1, dt * 18);
       b.tampa.material.emissiveIntensity = b.on ? 0.7 : 0;
     }
@@ -444,7 +490,8 @@ export class Cena {
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;
     const tg = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
-    this.distancia = Math.max((VISTA.h / 2) / tg, (VISTA.w / 2) / (tg * this.camera.aspect)) * 1.04 + 0.5;
+    const v = this.vista || VISTA_MIN;
+    this.distancia = Math.max((v.h / 2) / tg, (v.w / 2) / (tg * this.camera.aspect)) * 1.04 + 0.5;
     this.camera.updateProjectionMatrix();
   }
 
@@ -600,3 +647,79 @@ function texturaAnel() {
   g.fillRect(0, 0, 128, 128);
   return new THREE.CanvasTexture(c);
 }
+
+// Fundo pintado do mundo; se ainda não existir, o dos Exploradores (aoReserva tinge com o tom do mundo).
+const reservaFundo = new Set();
+function texFundo(mundo, nome, aoReserva) {
+  const url = `assets/fundos/${mundo}/${nome}.png`;
+  if (reservaFundo.has(url)) { aoReserva(); return tex(`assets/fundos/exploradores/${nome}.png`); }
+  if (cacheTex.has(url)) return cacheTex.get(url);
+  const t = carregador.load(url, undefined, undefined, () => {
+    reservaFundo.add(url);
+    carregador.load(`assets/fundos/exploradores/${nome}.png`, r => { t.image = r.image; t.needsUpdate = true; });
+    aoReserva();
+  });
+  t.colorSpace = THREE.SRGBColorSpace;
+  cacheTex.set(url, t);
+  return t;
+}
+
+// Seta saltitante apontando para baixo, em cima de alavancas e botões.
+function setaMarcador(cor, tam = 1) {
+  const g = new THREE.Group();
+  const mat = plastico(cor, { emissive: cor, emissiveIntensity: 0.35 });
+  const ponta = new THREE.Mesh(new THREE.ConeGeometry(0.2 * tam, 0.34 * tam, 4), mat);
+  ponta.rotation.x = Math.PI;
+  const haste = new THREE.Mesh(new THREE.CylinderGeometry(0.07 * tam, 0.07 * tam, 0.26 * tam, 10), mat);
+  haste.position.y = 0.28 * tam;
+  g.add(ponta, haste);
+  return g;
+}
+
+let _geoSeta = null;
+function geoSeta() { return (_geoSeta ??= new THREE.PlaneGeometry(1.5, 1.5)); }
+let _texSeta = null;
+function texturaSeta() {
+  if (_texSeta) return _texSeta;
+  const c = document.createElement('canvas');
+  c.width = c.height = 128;
+  const g = c.getContext('2d');
+  g.lineJoin = g.lineCap = 'round';
+  const seta = () => { g.beginPath(); g.moveTo(18, 52); g.lineTo(70, 52); g.lineTo(70, 30); g.lineTo(110, 64); g.lineTo(70, 98); g.lineTo(70, 76); g.lineTo(18, 76); g.closePath(); };
+  seta(); g.lineWidth = 14; g.strokeStyle = '#1E2A4A'; g.stroke();
+  seta(); g.fillStyle = '#FFFFFF'; g.fill();
+  _texSeta = new THREE.CanvasTexture(c);
+  _texSeta.colorSpace = THREE.SRGBColorSpace;
+  return _texSeta;
+}
+
+// Enfeites simples em 3D por mundo (pé no chão em y = 0).
+const malha = (geo, cor, x = 0, y = 0, z = 0) => { const m = new THREE.Mesh(geo, fosco(cor)); m.position.set(x, y, z); return m; };
+const grupo = (...ms) => { const g = new THREE.Group(); g.add(...ms); return g; };
+const ENFEITES_LADO = {
+  exploradores: [
+    () => grupo(malha(new THREE.CylinderGeometry(0.08, 0.1, 0.5, 8), '#8B5A2B', 0, 0.25), malha(new THREE.ConeGeometry(0.42, 0.9, 10), '#5F9A4A', 0, 0.85)),
+    () => grupo(malha(new THREE.SphereGeometry(0.32, 14, 10), '#6FA95A', 0, 0.25), malha(new THREE.SphereGeometry(0.22, 12, 8), '#7FB866', 0.28, 0.2)),
+    () => grupo(malha(new THREE.CylinderGeometry(0.06, 0.08, 0.3, 8), '#F3E7CC', 0, 0.15), malha(new THREE.SphereGeometry(0.22, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2), '#E3205D', 0, 0.28)),
+  ],
+  construtores: [
+    () => grupo(malha(new THREE.ConeGeometry(0.22, 0.6, 14), '#F28C28', 0, 0.3), malha(new THREE.BoxGeometry(0.5, 0.06, 0.5), '#F28C28', 0, 0.03)),
+    () => grupo(malha(new RoundedBoxGeometry(0.5, 0.3, 0.3, 2, 0.04), '#3E93D0', 0, 0.15), malha(new RoundedBoxGeometry(0.5, 0.3, 0.3, 2, 0.04), '#F6BB33', 0.12, 0.45), malha(new RoundedBoxGeometry(0.5, 0.3, 0.3, 2, 0.04), '#E3205D', -0.05, 0.75)),
+    () => grupo(malha(new THREE.BoxGeometry(0.06, 1.3, 0.06), '#F6BB33', 0, 0.65), malha(new THREE.BoxGeometry(0.8, 0.06, 0.06), '#F6BB33', 0.3, 1.3), malha(new THREE.BoxGeometry(0.2, 0.2, 0.2), '#56677C', 0.65, 1.0)),
+  ],
+  robotica: [
+    () => { const g = grupo(malha(new THREE.TorusGeometry(0.3, 0.1, 8, 20), '#93A4B8', 0, 0.42)); for (let i = 0; i < 8; i++) { const d = malha(new THREE.BoxGeometry(0.12, 0.14, 0.12), '#93A4B8', Math.cos(i * Math.PI / 4) * 0.42, 0.42 + Math.sin(i * Math.PI / 4) * 0.42); d.rotation.z = i * Math.PI / 4; g.add(d); } return g; },
+    () => grupo(malha(new THREE.CylinderGeometry(0.03, 0.03, 0.9, 6), '#56677C', 0, 0.45), malha(new THREE.SphereGeometry(0.09, 10, 8), '#3E93D0', 0, 0.95), malha(new THREE.BoxGeometry(0.4, 0.1, 0.3), '#C3CCD6', 0, 0.05)),
+    () => grupo(malha(new RoundedBoxGeometry(0.5, 0.42, 0.4, 2, 0.08), '#F0F3F7', 0, 0.21), malha(new RoundedBoxGeometry(0.4, 0.3, 0.36, 2, 0.08), '#F0F3F7', 0, 0.6), malha(new THREE.BoxGeometry(0.28, 0.08, 0.38), '#3E93D0', 0, 0.62)),
+  ],
+  gincana: [
+    () => grupo(malha(new THREE.ConeGeometry(0.2, 0.55, 14), '#F28C28', 0, 0.28), malha(new THREE.CylinderGeometry(0.15, 0.17, 0.08, 14), '#FFFFFF', 0, 0.3)),
+    () => grupo(malha(new THREE.CylinderGeometry(0.03, 0.03, 1.1, 6), '#8B5A2B', 0, 0.55), malha(new THREE.ConeGeometry(0.16, 0.36, 3), '#E3205D', 0.16, 0.95)),
+    () => grupo(malha(new THREE.SphereGeometry(0.25, 16, 12), '#3E93D0', 0, 0.25), malha(new THREE.TorusGeometry(0.25, 0.04, 6, 20), '#F6BB33', 0, 0.25)),
+  ],
+  conquistas: [
+    () => grupo(malha(new THREE.CylinderGeometry(0.12, 0.16, 0.12, 12), '#B89A4A', 0, 0.06), malha(new THREE.CylinderGeometry(0.04, 0.04, 0.2, 8), '#E9C25A', 0, 0.22), malha(new THREE.CylinderGeometry(0.22, 0.08, 0.3, 14), '#F6BB33', 0, 0.46)),
+    () => { const sh = new THREE.Shape(); for (let i = 0; i < 10; i++) { const r = i % 2 ? 0.14 : 0.32, a = Math.PI / 2 + i * Math.PI / 5; sh[i ? 'lineTo' : 'moveTo'](Math.cos(a) * r, Math.sin(a) * r); } const m = malha(new THREE.ExtrudeGeometry(sh, { depth: 0.08, bevelEnabled: false }), '#F6BB33', 0, 0.5); return grupo(m, malha(new THREE.CylinderGeometry(0.03, 0.03, 0.2, 6), '#B89A4A', 0, 0.1)); },
+    () => grupo(malha(new THREE.BoxGeometry(0.4, 0.5, 0.35), '#9C7FD0', 0, 0.25), malha(new THREE.BoxGeometry(0.35, 0.3, 0.35), '#B89A4A', -0.37, 0.15), malha(new THREE.BoxGeometry(0.35, 0.2, 0.35), '#C8644E', 0.37, 0.1)),
+  ],
+};

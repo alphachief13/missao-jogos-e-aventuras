@@ -42,10 +42,15 @@
     .mini-passos i { width: 22px; height: 3px; border-radius: 2px; background: #1E2A4A1F; }
     .rodape { display: flex; gap: 12px; justify-content: center; align-items: center; }
     .btn:disabled { filter: grayscale(1); opacity: .45; }
-    .fases { display: flex; gap: 8px; }
-    .fases button { all: unset; width: 92px; padding: 8px 4px; border-radius: 14px; background: #fff; text-align: center; box-shadow: var(--sombra);
+    .mundos-cel { display: flex; gap: 6px; justify-content: center; }
+    .mundos-cel button { all: unset; padding: 3px; border-radius: 12px; border: 3px solid transparent; background: #fff; box-shadow: var(--sombra); }
+    .mundos-cel button img { height: 46px; display: block; }
+    .mundos-cel button.sel { border-color: var(--azul); }
+    .mundos-cel button:disabled { filter: grayscale(1); opacity: .4; }
+    .fases { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; max-width: 640px; }
+    .fases button { all: unset; width: 74px; padding: 5px 3px; border-radius: 14px; background: #fff; text-align: center; box-shadow: var(--sombra);
                     font: 600 12px Fredoka, sans-serif; border: 3px solid transparent; line-height: 1.2; }
-    .fases button b { display: block; font-size: 22px; color: var(--azul); }
+    .fases button b { display: block; font-size: 18px; color: var(--azul); }
     .fases button.sel { border-color: var(--azul); background: var(--azul); color: #fff; }
     .fases button.sel b { color: #fff; }
     .fases button:disabled { opacity: .4; }
@@ -149,7 +154,8 @@
 
   <div id="pgFase" class="pagina oculto">
     <div class="mini-passos"><b class="ok">✓</b><i></i><b>2</b><i></i><span>3</span></div>
-    <h2>Escolha a fase</h2>
+    <h2>Escolha o mundo e a fase</h2>
+    <div class="mundos-cel" id="mundosCel"></div>
     <div class="fases" id="fasesCel"></div>
     <div class="msg" id="msgFase"></div>
     <div class="rodape"><button class="btn claro" id="btnVoltarTimes">← Voltar</button><button class="btn" id="btnLoja">Oficina →</button></div>

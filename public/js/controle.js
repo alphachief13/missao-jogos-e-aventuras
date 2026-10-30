@@ -1,6 +1,6 @@
 // Controle virtual no celular: escolhe o time, monta itens na oficina e vira gamepad durante a partida.
 import { entrarNaSala, codigoDaUrl, Interpolador } from './rede.js';
-import { PERSONAGENS, CORES, PERS_COR, COR_PERS, NOME_TIME, ICONE, ITENS, bussola, SETA } from './comum.js';
+import { PERSONAGENS, CORES, PERS_COR, COR_PERS, NOME_TIME, ICONE, ITENS, MUNDOS, bussola, SETA } from './comum.js';
 
 const $ = id => document.getElementById(id);
 
@@ -139,8 +139,19 @@ function atualizar() {
   if (!j) return mostrar('pgNome');
   if (sala.estado === 'lobby' && sala.etapa === 'fase') {
     mostrar('pgFase');
-    $('fasesCel').innerHTML = sala.fases.map((f, i) =>
-      `<button data-i="${i}" class="${i === sala.faseIdx ? 'sel' : ''}" ${i >= sala.liberadas ? 'disabled' : ''}><b>${i < sala.liberadas ? f.id : '🔒'}</b>${f.nome}</button>`).join('');
+    // mundos em cima (selo), fases do mundo escolhido embaixo
+    const idMundo = sala.fases[sala.faseIdx]?.mundo;
+    const primeira = id => sala.fases.findIndex(f => f.mundo === id);
+    $('mundosCel').innerHTML = Object.entries(MUNDOS).map(([id, m]) => {
+      const trancado = primeira(id) < 0 || primeira(id) >= sala.liberadas;
+      return `<button data-m="${id}" class="${id === idMundo ? 'sel' : ''}" ${trancado ? 'disabled' : ''}><img src="${m.selo}" alt="Mundo ${m.n}"></button>`;
+    }).join('');
+    for (const b of $('mundosCel').children) b.onclick = () => {
+      const lib = sala.fases.map((f, i) => [f, i]).filter(([f, i]) => f.mundo === b.dataset.m && i < sala.liberadas);
+      if (lib.length) rede.enviar({ t: 'escolherFase', idx: lib[lib.length - 1][1] });
+    };
+    $('fasesCel').innerHTML = sala.fases.map((f, i) => [f, i]).filter(([f]) => f.mundo === idMundo).map(([f, i]) =>
+      `<button data-i="${i}" class="${i === sala.faseIdx ? 'sel' : ''}" ${i >= sala.liberadas ? 'disabled' : ''}><b>${i >= sala.liberadas ? '🔒' : f.modo === 'iso' ? '3D' : f.id.split('-')[1]}</b>${f.nome}</button>`).join('');
     for (const b of $('fasesCel').children) b.onclick = () => rede.enviar({ t: 'escolherFase', idx: +b.dataset.i });
     const f = sala.fases[sala.faseIdx];
     $('msgFase').textContent = `${f.coracoes} corações por time · ${f.dica}`;

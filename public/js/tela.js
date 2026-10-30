@@ -5,6 +5,7 @@ import { PERSONAGENS, CORES, PERS_COR, COR_PERS, NOME_TIME, MUNDOS, ICONE, ITENS
 import { hospedar, entrarNaSala, codigoDaUrl, Interpolador } from './rede.js';
 import { liberarAudio, tocar, alternarMudo } from './som.js';
 import { TREINOS } from '../jogo/treino.js';
+import { Planetas } from './planetas.js';
 
 const $ = id => document.getElementById(id);
 const SOM_DO_EVENTO = { pulo: 'pulo', pouso: 'pouso', bandeira: 'bandeira', peca: 'peca', alavanca: 'alavanca',
@@ -154,38 +155,40 @@ function atualizarTimes() {
 $('btnVoltarInicio').onclick = () => irPara('inicio');
 $('btnIrFase').onclick = () => irPara('fase');
 
-// trilha de fases: um caminho pontilhado com as 5 paradas do mundo
+// escolha de fase: os 5 mundos (planetinhas) em cima e a trilha com as 11 fases do mundo escolhido
+const planetas = new Planetas($('planetas'), id => {
+  const liberadas = sala.fases.map((f, i) => [f, i]).filter(([f, i]) => f.mundo === id && i < sala.liberadas);
+  if (!liberadas.length || sala.fases[sala.faseIdx]?.mundo === id) return;
+  tocar('clique');
+  rede.enviar({ t: 'escolherFase', idx: liberadas[liberadas.length - 1][1] }); // a mais adiantada daquele mundo
+});
 function atualizarFase() {
-  // a trilha mostra só as fases do mundo da fase escolhida; os botões de cima trocam de mundo
   const idMundo = sala.fases[sala.faseIdx]?.mundo || 'exploradores';
   const mundo = MUNDOS[idMundo] || MUNDOS.exploradores;
   const doMundo = sala.fases.map((f, i) => [f, i]).filter(([f]) => f.mundo === idMundo);
-  const mundos = [...new Set(sala.fases.map(f => f.mundo))];
+  const info = {};
+  for (const id of Object.keys(MUNDOS)) {
+    const idx = sala.fases.map((f, i) => (f.mundo === id ? i : -1)).filter(i => i >= 0);
+    info[id] = { trancado: !idx.length || idx[0] >= sala.liberadas, feitas: idx.filter(i => i < sala.liberadas - 1).length, total: idx.length };
+  }
+  planetas.atualizar(idMundo, info);
   $('tituloMundo').innerHTML = `<img src="${mundo.selo}" alt="">Mundo ${mundo.n} · ${mundo.nome}`;
-  $('subMundo').innerHTML = `Escolha a fase. Cada vitória libera a próxima. ${sala.trapaca ? '<span class="pilula livre">Modo livre</span>' : `<span class="pilula"><img src="assets/ui/ic_bloco.png">${sala.carteira} peças</span>`}
-    <span class="mundos">${mundos.map(id => {
-      const primeira = sala.fases.findIndex(f => f.mundo === id);
-      return `<button data-i="${primeira}" class="${id === idMundo ? 'sel' : ''}" ${primeira >= sala.liberadas ? 'disabled' : ''}>
-        <img src="${MUNDOS[id].selo}" alt="">Mundo ${MUNDOS[id].n}${primeira >= sala.liberadas ? ' ' + CADEADO.replace('<svg', '<svg width="16"') : ''}</button>`;
-    }).join('')}</span>`;
-  for (const b of $('subMundo').querySelectorAll('.mundos button:not(:disabled)'))
-    b.onclick = () => { tocar('clique'); rede.enviar({ t: 'escolherFase', idx: +b.dataset.i }); };
-  const pts = doMundo.length === 1 ? [[50, 46]] : doMundo.map((_, k) => PARADAS[k % PARADAS.length]);
+  $('subMundo').innerHTML = `Escolha o mundo e a fase. Cada vitória libera a próxima. ${sala.trapaca ? '<span class="pilula livre">Modo livre</span>' : `<span class="pilula"><img src="assets/ui/ic_bloco.png">${sala.carteira} peças</span>`}`;
+  const pts = doMundo.map((_, k) => [4 + k * (92 / Math.max(1, doMundo.length - 1)), k % 2 ? 28 : 70]);
   $('trilha').innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="${pts.length > 1 ? curva(pts) : ''}" /></svg>` +
     doMundo.map(([f, i], k) => {
-      const trancada = i >= sala.liberadas, feita = i < sala.liberadas - 1;
-      return `<button class="parada ${i === sala.faseIdx ? 'sel' : ''} ${trancada ? 'trancada' : ''} ${feita ? 'feita' : ''}" data-i="${i}" style="left:${pts[k][0]}%;top:${pts[k][1]}%" ${trancada ? 'disabled' : ''}>
-        <span class="bola">${trancada ? CADEADO : feita ? '✓' : k + 1}</span><span class="nome">${f.nome}</span></button>`;
+      const trancada = i >= sala.liberadas, feita = i < sala.liberadas - 1, tres = f.modo === 'iso';
+      return `<button class="parada ${i === sala.faseIdx ? 'sel' : ''} ${trancada ? 'trancada' : ''} ${feita ? 'feita' : ''} ${tres ? 'tres-d' : ''}" data-i="${i}" style="left:${pts[k][0]}%;top:${pts[k][1]}%;--cor:${mundo.cor}" ${trancada ? 'disabled' : ''}>
+        <span class="bola"><b>${trancada ? CADEADO : feita ? '✓' : tres ? '3D' : k + 1}</b></span><span class="nome">${tres ? 'Mapa 3D · ' : ''}${f.nome}</span></button>`;
     }).join('');
   for (const b of $('trilha').querySelectorAll('.parada:not(.trancada)'))
     b.onclick = () => { tocar('clique'); rede.enviar({ t: 'escolherFase', idx: +b.dataset.i }); };
   const f = sala.fases[sala.faseIdx];
-  $('detalhe').innerHTML = `<div class="num">${f.id}</div>
-    <div><h3>${f.nome}</h3><p>${f.dica}</p></div>
+  $('detalhe').innerHTML = `<div class="num" style="background:${mundo.cor}">${f.modo === 'iso' ? '3D' : f.id}</div>
+    <div><h3>${f.nome}${f.modo === 'iso' ? ' <span class="pilula">mapa 3D</span>' : ''}</h3><p>${f.dica}</p></div>
     <div class="vidas"><div class="cors">${coracoes(f.coracoes, f.coracoes)}</div>${f.coracoes} corações por time</div>`;
 }
-// paradas da trilha em % da área, e a curva suave (Catmull-Rom) que passa por elas
-const PARADAS = [[6, 68], [28, 24], [50, 66], [72, 40], [94, 28]];
+// curva suave (Catmull-Rom) que passa pelas paradas da trilha
 function curva(p) {
   let d = `M${p[0][0]} ${p[0][1]}`;
   for (let i = 0; i < p.length - 1; i++) {
@@ -313,7 +316,7 @@ function avisoMissao(m) {
   const k = fase.missoes.findIndex(o => o.id === m.id);
   const div = document.createElement('div');
   div.className = 'aviso-missao';
-  div.innerHTML = m.final ? 'A grande torre! 🏆<small>O canteiro está pronto. Que equipe!</small>'
+  div.innerHTML = m.final ? `${fase.missoes[k].nome}! 🏆<small>Missão final cumprida. Que equipe!</small>`
                           : `Missão ${k + 1} concluída!<small>${fase.missoes[k].nome}</small>`;
   $('hud').append(div);
   setTimeout(() => div.remove(), 2600);
@@ -463,6 +466,7 @@ function atualizarTudo() {
   if (tela === 'inicio') atualizarInicio();
   if (tela === 'times') atualizarTimes();
   if (tela === 'fase') atualizarFase();
+  planetas.ligar(tela === 'fase');
   if (est === 'loja') atualizarLoja();
   if (est === 'fim') mostrarFim();
   $('hudTimes').dataset.h = '';
@@ -510,6 +514,14 @@ addEventListener('keydown', ev => {
   if (ev.code === 'Escape') {
     if (sala.estado === 'fim' || sala.estado === 'loja') rede.enviar({ t: 'lobby' });
     else if (sala.estado === 'lobby' && sala.etapa !== 'inicio') irPara(sala.etapa === 'fase' ? 'times' : 'inicio');
+    return;
+  }
+  // na escolha de fase, ↑ ↓ trocam de mundo
+  if (sala.estado === 'lobby' && sala.etapa === 'fase' && (ev.code === 'ArrowUp' || ev.code === 'ArrowDown')) {
+    const ids = Object.keys(MUNDOS), atual = ids.indexOf(sala.fases[sala.faseIdx]?.mundo);
+    const id = ids[atual + (ev.code === 'ArrowDown' ? 1 : -1)];
+    const idx = id ? sala.fases.map((f, i) => [f, i]).filter(([f, i]) => f.mundo === id && i < sala.liberadas).pop()?.[1] : undefined;
+    if (idx !== undefined) { tocar('clique'); rede.enviar({ t: 'escolherFase', idx }); }
     return;
   }
   // na trilha de fases, ← → escolhem a fase

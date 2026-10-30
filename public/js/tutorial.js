@@ -14,7 +14,7 @@ const poca = cor => `<span class="tut-poca" style="--cor:${cor}"></span>`;
 
 const MODOS = {
   plataforma: {
-    nome: 'Plataforma 2D', sub: 'Mundo 1 · Exploradores em Ação', selo: 'assets/kit/selo_1.png',
+    nome: 'Plataforma 2D', sub: 'Fases 1 a 10 de cada mundo', selo: 'assets/kit/selo_1.png',
     passos: [
       { t: 'A missão', d: 'Cada time leva seu personagem até o <b>arco de chegada da sua cor</b>. A fase só termina quando <b>todos</b> chegam!',
         arte: `<div class="tut-linha">${['ruivo', 'loira', 'cacheado', 'sapo'].map(p => sprite(`${P}/${p}/vitoria.png`)).join('')}</div>` },
@@ -26,7 +26,7 @@ const MODOS = {
           <div><span>Trocar</span>${tecla('Tab')}${bolinha('trocar', '#3E93D0')}<small>jogando sozinho</small></div></div>` },
       { t: 'Poças de tinta', d: 'Cada time só atravessa a poça da <b>sua cor</b>. A poça com raio dá curto-circuito em <b>todo mundo</b>: pule por cima!',
         arte: `<div class="tut-linha">${poca('#3E93D0')}${poca('#E3205D')}${poca('#F6BB33')}${poca('#A0C630')}<span class="tut-poca curto"><img src="${ICONE.acao}" alt=""></span></div>` },
-      { t: 'Trabalho em equipe', d: 'Botões e alavancas abrem portões e mexem elevadores. Um amigo <b>segura o botão</b> enquanto o outro passa.',
+      { t: 'Trabalho em equipe', d: 'Botões e alavancas abrem portões e mexem elevadores. Um amigo <b>segura o botão</b> enquanto o outro passa. As <b>setas</b> mostram o caminho e onde apertar.',
         arte: `<div class="tut-linha">${sprite(`${P}/cacheado/empurrar.png`)}<img class="tut-ic" src="assets/ui/ic_engrenagem.png" alt="">${sprite(`${P}/loira/aceno.png`)}</div>` },
       { t: 'Corações', d: 'Cair na poça errada custa <b>1 coração</b> e o personagem volta um pouco atrás. Sem corações, a equipe tenta a fase de novo.',
         arte: `<div class="tut-linha"><span class="tut-cors">${[1, 1, 1, 0].map(c => `<img src="${c ? ICONE.coracao : ICONE.coracaoVazio}" alt="">`).join('')}</span>${sprite(`${P}/ruivo/derrota.png`)}</div>` },
@@ -36,9 +36,9 @@ const MODOS = {
     ],
   },
   iso: {
-    nome: 'Mapa 3D', sub: 'Mundo 2 · Desafio dos Construtores', selo: 'assets/kit/selo_2.png',
+    nome: 'Mapa 3D', sub: 'Última fase de cada mundo', selo: 'assets/kit/selo_2.png',
     passos: [
-      { t: 'Um mapa para explorar', d: 'No Mundo 2 a câmera fica no alto. A equipe anda <b>para todos os lados</b> e completa as missões espalhadas pelo canteiro.',
+      { t: 'Um mapa para explorar', d: 'Na última fase de cada mundo a câmera fica no alto. A equipe anda <b>para todos os lados</b> e completa as missões espalhadas pelo mapa. As <b>setinhas no chão</b> mostram o caminho.',
         arte: `<div class="tut-linha tut-iso">${sprite(`${P}/ruivo/iso/frente_idle.png`, 2, 'iso')}${sprite(`${P}/ruivo/iso/costas_corrida.png`, 4, 'iso')}</div>` },
       { t: 'Controles', d: 'Agora as setas andam em 4 direções. No celular, arraste o dedo no lado esquerdo da tela.',
         arte: `<div class="tut-controles">

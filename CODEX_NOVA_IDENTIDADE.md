@@ -73,7 +73,7 @@ Cada mundo: `assets/fundos/<mundo>/longe.png` (2400×1080, opaco) e `assets/fund
 
 | `<mundo>` | Referências | Ambiente |
 |---|---|---|
-| `exploradores` | `06_fundos/fundo_aventura_9x16.png`, `04_fases/fase_1_exploradores-em-acao.png`, `02_key-visual/keyvisual_principal_9x16.png` | trilha ensolarada entre colinas, rio e cachoeira, placas de madeira e mapas, bússola gigante discreta (**é o único usado hoje; prioridade máxima**) |
+| `exploradores` | `06_fundos/fundo_aventura_9x16.png`, `04_fases/fase_1_exploradores-em-acao.png`, `02_key-visual/keyvisual_principal_9x16.png` | trilha ensolarada entre colinas, rio e cachoeira, placas de madeira e mapas, bússola gigante discreta (prioridade máxima; os outros mundos usam este tingido enquanto não têm o seu) |
 | `construtores` | `04_fases/fase_2_desafio-dos-construtores.png`, `06_fundos/fundo_aventura_9x16.png` | cidade de blocos de montar coloridos ao longe, guindaste de blocos, bandeirinhas |
 | `robotica` | `04_fases/fase_3_mestres-da-robotica.png`, `05_elementos/icones/icone_05_engrenagem.png` | oficina de robótica clara e arejada, engrenagens, robozinhos educacionais nas prateleiras (nada de telas) |
 | `gincana` | `04_fases/fase_4_gincana-das-aventuras.png`, `05_elementos/icones/icone_08_cone-gincana.png` | campo de gincana gramado, cones, bambolês, bandeirinhas, bolas |

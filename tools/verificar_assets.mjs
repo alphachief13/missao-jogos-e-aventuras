@@ -11,7 +11,9 @@ const ANIMS = { idle: 2, corrida: 4, pulo: 1, queda: 1, empurrar: 1, derrota: 1,
 const CORES = ['azul', 'rosa', 'amarelo', 'verde'];
 const SONS = ['pulo', 'pouso', 'bandeira', 'peca', 'alavanca', 'botao', 'chegada', 'perdeu_coracao', 'derrota', 'vitoria',
               'clique', 'trocar', 'entrou', 'contagem', 'compra'];
-const MUNDOS = [...new Set(FASES.map(f => f.mundo))]; // só o Mundo 1 tem fundo pintado (o Mundo 2 é visto de cima)
+// Fundo pintado obrigatório só o dos Exploradores; os outros mundos usam ele tingido até ganharem o seu (CODEX_MUNDOS.md).
+const MUNDOS = ['exploradores'];
+const OUTROS_MUNDOS = [...new Set(FASES.map(f => f.mundo))].filter(m => !MUNDOS.includes(m));
 
 const exigidos = [
   ['kit/logo.png'], ['kit/logo_roboeduc.png'], ...[1, 2, 3, 4, 5].map(i => [`kit/selo_${i}.png`]),
@@ -53,6 +55,7 @@ const opcionais = [
   ...PERS.flatMap(p => Object.entries(ISO).map(([a, n]) => [`personagens/${p}/iso/${a}.png`, 384 * n, 384])),
   ...Object.entries(ENFEITES).map(([e, [w, h]]) => [`mundo2/enfeites/${e}.png`, w, h]),
   ...['pegar', 'soltar', 'empurrar', 'construir', 'ajudar', 'caiu', 'missao', 'placa'].map(s => [`sons/${s}.wav`]),
+  ...OUTROS_MUNDOS.flatMap(m => [[`fundos/${m}/longe.png`, 2400, 1080], [`fundos/${m}/meio.png`, 2400, 1080]]),
 ];
 let pendentes = 0;
 for (const [rel, w, h] of opcionais) {
@@ -63,6 +66,6 @@ for (const [rel, w, h] of opcionais) {
     if (lw !== w || lh !== h) { console.log(`✗ tamanho    ${rel}: ${lw}×${lh} (esperado ${w}×${h})`); faltas++; }
   }
 }
-console.log(`· Mundo 2: ${opcionais.length - pendentes}/${opcionais.length} assets novos prontos` + (pendentes ? ' (o jogo usa substitutos para os que faltam)' : ''));
+console.log(`· opcionais (sprites 3D, enfeites, sons e fundos dos mundos 2-5): ${opcionais.length - pendentes}/${opcionais.length} prontos` + (pendentes ? ' (o jogo usa substitutos para os que faltam)' : ''));
 console.log(faltas ? `\n${faltas} problema(s).` : `✓ ${exigidos.length} arquivos conferidos, nada faltando.`);
 process.exit(faltas ? 1 : 0);

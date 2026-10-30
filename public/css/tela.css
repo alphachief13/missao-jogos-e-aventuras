@@ -76,7 +76,23 @@ kbd { font: 700 .9em Fredoka, sans-serif; background: var(--marinho); color: #ff
 .url { font: 500 1.4vh Nunito, sans-serif; opacity: .55; word-break: break-all; }
 
 /* passo 2: trilha de fases */
-.trilha { position: relative; width: min(100%, 140vh); height: 30vh; }
+/* os 5 mundos: canvas 3D com os rótulos por cima */
+.planetas { position: relative; width: min(100%, 150vh); height: 27vh; flex-shrink: 0; margin: -1vh 0 -1vh; }
+.planetas canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.rotulo-mundo { all: unset; position: absolute; bottom: 0; transform: translateX(-50%); display: flex; align-items: center; gap: .8vh;
+                background: #fffe; border: 2px solid var(--linha); border-radius: 999px; padding: .4vh 1.4vh .4vh .4vh; cursor: pointer;
+                box-shadow: 0 .4vh 1.2vh #1E2A4A1A; transition: transform .15s, border-color .15s; white-space: nowrap; }
+.rotulo-mundo img { height: 4.4vh; }
+.rotulo-mundo span { display: flex; flex-direction: column; font: 600 1.5vh Fredoka, sans-serif; line-height: 1.15; }
+.rotulo-mundo span b { font-size: 1.3vh; color: var(--cor); letter-spacing: .04em; text-transform: uppercase; }
+.rotulo-mundo i { font: 600 1.3vh Nunito, sans-serif; font-style: normal; opacity: .6; margin-left: .4vh; }
+.rotulo-mundo.sel { border-color: var(--cor); transform: translateX(-50%) scale(1.08); box-shadow: 0 0 0 .5vh color-mix(in srgb, var(--cor) 25%, transparent); }
+.rotulo-mundo.trancado { opacity: .55; cursor: not-allowed; }
+.trilha { position: relative; width: min(100%, 140vh); height: 21vh; flex-shrink: 0; }
+.parada.tres-d .bola { width: 9.5vh; height: 9.5vh; border-radius: 2.2vh; transform: rotate(45deg); font: 700 3vh Fredoka, sans-serif; }
+.parada.tres-d .bola > * { transform: rotate(-45deg); }
+.parada.tres-d:not(.trancada):not(.feita) .bola { background: var(--cor); color: #fff; border-color: var(--marinho); }
+.parada.tres-d.sel .bola { transform: rotate(45deg) scale(1.2); }
 .trilha > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .trilha path { fill: none; stroke: #C9A66B; stroke-width: 6; stroke-dasharray: 2 16; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 .parada { all: unset; position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: .8vh;
@@ -234,3 +250,11 @@ kbd { font: 700 .9em Fredoka, sans-serif; background: var(--marinho); color: #ff
 #hudFase .mbola.trancada { background: #1E2A4A33; }
 #bussolaPc .bussola { border: .4vh solid; width: max-content; max-width: 52vw; }
 #bussolaPc .bussola b i { font: 600 1.6vh Nunito, sans-serif; opacity: .65; margin-left: .4vw; }
+
+/* escolha de fase mais compacta (mundos + trilha de 11 paradas) */
+#fase { gap: 1.2vh; padding-top: 10vh; }
+.parada .bola b { font: inherit; display: grid; place-items: center; }
+#fase .parada .nome { font-size: 1.5vh; max-width: 18vh; text-align: center; white-space: normal; line-height: 1.2; }
+#fase .parada .bola { width: 6.6vh; height: 6.6vh; font-size: 3vh; }
+#fase .parada.tres-d .bola { width: 7.6vh; height: 7.6vh; }
+.detalhe h3 .pilula { font-size: 1.6vh; vertical-align: middle; padding: .1em .7em; }

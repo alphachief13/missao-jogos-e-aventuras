@@ -287,13 +287,20 @@ export class Jogo {
   }
 }
 
-// Recorta a fase para os times presentes.
+// Recorta a fase para os times presentes. Poças de times ausentes passam para um time presente
+// (assim continuam sendo obstáculo, e quem precisa atravessar a poça larga consegue).
+const LETRA_DA_COR = Object.fromEntries(Object.entries(COR_DA_POCA).filter(([, c]) => c).map(([l, c]) => [c, l]));
 export function filtrarFase(f, ativos) {
   const ids = ativos?.length ? ativos : f.personagens.map(p => p.id);
   const cores = new Set(ids.map(id => COR_DO_PERSONAGEM[id]));
   const livre = o => (o.cor && !cores.has(o.cor) ? { ...o, cor: null } : o);
+  const presentes = ['azul', 'rosa', 'amarelo', 'verde'].filter(c => cores.has(c));
+  const troca = {};
+  ['azul', 'rosa', 'amarelo', 'verde'].filter(c => !cores.has(c))
+    .forEach((c, i) => { troca[LETRA_DA_COR[c]] = LETRA_DA_COR[presentes[i % presentes.length]]; });
   return {
     ...f,
+    mapa: f.mapa.map(linha => [...linha].map(ch => troca[ch] ?? ch).join('')),
     personagens: f.personagens.filter(p => ids.includes(p.id)),
     portais: f.portais.filter(p => cores.has(p.cor)),
     gemas: f.gemas.filter(g => g.cor === 'peca' || cores.has(g.cor)),

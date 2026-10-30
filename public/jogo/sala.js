@@ -3,12 +3,12 @@
 // Cada jogador é um time (1 personagem). Sozinho, o jogador leva 2 personagens: mínimo de 2 times, máximo de 4.
 import { Jogo, COR_DO_PERSONAGEM } from './sim.js';
 import { JogoIso } from './sim_iso.js';
-import { FASES as FASES_MUNDO1 } from './fases.js';
-import { FASES_MUNDO2 } from './fases_mundo2.js';
+import { FASES as FASES_LADO, ORDEM_MUNDOS } from './fases.js';
+import { FASES_3D } from './fases_3d.js';
 import { TREINOS } from './treino.js';
 
-// Todas as fases em ordem: Mundo 1 (plataforma) e Mundo 2 (mapa isométrico aberto).
-const FASES = [...FASES_MUNDO1, ...FASES_MUNDO2];
+// Todas as fases em ordem: em cada mundo, 10 de plataforma e a fase 3D (mapa isométrico aberto) no fim.
+const FASES = ORDEM_MUNDOS.flatMap(m => [...FASES_LADO.filter(f => f.mundo === m), FASES_3D[m]]);
 const num = v => (Number.isFinite(+v) ? Math.max(-1, Math.min(1, Math.round(+v * 100) / 100)) : 0);
 
 const PERSONAGENS = ['ruivo', 'loira', 'cacheado', 'sapo'];
